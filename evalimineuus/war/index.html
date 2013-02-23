@@ -7,9 +7,6 @@
 
     </head>
     <body>
-        <!--[if lt IE 10]>
-            <p class="chromeframe">Palun valige endale kaasaegsem ja turvalisem <a href="http://browsehappy.com/">veebilehitseja.</a></p>
-        <![endif]-->
 
         <div id="wrapper">
 
@@ -32,12 +29,12 @@
 
             </header>
 
+            <canvas id="highlight"></canvas>
             <div id="content_wrapper">
-                <canvas id="highlight"></canvas>
 
                 <aside>
 
-                    <h4 id="candidates">Kandidaadid</h1>
+                    <h4 class="h4_heading">Kandidaadid</h1><br/>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque posuere sodales ante id facilisis. Vestibulum euismod mattis nisl, id consequat tortor suscipit vitae. Maecenas sit amet dolor nibh. Quisque vitae commodo augue. Nullam bibendum posuere est, non gravida ante lacinia quis. Vestibulum imperdiet orci eu nisl posuere a gravida orci ullamcorper. Nullam quis lacus ipsum.<br/><br/>
                     Etiam vel nisl diam. Integer purus mauris, malesuada sed tristique tristique, cursus nec urna. Integer tincidunt, purus vel vestibulum fringilla, nulla diam consequat leo, ut scelerisque sapien nisi sit amet sem. Nulla erat sem, venenatis sit amet aliquam sed, scelerisque ac lectus. Etiam pulvinar vulputate nisi, vitae porta est luctus nec. Phasellus purus lacus, semper quis auctor in, pulvinar nec ante. Etiam aliquam volutpat massa, ac accumsan neque sollicitudin eu. Sed vehicula est vel eros luctus iaculis interdum vestibulum leo. Phasellus nisl metus, auctor quis mattis eget, tincidunt vel sapien. Donec vitae libero et nulla congue pretium ut in tortor. Ut semper felis ut mi pharetra vestibulum suscipit arcu sodales. Donec fermentum luctus enim ac laoreet. Vestibulum venenatis orci eget odio cursus commodo.</p>
 
@@ -45,8 +42,50 @@
 
                 <div id="content">
 
-                    <h1>Sisu</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque posuere sodales ante id facilisis. Vestibulum euismod mattis nisl, id consequat tortor suscipit vitae. Maecenas sit amet dolor nibh. Quisque vitae commodo augue. Nullam bibendum posuere est, non gravida ante lacinia quis. Vestibulum imperdiet orci eu nisl posuere a gravida orci ullamcorper. Nullam quis lacus ipsum.<br/>Etiam vel nisl diam. Integer purus mauris, malesuada sed tristique tristique, cursus nec urna. Integer tincidunt, purus vel vestibulum fringilla, nulla diam consequat leo, ut scelerisque sapien nisi sit amet sem. Nulla erat sem, venenatis sit amet aliquam sed, scelerisque ac lectus. Etiam pulvinar vulputate nisi, vitae porta est luctus nec. Phasellus purus lacus, semper quis auctor in, pulvinar nec ante. Etiam aliquam volutpat massa, ac accumsan neque sollicitudin eu. Sed vehicula est vel eros luctus iaculis interdum vestibulum leo. Phasellus nisl metus, auctor quis mattis eget, tincidunt vel sapien. Donec vitae libero et nulla congue pretium ut in tortor. Ut semper felis ut mi pharetra vestibulum suscipit arcu sodales. Donec fermentum luctus enim ac laoreet. Vestibulum venenatis orci eget odio cursus commodo.</p>
+                    <h4 class="h4_heading">Otsi sobiv kandidaat:</h4><br/>
+
+                    <ul id="candidate_selection">
+                        <li>
+                            <div id="valimisringkond">
+                                <select>
+                                    <option value="" disabled="disabled" selected="selected">Valimisringkond</option>
+                                    <option value="1">Üks</option>
+                                    <option value="2">Kaks</option>
+                                    <option value="3">Üks</option>
+                                    <option value="4">Kaks</option>
+                                    <option value="5">Üks</option>
+                                    <option value="6">Kaks</option>
+                                    <option value="7">Üks</option>
+                                    <option value="8">Kaks</option>
+                                </select>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div id="erakond">
+                                    <input type="checkbox" value="1"/>Keskkerakond<br />
+                                    <input type="checkbox" />Reformierakond<br />
+                                    <input type="checkbox" />Rohelised<br />
+                                    <input type="checkbox" />Muud pederastid<br />
+                            </div>
+                        </li>
+
+                        <li>
+                            <div id="kandidaadid">
+                                <select>
+                                    <option value="" disabled="disabled" selected="selected">Kandidaadid</option>
+                                    <option value="1">Üks</option>
+                                    <option value="2">Kaks</option>
+                                    <option value="3">Üks</option>
+                                    <option value="4">Kaks</option>
+                                    <option value="5">Üks</option>
+                                    <option value="6">Kaks</option>
+                                    <option value="7">Üks</option>
+                                    <option value="8">Kaks</option>
+                                </select>
+                            </div>
+                        </li>
+                    </ul>
 
                 </div>
 
