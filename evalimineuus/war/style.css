@@ -5,6 +5,7 @@
 
 body {
   background-color: #ebebeb;
+  font-family: Arial, Verdana, Tahoma, sans-serif;
 }
 
 a {
@@ -21,22 +22,37 @@ a {
 
 p#username {
   text-align: right;
+  font-weight: bold;
+  font-size: 12px;
+  color: #404040;
+}
+
+header {
+  margin: 10px 0;
 }
 
 header nav {
   float: right;
-  margin-top: 15px;
+  margin-top: 17px;
   margin-right: 50px;
+  font-size: 12px;
+  color: #404040;
+}
+
+header nav a {
+  color: #404040;
 }
 
 header nav ul li {
   float: left;
   list-style: none;
-  padding-left: 10px;
+  padding-left: 20px;
+  margin-top: 10px;
 }
 
-header nav ul li a:hover {
+header nav a:hover {
   text-decoration: underline;
+  color: #008bcf;
 }
 
 header nav ul li:first-child {
@@ -52,10 +68,9 @@ header nav ul li:first-child {
 #content_wrapper {
   background-color: #fff;
   width: 960px;
-  height: 500px;
-  margin: 0 auto;
-  top: 70px;
-  position: relative;
+  margin: 0 32px;
+  top: 90px;
+  position: absolute;
   -moz-border-radius: 6px;
   -webkit-border-radius: 6px;
   -khtml-border-radius: 6px;
@@ -81,6 +96,31 @@ canvas#highlight {
   -khtml-border-top-right-radius: 6px;
   border-top-right-radius: 6px;
   behavior: url(/border-radius.htc);
-  top: -61px;
+  position: absolute;
+  z-index: 1;
+}
+
+#content_wrapper aside {
+  float: left;
+  width: 220px;
+  padding: 20px 20px 20px 20px;
+  box-shadow: inset -10px 0 10px -4px #ddd;
   position: relative;
+  font-size: 12px;
+  color: #808080;
+}
+
+#content_wrapper aside p:hover {
+  color: #404040;
+}
+
+h4#candidates {
+  color: #404040;
+}
+
+#content {
+  width: 690px;
+  height: 100%;
+  float: right;
+  margin: 30px 0 0 0;
 }
