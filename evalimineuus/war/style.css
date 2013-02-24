@@ -144,7 +144,7 @@ canvas#highlight {
 #advanced_search li {
   float: left;
   list-style-type: none;
-  padding-right: 10px;
+  padding-right: 20px;
 }
 
 #advanced_search li:nth-child(3) {
@@ -160,46 +160,56 @@ canvas#highlight {
   background: #eee;
   border: 1px solid #ccc;
   outline: none;
-  overflow:hidden;
+  overflow: hidden;
 }
 
-
+#results_wrapper,
+#radioboxes,
 #checkboxes {
   background: #eee;
   border: 1px solid #ccc;
-  overflow:hidden;
+  overflow: auto;
   font-size: 12px;
   color: #404040;
   padding: 0px;
+  width: 260px;
+  height: 320px;
+}
+#radioboxes {
+  width: 110px;
 }
 
-
+#radioboxes li,
 #checkboxes li {
   clear: left;
   padding: 0px;
 }
 
+#radioboxes.custom-radiobox label,
 #checkboxes.custom-checkbox label {
-  padding:5px;
-  cursor:pointer;
+  padding: 5px;
+  cursor: pointer;
   display: block;
   vertical-align: middle;
 }
 
+#radioboxes.custom-radiobox input[type="radio"] + span::before,
 #checkboxes.custom-checkbox input[type="checkbox"] + span::before {
-    display: inline-block;
-    vertical-align: middle;
+  display: inline-block;
+  vertical-align: middle;
 }
 
+#radioboxes.custom-radiobox input[type="radio"]:hover,
 #checkboxes.custom-checkbox input[type="checkbox"]:hover {
   cursor: pointer;
 }
 
+#radioboxes.custom-radiobox input[type="radio"],
 #checkboxes.custom-checkbox input[type="checkbox"] {
-    opacity: 0;
-    position: absolute;
+  opacity: 0;
+  position: absolute;
 }
-
+#radioboxes.custom-radiobox input[type="radio"] + span::before,
 #checkboxes.custom-checkbox input[type="checkbox"] + span::before {
   content: "";
   width: 12px;
@@ -209,9 +219,9 @@ canvas#highlight {
   line-height: 14px;
   text-align: center;
 
-  -moz-border-radius: 2px;
-  -webkit-border-radius: 2px;
-  border-radius: 2px;
+  -moz-border-radius: 100%;
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
 
   background: #f6f6f6;
   background: -moz-radial-gradient(#f6f6f6, #dfdfdf);
@@ -221,36 +231,37 @@ canvas#highlight {
   background: radial-gradient(#f6f6f6, #dfdfdf);
 }
 
-#checkboxes.custom-checkbox input[type="checkbox"]:checked + span::before {
-  display: inline-block;
-  vertical-align: middle;
+#checkboxes.custom-checkbox input[type="checkbox"] + span::before{
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+}
 
+#radioboxes.custom-radiobox input[type="radio"]:checked + span::before{
+  color: #666;
+  content: "\2022";
+  font-size: 24px;
+}
+
+
+#checkboxes.custom-checkbox input[type="checkbox"]:checked + span::before {
   color: #666;
   content: "\2714";
   font-size: 12px;
 }
 
+#radioboxes.custom-radiobox input[type="radio"]:disabled + span,
 #checkboxes.custom-checkbox input[type="checkbox"]:disabled + span {    
   display: inline-block;
   vertical-align: middle;
+
+  cursor: default;
 
   -moz-opacity: .4;
   -webkit-opacity: .4;
   opacity: .4;
 }
 
-
-
-
-#results_wrapper {
-  position: relative;
-  height: 260px;
-  width: 200px;
-  overflow: auto;
-  background: #eee;
-  border: 1px solid #ccc;
-  overflow:auto;
-}
 
 #results {
   padding: 5px 5px 0px 10px;
@@ -270,4 +281,43 @@ canvas#highlight {
 #results a:hover {
   text-decoration: underline;
   color: #008bcf;
+}
+
+#profile{
+  position: relative;
+  padding-top: 20px;
+}
+
+#avatar img {
+  float: left;
+  position: relative;
+  padding-top: 20px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  width: 150px;
+  height: 150px;
+  background-size: cover;
+}
+
+#profile p {
+  padding-top: 7px;
+}
+
+
+.votebutton {
+  float: right;
+  background-color: #eee;
+  border: 1px solid #ccc;
+  color: #404040;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  font-weight: bold;
+
+  font-size: 20px;
+  padding: 12px 20px 12px 20px;
+}
+
+.votebutton:hover {
+  background-color: #008bcf;
+  color: #fff;
 }
