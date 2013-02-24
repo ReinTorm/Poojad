@@ -326,7 +326,7 @@ canvas#highlight {
   color: #fff;
   border: 1px solid #007CCF;
 }
-input[type="button"] {
+.printbutton {
   float: right;
   background-color: #eee;
   border: 1px solid #ccc;
@@ -340,7 +340,7 @@ input[type="button"] {
 	
 	
 }
-input[type="button"]:hover {
+.printbutton:hover {
   background-color: #008bcf;
   color: #fff;
   border: 1px solid #007CCF;
