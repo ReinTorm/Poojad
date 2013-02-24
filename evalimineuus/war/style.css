@@ -12,6 +12,13 @@ a {
   text-decoration: none;
 }
 
+h4 {
+  padding-top: 6px;
+  padding-bottom: 0px;
+  color: #404040;
+  font-size: 16px;
+}
+
 #logo {
   background-image: url(logo.png);
   width: 400px;
@@ -28,26 +35,31 @@ p#username {
 }
 
 header {
-  margin: 10px 0;
+  margin: 10px 10px;
 }
 
 header nav {
-  margin-top: 17px;
-  width: 960px;
-  font-size: 12px;
-  color: #404040;
   position: absolute;
+  float: right;
+  margin-top: 17px;
+  font-size: 12px;
+  width: 940px;
+  color: #404040;
+}
+
+header nav ul {
+  margin-top: 10px;
+  float: right;
+}
+
+header nav ul li {
+  display: inline;
+  list-style-type: none;
+  padding-left: 20px;
 }
 
 header nav a {
   color: #404040;
-}
-
-header nav ul li {
-  float: right;
-  list-style: none;
-  padding-left: 20px;
-  margin-top: 10px;
 }
 
 header nav a:hover {
@@ -62,12 +74,10 @@ header nav a:hover {
 }
 
 #content_wrapper {
-  background-color: #fff;
-  width: 960px;
-  height: 100%;
-  bottom: 90px;
-  top: 90px;
   position: absolute;
+  width: 960px;
+  top: 90px;
+  background-color: #fff;
   -moz-border-radius: 6px;
   -webkit-border-radius: 6px;
   -khtml-border-radius: 6px;
@@ -81,10 +91,10 @@ header nav a:hover {
 }
 
 canvas#highlight {
+  position: relative;
   width: 960px;
   height: 10px;
   margin-top: 15px;
-  position: relative;
   background-color: #008bcf;
   -moz-border-top-left-radius: 6px;
   -webkit-border-top-left-radius: 6px;
@@ -99,89 +109,165 @@ canvas#highlight {
 }
 
 #content_wrapper aside {
+  position: absolute;
   float: left;
-  width: 220px;
-  height: 100%;
-  padding-left: 20px;
+  width: 200px;
+  padding: 0px 10px 0px 20px;
+  margin-right: 20px;
+  top: 0px;
+  bottom: 0px;
   box-shadow: inset -8px 0 10px -6px #ddd;
   font-size: 12px;
   color: #808080;
 }
 
-#content_wrapper aside p {
-  margin-right: 20px;
+#content_wrapper aside h4 {
+  margin-top: 10px;
 }
 
 #content_wrapper aside p:hover {
   color: #404040;
 }
 
-h4.h4_heading {
-  color: #404040;
-  font-size: 16px;
-  margin-top: 20px;
-}
-
 #content {
-  width: 655px;
   float: right;
-  padding: 15px;
+  width: 690px;
+  padding: 10px 15px 15px 15px;
+  min-height: 500px;
 }
 
 #content p {
   font-size: 12px;
   color: #404040;
-  margin-top: -5px;
-  overflow: hidden;
 }
 
-ul#candidate_selection li {
+#advanced_search li {
   float: left;
-  list-style: none;
-  padding-right: 60px;
+  list-style-type: none;
+  padding-right: 10px;
 }
 
-ul#candidate_selection li:nth-child(3) {
+#advanced_search li:nth-child(3) {
   padding-right: 0;
 }
 
-ul#candidate_selection li #valimisringkond select {
+#advanced_search li select {
   width: 200px;
-  background: transparent;
-  padding: 5px;
-  font-size: 14px;
-  border: 0;
-  border-radius: 0;
   height: 40px;
+  padding: 5px;
+  font-size: 12px;
   -webkit-appearance: none;
+  background: #eee;
+  border: 1px solid #ccc;
+  outline: none;
+  overflow:hidden;
 }
 
-ul#candidate_selection li #valimisringkond {
-   width: 200px;
-   height: 40px;
-   overflow: hidden;
-   background: #eee;
-   border: 1px solid #ccc;
+
+#checkboxes {
+  background: #eee;
+  border: 1px solid #ccc;
+  overflow:hidden;
+  font-size: 12px;
+  color: #404040;
+  padding: 0px;
 }
 
-ul#candidate_selection li #kandidaadid select {
+
+#checkboxes li {
+  clear: left;
+  padding: 0px;
+}
+
+#checkboxes.custom-checkbox label {
+  padding:5px;
+  cursor:pointer;
+  display: block;
+  vertical-align: middle;
+}
+
+#checkboxes.custom-checkbox input[type="checkbox"] + span::before {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#checkboxes.custom-checkbox input[type="checkbox"]:hover {
+  cursor: pointer;
+}
+
+#checkboxes.custom-checkbox input[type="checkbox"] {
+    opacity: 0;
+    position: absolute;
+}
+
+#checkboxes.custom-checkbox input[type="checkbox"] + span::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  margin: 0 4px 0 0;
+  border: solid 1px #a8a8a8;
+  line-height: 14px;
+  text-align: center;
+
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+
+  background: #f6f6f6;
+  background: -moz-radial-gradient(#f6f6f6, #dfdfdf);
+  background: -webkit-radial-gradient(#f6f6f6, #dfdfdf);
+  background: -ms-radial-gradient(#f6f6f6, #dfdfdf);
+  background: -o-radial-gradient(#f6f6f6, #dfdfdf);
+  background: radial-gradient(#f6f6f6, #dfdfdf);
+}
+
+#checkboxes.custom-checkbox input[type="checkbox"]:checked + span::before {
+  display: inline-block;
+  vertical-align: middle;
+
+  color: #666;
+  content: "\2714";
+  font-size: 12px;
+}
+
+#checkboxes.custom-checkbox input[type="checkbox"]:disabled + span {    
+  display: inline-block;
+  vertical-align: middle;
+
+  -moz-opacity: .4;
+  -webkit-opacity: .4;
+  opacity: .4;
+}
+
+
+
+
+#results_wrapper {
+  position: relative;
+  height: 260px;
   width: 200px;
-  background: transparent;
-  padding: 5px;
-  font-size: 14px;
-  border: 0;
-  border-radius: 0;
-  height: 40px;
-  -webkit-appearance: none;
+  overflow: auto;
+  background: #eee;
+  border: 1px solid #ccc;
+  overflow:auto;
 }
 
-ul#candidate_selection li #kandidaadid {
-   width: 200px;
-   height: 40px;
-   overflow: hidden;
-   background: #eee;
-   border: 1px solid #ccc;
+#results {
+  padding: 5px 5px 0px 10px;
+  font-size: 12px;
+  color: #000;
 }
 
-ul#candidate_selection li #erakond {
+#results li:nth-child(2n+1){
+}
+
+#results a {
+  display: block;
+  margin-bottom: 5px;
+  width: 130px;
+  color: #000;
+}
+#results a:hover {
+  text-decoration: underline;
+  color: #008bcf;
 }

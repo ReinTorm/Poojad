@@ -33,60 +33,80 @@
             <div id="content_wrapper">
 
                 <aside>
-
-                    <h4 class="h4_heading">Kandidaadid</h4><br/>
+                    <h4>Kandidaadid</h4><br/>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque posuere sodales ante id facilisis. Vestibulum euismod mattis nisl, id consequat tortor suscipit vitae. Maecenas sit amet dolor nibh. Quisque vitae commodo augue. Nullam bibendum posuere est, non gravida ante lacinia quis. Vestibulum imperdiet orci eu nisl posuere a gravida orci ullamcorper. Nullam quis lacus ipsum.<br/><br/>
-                    Etiam vel nisl diam. Integer purus mauris, malesuada sed tristique tristique, cursus nec urna. Integer tincidunt, purus vel vestibulum fringilla, nulla diam consequat leo, ut scelerisque sapien nisi sit amet sem. Nulla erat sem, venenatis sit amet aliquam sed, scelerisque ac lectus. Etiam pulvinar vulputate nisi, vitae porta est luctus nec. Phasellus purus lacus, semper quis auctor in, pulvinar nec ante. Etiam aliquam volutpat massa, ac accumsan neque sollicitudin eu. Sed vehicula est vel eros luctus iaculis interdum vestibulum leo. Phasellus nisl metus, auctor quis mattis eget, tincidunt vel sapien. Donec vitae libero et nulla congue pretium ut in tortor. Ut semper felis ut mi pharetra vestibulum suscipit arcu sodales. Donec fermentum luctus enim ac laoreet. Vestibulum venenatis orci eget odio cursus commodo.</p>
-
+                    Etiam vel nisl diam. Integer purus mauris, malesuada sed tristique tristique, cursus nec urna.</p>
                 </aside>
 
                 <div id="content">
 
-                    <h4 class="h4_heading">Otsi sobiv kandidaat:</h4><br/>
+                    <h4>Otsi sobiv kandidaat:</h4><br/>
 
-                    <ul id="candidate_selection">
+                    <ul id="advanced_search">
                         <li>
-                            <div id="valimisringkond">
-                                <select>
-                                    <option value="" disabled="disabled" selected="selected">Valimisringkond</option>
-                                    <option value="1">Üks</option>
-                                    <option value="2">Kaks</option>
-                                    <option value="3">Üks</option>
-                                    <option value="4">Kaks</option>
-                                    <option value="5">Üks</option>
-                                    <option value="6">Kaks</option>
-                                    <option value="7">Üks</option>
-                                    <option value="8">Kaks</option>
-                                </select>
-                            </div>
+                            <h5>Valimisringkond:</h5>
+                            <select>
+                                <option value="" disabled="disabled" selected="selected">Palun vali valimisringkond</option>
+                                <option value="1">1 – Tallinna Haabersti, Põhja-Tallinna ja Kristiine linnaosa</option>
+                                <option value="2">2 – Tallinna Kesklinna, Lasnamäe ja Pirita linnaosa</option>
+                                <option value="3">3 – Tallinna Mustamäe ja Nõmme linnaosa</option>
+                                <option value="4">4 – Harju- (v.a Tallinn) ja Raplamaa</option>
+                                <option value="5">5 – Hiiu-, Lääne- ja Saaremaa</option>
+                                <option value="6">6 – Lääne-Virumaa</option>
+                                <option value="7">7 – Ida-Virumaa</option>
+                                <option value="8">8 – Järva- ja Viljandimaa</option>
+                                <option value="9">9 – Jõgeva- ja Tartumaa (v.a Tartu linn)</option>
+                                <option value="10">10 – Tartu linn</option>
+                                <option value="11">11 – Võru-, Valga- ja Põlvamaa</option>
+                                <option value="12">12 – Pärnumaa</option>
+                            </select>
                         </li>
 
                         <li>
-                            <div id="erakond">
-                                    <input type="checkbox" value="1"/>Keskkerakond<br />
-                                    <input type="checkbox" />Reformierakond<br />
-                                    <input type="checkbox" />Rohelised<br />
-                                    <input type="checkbox" />Muud pederastid<br />
-                            </div>
+                            <h5>Erakond:</h5>
+                            <ul id="checkboxes" class="custom-checkbox">
+                                <li><label><input type="checkbox"/><span>Eesti Iseseisvuspartei</span></label></li>
+                                <li><label><input type="checkbox"/><span>Eesti Keskerakond</span></label></li>
+                                <li><label><input type="checkbox"/><span>Eesti Konservatiivne Rahvaerakond</span></label></li>
+                                <li><label><input type="checkbox"/><span>Eesti Reformierakond</span></label></li>
+                                <li><label><input type="checkbox"/><span>Eesti Vabaduspartei – Põllumeeste Kogu</span></label></li>
+                                <li><label><input type="checkbox"/><span>Eestimaa Ühendatud Vasakpartei</span></label></li>
+                                <li><label><input type="checkbox"/><span>Erakond Eesti Kristlikud Demokraadid</span></label></li>
+                                <li><label><input type="checkbox"/><span>Erakond Eestimaa Rohelised</span></label></li>
+                                <li><label><input type="checkbox"/><span>Erakond Isamaa ja Res Publica Liit</span></label></li>
+                                <li><label><input type="checkbox"/><span>Sotsiaaldemokraatlik Erakond</span></label></li>
+                            </ul>
                         </li>
-
                         <li>
-                            <div id="kandidaadid">
-                                <select>
-                                    <option value="" disabled="disabled" selected="selected">Kandidaadid</option>
-                                    <option value="1">Üks</option>
-                                    <option value="2">Kaks</option>
-                                    <option value="3">Üks</option>
-                                    <option value="4">Kaks</option>
-                                    <option value="5">Üks</option>
-                                    <option value="6">Kaks</option>
-                                    <option value="7">Üks</option>
-                                    <option value="8">Kaks</option>
-                                </select>
+                            <h5>Kandidaadid:</h5>
+                            <div id="results_wrapper">
+                                <ul id="results">
+                                    <li><a href="#">Nimede Nimi</a></li>
+                                    <li><a href="#">Nimede Nimi</a></li>
+                                    <li><a href="#">Nimede Nimi</a></li>
+                                    <li><a href="#">Nimede Nimi</a></li>
+                                    <li><a href="#">Nimede Nimi</a></li>
+                                    <li><a href="#">Nimede Nimi</a></li>
+                                    <li><a href="#">Nimede Nimi</a></li>
+                                    <li><a href="#">Nimede Nimi</a></li>
+                                    <li><a href="#">Nimede Nimi</a></li>
+                                    <li><a href="#">Nimede Nimi</a></li>
+                                    <li><a href="#">Nimede Nimi</a></li>
+                                    <li><a href="#">Nimede Nimi</a></li>
+                                    <li><a href="#">Nimede Nimi</a></li>
+                                    <li><a href="#">Nimede Nimi</a></li>
+                                    <li><a href="#">Nimede Nimi</a></li>
+                                    <li><a href="#">Nimede Nimi</a></li>
+                                    <li><a href="#">Nimede Nimi</a></li>
+                                    <li><a href="#">Nimede Nimi</a></li>
+                                    <li><a href="#">Nimede Nimi</a></li>
+                                    <li><a href="#">Nimede Nimi</a></li>
+                                    <li><a href="#">Nimede Nimi</a></li>
+
+                                </div>
                             </div>
                         </li>
                     </ul>
-
                 </div>
 
             </div>
