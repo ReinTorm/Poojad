@@ -407,3 +407,91 @@ input[type="button"]:hover {
 	padding: 4px 7px 2px;
 	vertical-align: top;
 }
+
+#right_column {
+  display: inline-block;
+  float: right;
+  width: 300px;
+}
+
+#right_column ul li {
+  list-style-type: none;
+  display: inline-block;
+  margin-right: 50px;
+}
+
+#left_column a,
+#right_column a {
+  text-decoration: none;
+  font-size: 14px;
+  color: #000;
+}
+
+#left_column a:hover,
+#right_column a:hover {
+  text-decoration: underline;
+  color: #008bcf;
+}
+
+#votedfor {
+  padding-top: 60px;
+}
+
+#votedfor h4 {
+  padding-bottom: 10px;
+}
+
+#votedfor a {
+  padding-left: 20px;
+}
+
+#votedfor img {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  background-size: cover;
+  vertical-align: middle;
+}
+
+#right_column img {
+  padding: 0px;
+}
+
+p#error {
+  color: #FF3B3B;
+}
+
+#left_column {
+  float: left;
+}
+
+#left_column input[type="text"] {
+  height: 20px;
+  width: 150px;
+  background-color: #eee;
+  border: 1px solid #ccc;
+  font-size: 12px;
+  margin-right:20px;
+  margin-top: 8px;
+  outline: none;
+}
+
+#mystatus {
+  padding-top: 50px;
+}
+
+#mystatus table {
+  font-size: 12px;
+}
+
+#left_column select {
+  height: 20px;
+  width: 150px;
+  background-color: #eee;
+  border: 1px solid #ccc;
+  font-size: 12px;
+  margin-right:20px;
+  margin-top: 8px;
+  outline: none;
+  -webkit-appearance: none;
+}

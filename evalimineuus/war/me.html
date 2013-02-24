@@ -19,10 +19,10 @@
                     <p id="username">Tere, Kalle Blomkvist!</p>
 
                     <ul>
-                        <li><a href="#">Hääleta</a></li>
-                        <li><a href="#">Kandideeri</a></li>
-                        <li><a href="#">Statistika</a></li>
-                        <li><a href="#"><u>Minu Andmed</u></a></li>
+                        <li><a href="index.html">Hääleta</a></li>
+                        <li><a href="kandidatuur.html">Kandideeri</a></li>
+                        <li><a href="statistika.html">Statistika</a></li>
+                        <li><a href="me.html"><u>Minu Andmed</u></a></li>
                         <li><a href="#">Logi välja</a></li>
                     </ul>
 
@@ -40,21 +40,49 @@
                 </aside>
 
                 <div id="content">
-                    <h4>Otsi sobiv kandidaat:</h4><br/>
-                    <div id="avatar"><img src="avatar.jpg"></div>
-                    <div id="profile">
-                        <h1>Artur Käpp</h1>
-                        <p><b>Vanus:</b> 25</p>
-                        <p><b>Nohik:</b> Jah</p>
-                        <p><b>Fame:</b> 2510</p>
-                        <p><b>Facebook:</b> <a href="http://www.facebook.com/ArturKp"> Artur Käpp</a></p>
-                        <p><b>Skype:</b> MineOlenArturKp </p>
-                        <p><b>Veel midagi:</b> Nope </p>
-                        <h4>What's up?</h4>
-                        <p>Aenean id nisi id justo posuere bibendum eu et nulla. Suspendisse hendrerit massa vel orci luctus rutrum vestibulum nisi lacinia. Mauris feugiat convallis porta. Nunc in scelerisque orci. Mauris pulvinar laoreet tortor, ut faucibus tellus porta in. In accumsan nisl quis nunc laoreet ut aliquet risus adipiscing. Duis vitae ligula ac massa gravida aliquet. Duis malesuada mollis urna, ac sagittis risus gravida ac. Morbi ultricies diam et purus iaculis non rhoncus purus tincidunt.</p>
-                        <h4>Lorem Ipsum</h4>
-                        <p>Aenean id nisi id justo posuere bibendum eu et nulla. Suspendisse hendrerit massa vel orci luctus rutrum vestibulum nisi lacinia. Mauris feugiat convallis porta. Nunc in scelerisque orci. Mauris pulvinar laoreet tortor, ut faucibus tellus porta in. In accumsan nisl quis nunc laoreet ut aliquet risus adipiscing. Duis vitae ligula ac massa gravida aliquet. Duis malesuada mollis urna, a sagittis risus gravida ac. Morbi ultricies diam et purus iaculis non rhoncus purus tincidunt.</p>
-                        <a href="#" class="votebutton">Hääleta!</a>
+                    <h2>Minu Andmed</h2><br/>
+                    <div id="left_column">
+                        Eesnimi: <input type="text" name="fname"><br/>
+                        Perenimi: <input type="text" name="lname"><br>
+                        Vanus: <input type="text" name="age"><br>
+                        Valimispiirkond: 
+                        <select>
+                            <option value="" disabled="disabled" selected="selected">Vali valimisringkond</option>
+                            <option value="1">1 – Tallinna Haabersti, Põhja-Tallinna ja Kristiine linnaosa</option>
+                            <option value="2">2 – Tallinna Kesklinna, Lasnamäe ja Pirita linnaosa</option>
+                            <option value="3">3 – Tallinna Mustamäe ja Nõmme linnaosa</option>
+                            <option value="4">4 – Harju- (v.a Tallinn) ja Raplamaa</option>
+                            <option value="5">5 – Hiiu-, Lääne- ja Saaremaa</option>
+                            <option value="6">6 – Lääne-Virumaa</option>
+                            <option value="7">7 – Ida-Virumaa</option>
+                            <option value="8">8 – Järva- ja Viljandimaa</option>
+                            <option value="9">9 – Jõgeva- ja Tartumaa (v.a Tartu linn)</option>
+                            <option value="10">10 – Tartu linn</option>
+                            <option value="11">11 – Võru-, Valga- ja Põlvamaa</option>
+                            <option value="12">12 – Pärnumaa</option>
+                        </select><br>
+                        E-mail: <input type="text" name="email"><br>
+                        Isikukood: <input type="text" name="secnr"><br>
+                        <div id="votedfor">
+                            <h4>Sinu hääl</h4>
+                            <p><b>Kandidaat:</b> <a href="#">Artur Käpp</a><a href="#"><img src="cross_remove.png"></a></p>
+                        </div>
+                    </div>
+                    <div id="right_column">
+                        <ul>
+                            <li><div id="avatar"><img src="avatar.jpg"></div></li>
+                            <li><p id="error">Pilt on kandideerimiseks vajalik!</p></li>
+                            <li><a href="#">Muuda pilti!</a></li>
+                        </ul>
+                        <div id="mystatus">
+                            <h4>Kandidatuur</h4>
+                            <table>
+                                <tr><td width="100"><b>Staatus</b></td><td width="150">Kandideerinud</td></tr>
+                                <tr><td><b>Erakond</b></td><td>Üksikkandidaat</td></tr>
+                                <tr><td><b>Valimispiirkond</b></td><td>1. Tallinna Haabersti, Põhja-Tallinna ja Kristiine linnaosa</td></tr>
+                                <tr><td><b>Häälte arv</b></td><td>2324</td></tr>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
