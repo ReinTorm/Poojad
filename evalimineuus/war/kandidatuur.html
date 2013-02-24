@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+    <head>
+
+        <meta charset="utf-8">
+        <title>eValimine</title>
+        <link rel="stylesheet" href="style.css">
+
+    </head>
+    <body>
+
+        <div id="wrapper">
+
+            <header>
+
+                <a href="#"><div id="logo"></div></a>
+
+                <nav>
+                    
+                    <p id="username">Tere, Kalle Blomkvist!</p>
+
+                    <ul>
+                        <li><a href="#">Hääleta</a></li>
+                        <li><a href="#"><u>Kandideeri</u></a></li>
+                        <li><a href="#">Statistika</a></li>
+                        <li><a href="#">Logi välja</a></li>
+                    </ul>
+
+                </nav>
+
+            </header>
+
+            <canvas id="highlight"></canvas>
+            <div id="content_wrapper">
+
+                <aside>
+                    <h4>Kandidaadid</h4><br/>
+                    <p>Kandideerimiseks tuleb esitada kandideerimisdokumendid.<br><br> 
+					Palun tõmmake enda arvutisse/mobiili kandideerimisavaldus ja kandidaadi ankeet.<br><br>
+					Antud dokumendid tuleb ära täita ja digiallkirjastada. Seejärel tuleb dokumendid üles laadida ja ära saata.</p>
+                </aside>
+
+                <div id="content">					
+
+                    <h4>Kandideerimine</h4><br/>
+					
+				    <p><a href="#">Tõmba kandideerimisavaldus alla siit.</a></p>
+					<p>Vali täidetud ja digiallkirjastatud kandideerimisavaldus:<br>
+						<input type="file" name="kandideerimisavaldus" text="Jou" size="50">
+					</p><br>
+                    <p><a href="#">Tõmba kandidaadi ankeet alla siit.</a></p>
+					<p>Vali täidetud ja digiallkirjastatud kandidaadi_ankeet:<br>
+						<input type="file" name="kandidaadi_ankeet" size="50">
+					</p><br>
+
+					<ul id="content2.checkboxes" class="content2.custom-checkbox">			
+						<label><input type="checkbox"/><span> Nõustun tingimustega.</span></label>
+					</ul>					
+
+					<a href="#" class="votebutton">Kandideeri!</a>
+
+                </div>				
+            </div>			
+        </div>
+    </body>
+</html>
