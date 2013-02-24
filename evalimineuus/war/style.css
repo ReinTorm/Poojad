@@ -303,6 +303,10 @@ canvas#highlight {
   padding-top: 7px;
 }
 
+#tableheading {
+	margin-left:260px;
+}
+
 
 .votebutton {
   float: right;
@@ -321,4 +325,85 @@ canvas#highlight {
   background-color: #008bcf;
   color: #fff;
   border: 1px solid #007CCF;
+}
+input[type="button"] {
+  float: right;
+  background-color: #eee;
+  border: 1px solid #ccc;
+  color: #404040;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  font-weight: bold;
+
+  font-size: 16px;
+  padding: 12px 20px 12px 20px;
+	
+	
+}
+input[type="button"]:hover {
+  background-color: #008bcf;
+  color: #fff;
+  border: 1px solid #007CCF;
+}
+
+.statbutton {
+  float:left;
+  width:130px;
+  
+  background-color: #eee;
+  border: 1px solid #ccc;
+  color: #404040;
+  text-align:center;
+  font-weight:bold;
+  font-size: 16px;
+  padding: 3px 10px 3px 10px;
+  margin-bottom:8px;
+}
+
+.statbutton:hover {
+  background-color: #008bcf;
+  color: #fff;
+  border: 1px solid #007CCF;
+  
+  
+	
+}
+
+.table {
+	border: 1px solid #DFDFDF;
+	background-color: #F9F9F9;
+	width: 100%;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	font-family: Arial,"Bitstream Vera Sans",Helvetica,Verdana,sans-serif;
+	color: #333;
+	border-collapse:collapse;
+	
+	
+	
+	
+	
+	
+}
+
+.table td, th  {
+	border-top-color: white;
+	border-bottom: 1px solid #DFDFDF;
+	color: #555;
+}
+
+.table th {
+	text-shadow: rgba(255, 255, 255, 0.796875) 0px 1px 0px;
+	font-family: Georgia,"Times New Roman","Bitstream Charter",Times,serif;
+	font-weight: normal;
+	padding: 7px 7px 8px;
+	text-align: left;
+	line-height: 1.3em;
+	font-size: 14px;
+}
+.table td {
+	font-size: 12px;
+	padding: 4px 7px 2px;
+	vertical-align: top;
 }
