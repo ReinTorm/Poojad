@@ -320,4 +320,5 @@ canvas#highlight {
 .votebutton:hover {
   background-color: #008bcf;
   color: #fff;
+  border: 1px solid #007CCF;
 }
