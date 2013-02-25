@@ -408,6 +408,12 @@ canvas#highlight {
 	vertical-align: top;
 }
 
+#statimg {
+  margin-top:20px;
+  margin-left:150px;
+	
+}
+
 #right_column {
   display: inline-block;
   float: right;
