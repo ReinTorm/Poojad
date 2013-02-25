@@ -481,3 +481,17 @@ canvas#highlight {
 p#error {
   color: #FF3B3B;
 }
+
+
+#votedmessage{
+  background: #C8E3A1;
+  border: 1px solid #ACD36F;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  display: none;
+}
+
+#votedmessage p {
+  font-size:14px;
+  padding: 10px;
+}
