@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+    <head>
+
+        <meta charset="utf-8">
+        <title>eValimine</title>
+        <link rel="stylesheet" href="style.css">
+       <script type="text/javascript">
+
+    function PrintElem(elem)
+    {
+        Popup($(elem).html());
+    }
+
+    function Popup(data) 
+    {
+        var mywindow = window.open('', 'table', 'height=400,width=600');
+        mywindow.document.write('<html><head><title>table</title>');
+        /*optional stylesheet*/ //mywindow.document.write('<link rel="stylesheet" href="main.css" type="text/css" />');
+        mywindow.document.write('</head><body >');
+        mywindow.document.write(data);
+        mywindow.document.write('</body></html>');
+
+        mywindow.print();
+        //mywindow.close();
+
+        return true;
+    }
+
+</script>
+    </head>
+    <body>
+
+        <div id="wrapper">
+
+            <header>
+
+                <a href="#"><div id="logo"></div></a>
+
+                <nav>
+                    
+                    <p id="username">Tere, Kalle Blomkvist!</p>
+
+                    <ul>
+                        <li><a href="index.html">Hääleta</a></li>
+                        <li><a href="kandidatuur.html">Kandideeri</a></li>
+                        <li><a href="statistika.html"><u>Statistika</u></a></li>
+                        <li><a href="me.html">Minu Andmed</a></li>
+                        <li><a href="#">Logi välja</a></li>
+                    </ul>
+
+                </nav>
+
+            </header>
+
+            <canvas id="highlight"></canvas>
+            <div id="content_wrapper">
+
+                <aside>
+					<h4>Vaata statistikat</h4>
+					<a href="statistika.html" class="currentstatbutton">Kandidaatide lõikes</a> <br />
+					<a href="statistika_piirkonnad.html" class="statbutton">Piirkondade lõikes</a> <br />
+					<a href="statistikaparteid.html" class="statbutton">Parteide lõikes</a> <br />
+					<a href="statistika_riik.html" class="statbutton">Riigi lõikes</a> <br />
+                   
+                </aside>
+
+                <div id="content">
+                <div id="table">
+                    <h4 class="content_heading">Kandidaatide lõikes</h4><br />
+                     <table class="table">
+                          <tr>
+                            <th>Koht</th>
+                            <th>Number</th>
+                            <th>Nimi</th>
+                            <th>Partei</th>
+                            <th>Piirkond</th>
+                            <th>Hääli</th>
+                            
+                          </tr>
+                        
+                          <tr>
+                            <td>1</td>
+                            <td>123</td>
+                            <td>Jaanus Lehmamees</td>
+                            <td>Reformierakond</td>
+                            <td>Tartumaa</td>
+                            <td>20000</td>
+                          </tr>
+                        
+                          <tr>
+                            <td>2</td>
+                            <td>4535</td>
+                            <td>Taavi Tont</td>
+                            <td>-</td>
+                            <td>Tallinn</td>
+                            <td>18000</td>
+                          </tr>
+                        
+                          <tr>
+                            <td>3</td>
+                            <td>456</td>
+                            <td>Ants Auto</td>
+                            <td>Keskerakond</td>
+                            <td>Võru</td>
+                            <td>14554</td>
+                          </tr>
+                          
+                          <tr>
+                            <td>4</td>
+                            <td>643</td>
+                            <td>Liina Lähtme</td>
+                            <td>Isamaa ja Respublica</td>
+                            <td>Narva</td>
+                            <td>12000</td>
+                          </tr>
+
+                    	  <tr>
+                            <td>5</td>
+                            <td>12</td>
+                            <td>Keio Kuusk</td>
+                            <td>Kristlikud Demokraadid</td>
+                            <td>Tartu</td>
+                            <td>8900</td>
+                          </tr>
+
+                          <tr>
+                            <td>6</td>
+                            <td>767</td>
+                            <td>Koit Auto</td>
+                            <td>Keskerakond</td>
+                            <td>Viljandi</td>
+                            <td>4544</td>
+                          </tr>
+                    		
+                          <tr>
+                            <td>3</td>
+                            <td>456</td>
+                            <td>Ants Auto</td>
+                            <td>Keskerakond</td>
+                            <td>Võru</td>
+                            <td>2324</td>
+                          </tr>
+
+                        </table>
+                    </div>
+                    <a href="tabelprint.html" class="printbutton">Prindi statistika</a> <br />
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+<!--
+                            <input type="button" value="Prindi statistika" onclick="PrintElem('#table')" />
+                            Seda saab kasutada siis, kui javascripti on vaja teha, hetkel lihtsalt htmlina
+                            -->
+    
+    
+                   
+                            <!--järgnev on dropdown menüü jaoks... ei taha ära kustutada praegu...
+                            <select>
+                                <option value="" disabled="disabled" selected="selected">Palun vali valimisringkond</option>
+                                <option value="1">1 – Tallinna Haabersti, Põhja-Tallinna ja Kristiine linnaosa</option>
+                                <option value="2">2 – Tallinna Kesklinna, Lasnamäe ja Pirita linnaosa</option>
+                                <option value="3">3 – Tallinna Mustamäe ja Nõmme linnaosa</option>
+                                <option value="4">4 – Harju- (v.a Tallinn) ja Raplamaa</option>
+                                <option value="5">5 – Hiiu-, Lääne- ja Saaremaa</option>
+                                <option value="6">6 – Lääne-Virumaa</option>
+                                <option value="7">7 – Ida-Virumaa</option>
+                                <option value="8">8 – Järva- ja Viljandimaa</option>
+                                <option value="9">9 – Jõgeva- ja Tartumaa (v.a Tartu linn)</option>
+                                <option value="10">10 – Tartu linn</option>
+                                <option value="11">11 – Võru-, Valga- ja Põlvamaa</option>
+                                <option value="12">12 – Pärnumaa</option>
+                            </select>-->
