@@ -367,7 +367,7 @@ canvas#highlight {
 	border-radius: 3px;
 	font-family: Arial,"Bitstream Vera Sans",Helvetica,Verdana,sans-serif;
 	color: #333;
-	border-collapse:collapse;
+	border-collapse: collapse;
 }
 
 .table td, th  {
@@ -494,4 +494,19 @@ p#error {
 #votedmessage p {
   font-size:14px;
   padding: 10px;
+}
+
+#area_statistics select{
+  height: 30px;
+  width: auto;
+  background-color: #eee;
+  border: 1px solid #ccc;
+  font-size: 12px;
+  margin-right:20px;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+.content_heading{
+  text-align: center;
 }
