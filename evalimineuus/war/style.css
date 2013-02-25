@@ -10,13 +10,24 @@ body {
 
 a {
   text-decoration: none;
+  color: #000;
+  font-size: 12px;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #008bcf;
 }
 
 h4 {
+  padding-bottom: 10px;
   padding-top: 6px;
-  padding-bottom: 0px;
   color: #404040;
   font-size: 16px;
+}
+
+h2 {
+  padding-bottom: 20px;
 }
 
 #logo {
@@ -56,15 +67,6 @@ header nav ul li {
   display: inline;
   list-style-type: none;
   padding-left: 20px;
-}
-
-header nav a {
-  color: #404040;
-}
-
-header nav a:hover {
-  text-decoration: underline;
-  color: #008bcf;
 }
 
 #wrapper {
@@ -262,7 +264,6 @@ canvas#highlight {
   opacity: .4;
 }
 
-
 #results {
   padding: 5px 5px 0px 10px;
   font-size: 12px;
@@ -277,10 +278,6 @@ canvas#highlight {
   margin-bottom: 5px;
   width: 130px;
   color: #000;
-}
-#results a:hover {
-  text-decoration: underline;
-  color: #008bcf;
 }
 
 #profile{
@@ -307,66 +304,38 @@ canvas#highlight {
 	margin-left:260px;
 }
 
-
-.votebutton {
-  float: right;
-  background-color: #eee;
-  border: 1px solid #ccc;
-  color: #404040;
-  margin-top: 40px;
-  margin-bottom: 20px;
-  font-weight: bold;
-
-  font-size: 20px;
-  padding: 12px 20px 12px 20px;
-}
-
-.votebutton:hover {
-  background-color: #008bcf;
-  color: #fff;
-  border: 1px solid #007CCF;
-}
-.printbutton {
-  float: right;
-  background-color: #eee;
-  border: 1px solid #ccc;
-  color: #404040;
-  margin-top: 40px;
-  margin-bottom: 20px;
-  font-weight: bold;
-
-  font-size: 16px;
-  padding: 12px 20px 12px 20px;
-	
-	
-}
-.printbutton:hover {
-  background-color: #008bcf;
-  color: #fff;
-  border: 1px solid #007CCF;
-}
-
+.votebutton,
+.printbutton,
 .statbutton {
-  float:left;
-  width:130px;
-  
   background-color: #eee;
   border: 1px solid #ccc;
   color: #404040;
   text-align:center;
   font-weight:bold;
-  font-size: 16px;
-  padding: 3px 10px 3px 10px;
-  margin-bottom:8px;
+  font-size: 13px;
+  padding: 12px 20px 12px 20px;
+  margin-top: 10px;
 }
-
+.votebutton:hover,
+.printbutton:hover,
 .statbutton:hover {
   background-color: #008bcf;
   color: #fff;
   border: 1px solid #007CCF;
-  
-  
-	
+  text-decoration: none;
+}
+
+.statbutton {
+  width:165px;
+  float: left;
+  font-size: 13px;
+  padding: 3px 10px 3px 10px;
+}
+
+.votebutton,
+.printbutton {
+  float: right;
+  font-size: 20px;
 }
 
 .table {
@@ -379,12 +348,6 @@ canvas#highlight {
 	font-family: Arial,"Bitstream Vera Sans",Helvetica,Verdana,sans-serif;
 	color: #333;
 	border-collapse:collapse;
-	
-	
-	
-	
-	
-	
 }
 
 .table td, th  {
@@ -411,7 +374,6 @@ canvas#highlight {
 #statimg {
   margin-top:20px;
   margin-left:150px;
-	
 }
 
 #right_column {
@@ -426,25 +388,11 @@ canvas#highlight {
   margin-right: 50px;
 }
 
-#left_column a,
-#right_column a {
-  text-decoration: none;
-  font-size: 14px;
-  color: #000;
-}
-
-#left_column a:hover,
-#right_column a:hover {
-  text-decoration: underline;
-  color: #008bcf;
-}
-
 #votedfor {
   padding-top: 60px;
 }
 
 #votedfor h4 {
-  padding-bottom: 10px;
 }
 
 #votedfor a {
@@ -461,10 +409,6 @@ canvas#highlight {
 
 #right_column img {
   padding: 0px;
-}
-
-p#error {
-  color: #FF3B3B;
 }
 
 #left_column {
@@ -500,4 +444,20 @@ p#error {
   margin-top: 8px;
   outline: none;
   -webkit-appearance: none;
+}
+
+#kandidatuur ul {
+  width: 180px;
+  background: #fff;
+  border: none;
+  height: auto;
+}
+
+#content input[type="file"] {
+  width: 400px;
+  border: 1px solid #ccc;
+}
+
+p#error {
+  color: #FF3B3B;
 }
