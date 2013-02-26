@@ -57,6 +57,14 @@ p#error {
   padding: 10px;
 }
 
+/*Navigation*/
+
+body#votepage a#votenav,
+body#candidatepage a#candidatenav,
+body#profilepage a#profilenav,
+body#statpage a#statnav {
+    text-decoration: underline;
+}
 
 
 /*wrapper start*/
@@ -68,6 +76,7 @@ p#error {
 }
 
 #logo {
+  position: absolute;
   background-image: url(img/logo.png);
   width: 400px;
   height: 46px;
@@ -83,11 +92,10 @@ p#username {
 }
 
 header {
-  margin: 10px 10px;
+  margin: 0px 10px;
 }
 
 header nav {
-  position: absolute;
   float: right;
   margin-top: 17px;
   font-size: 12px;
@@ -96,7 +104,6 @@ header nav {
 }
 
 header nav ul {
-  margin-top: 10px;
   float: right;
 }
 
@@ -107,10 +114,10 @@ header nav ul li {
 }
 
 canvas#highlight {
-  position: relative;
+  position: absolute;
+  margin-top: 70px;
   width: 960px;
   height: 10px;
-  margin-top: 15px;
   background-color: #008bcf;
   -moz-border-top-left-radius: 6px;
   -webkit-border-top-left-radius: 6px;
@@ -125,9 +132,9 @@ canvas#highlight {
 }
 
 #content_wrapper {
-  position: absolute;
+  float: left;
   width: 960px;
-  top: 90px;
+  margin: 20px 0 50px 0;
   background-color: #fff;
   -moz-border-radius: 6px;
   -webkit-border-radius: 6px;
@@ -142,29 +149,26 @@ canvas#highlight {
 }
 
 #content_wrapper aside {
-  position: absolute;
   float: left;
-  width: 200px;
-  padding: 10px 10px 0px 20px;
-  margin-right: 20px;
-  top: 0px;
-  bottom: 0px;
-  box-shadow: inset -8px 0 10px -6px #ddd;
+  width: 190px;
+  padding: 10px 20px 10px 20px;
   font-size: 12px;
-  color: #808080;
 }
 
+#content_wrapper aside p {
+  color: #808080;
+}
 #content_wrapper aside p:hover {
   color: #404040;
 }
 
 #content {
-  float: right;
-  width: 690px;
+  float: left;
+  width: 680px;
   padding: 10px 15px 15px 15px;
   min-height: 500px;
+  box-shadow: inset 8px 0 10px -6px #ddd;
 }
-
 /*wrapper end*/
 
 /*Custom buttons*/

@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+<html>
 <head>
-	<meta charset="utf-8">
-	<title>eValimine</title>
-	<link rel="stylesheet" href="style.css">
+<meta charset="utf-8">
+<title>eValimine</title>
+<link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body id="statpage">
 
 	<div id="wrapper">
 
@@ -13,17 +14,15 @@
 			<a href="#" id="logo"></a>
 
 			<nav>
-
 				<p id="username">Tere, Kalle Blomkvist!</p>
 
 				<ul>
-					<li><a href="index.html">Hääleta</a></li>
-					<li><a href="kandidatuur.html">Kandideeri</a></li>
-					<li><a href="statistika.html"><u>Statistika</u></a></li>
-					<li><a href="me.html">Minu Andmed</a></li>
+					<li><a href="index.html" id="votenav">Hääleta</a></li>
+					<li><a href="kandidatuur.html" id="candidatenav">Kandideeri</a></li>
+					<li><a href="statistika.html" id="statnav">Statistika</a></li>
+					<li><a href="me.html" id="profilenav">Minu Andmed</a></li>
 					<li><a href="#">Logi välja</a></li>
 				</ul>
-
 			</nav>
 
 		</header>
@@ -33,27 +32,32 @@
 
 			<aside>
 				<h4>Vaata statistikat</h4>
-				<a href="statistika.html" id="statbutton" class="button">Kandidaatide lõikes</a>
-				<a href="statistika_piirkonnad.html" id="currentstatbutton" class="button">Piirkondade lõikes</a>
-				<a href="statistikaparteid.html" id="statbutton" class="button">Parteide lõikes</a>
-				<a href="statistika_riik.html" id="statbutton" class="button">Riigi lõikes</a>
+				<a href="statistika.html" id="statbutton" class="button">Kandidaatide
+					lõikes</a> <a href="statistika_piirkonnad.html" id="currentstatbutton"
+					class="button">Piirkondade lõikes</a> <a
+					href="statistikaparteid.html" id="statbutton" class="button">Parteide
+					lõikes</a> <a href="statistika_riik.html" id="statbutton"
+					class="button">Riigi lõikes</a>
 			</aside>
 
 			<div id="content">
 				<div id="area_statistics">
 					<h4 class="content_heading">Piirkondade lõikes</h4>
-					Valimisringkond: 
-					<select>
-						<option value="" disabled="disabled" selected="selected">Vali valimisringkond</option>
-						<option value="1">1 – Tallinna Haabersti, Põhja-Tallinna ja Kristiine linnaosa</option>
-						<option value="2">2 – Tallinna Kesklinna, Lasnamäe ja Pirita linnaosa</option>
+					Valimisringkond: <select>
+						<option value="" disabled="disabled" selected="selected">Vali
+							valimisringkond</option>
+						<option value="1">1 – Tallinna Haabersti, Põhja-Tallinna
+							ja Kristiine linnaosa</option>
+						<option value="2">2 – Tallinna Kesklinna, Lasnamäe ja
+							Pirita linnaosa</option>
 						<option value="3">3 – Tallinna Mustamäe ja Nõmme linnaosa</option>
 						<option value="4">4 – Harju- (v.a Tallinn) ja Raplamaa</option>
 						<option value="5">5 – Hiiu-, Lääne- ja Saaremaa</option>
 						<option value="6">6 – Lääne-Virumaa</option>
 						<option value="7">7 – Ida-Virumaa</option>
 						<option value="8">8 – Järva- ja Viljandimaa</option>
-						<option value="9">9 – Jõgeva- ja Tartumaa (v.a Tartu linn)</option>
+						<option value="9">9 – Jõgeva- ja Tartumaa (v.a Tartu
+							linn)</option>
 						<option value="10">10 – Tartu linn</option>
 						<option value="11">11 – Võru-, Valga- ja Põlvamaa</option>
 						<option value="12">12 – Pärnumaa</option>
@@ -65,7 +69,7 @@
 						<th>Koht</th>
 						<th>Partei</th>
 						<th>Populaarseim kandidaat</th>
-						<th>Hääli</th>						
+						<th>Hääli</th>
 					</tr>
 
 					<tr>
@@ -138,12 +142,10 @@
 						<td>9990</td>
 					</tr>
 				</table>
-				<a href="piirkondprint.html" id="printbutton" class="button">Prindi statistika</a>
+				<a href="piirkondprint.html" id="printbutton" class="button">Prindi
+					statistika</a>
 			</div>
-		</li>
-	</ul>
-</div>
-</div>
-</div>
+		</div>
+	</div>
 </body>
 </html>

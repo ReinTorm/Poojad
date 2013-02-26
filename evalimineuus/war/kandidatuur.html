@@ -1,70 +1,67 @@
 <!DOCTYPE html>
+<html>
 <head>
-
-    <meta charset="utf-8">
-    <title>eValimine</title>
-    <link rel="stylesheet" href="style.css">
-
+<meta charset="utf-8">
+<title>eValimine</title>
+<link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body id="candidatepage">
+	<div id="wrapper">
+		<header>
+			<a href="#" id="logo"></a>
+			<nav>
+				<p id="username">Tere, Kalle Blomkvist!</p>
+				<ul>
+					<li><a href="index.html" id="votenav">Hääleta</a></li>
+					<li><a href="kandidatuur.html" id="candidatenav">Kandideeri</a></li>
+					<li><a href="statistika.html" id="statnav">Statistika</a></li>
+					<li><a href="me.html" id="profilenav">Minu Andmed</a></li>
+					<li><a href="#">Logi välja</a></li>
+				</ul>
+			</nav>
+		</header>
 
-    <div id="wrapper">
+		<canvas id="highlight"></canvas>
+		<div id="content_wrapper">
 
-        <header>
+			<aside>
+				<h4>Kandideeri</h4>
+				<p>
+					Kandideerimiseks tuleb esitada kandideerimisdokumendid.<br /> <br />
+					Palun tõmmake enda arvutisse/mobiili kandideerimisavaldus ja
+					kandidaadi ankeet.<br /> <br /> Antud dokumendid tuleb ära täita
+					ja digiallkirjastada. Seejärel tuleb dokumendid üles laadida ja ära
+					saata.
+				</p>
+			</aside>
 
-            <a href="#" id="logo"></a>
+			<div id="content">
+				<h4 class="content_heading">Kandideerimine</h4>
 
-            <nav>
+				<h4>Kandideerimisavaldus</h4>
+				<p>
+					<a href="./doc/kandideerimisavaldus.pdf">Tõmba
+						kandideerimisavaldus alla siit.</a><br /> Vali täidetud ja
+					digiallkirjastatud kandideerimisavaldus:<br /> <input type="file"
+						name="kandideerimisavaldus">
+				</p>
 
-                <p id="username">Tere, Kalle Blomkvist!</p>
+				<h4>Kandidaat</h4>
+				<p>
+					<a href="./doc/kandidaadi_ankeet.pdf">Tõmba kandidaadi ankeet
+						alla siit.</a><br /> Vali täidetud ja digiallkirjastatud
+					kandidaadi_ankeet:<br /> <input type="file"
+						name="kandidaadi_ankeet">
+				</p>
 
-                <ul>
-                    <li><a href="index.html">Hääleta</a></li>
-                    <li><a href="kandidatuur.html"><u>Kandideeri</u></a></li>
-                    <li><a href="statistika.html">Statistika</a></li>
-                    <li><a href="me.html">Minu Andmed</a></li>
-                    <li><a href="#">Logi välja</a></li>
-                </ul>
+				<div class="custom-checkbox">
+					<input type="checkbox"><span><a href="#">Nõustun
+							tingimustega.</a></span>
+				</div>
 
-            </nav>
-        </header>
-
-        <canvas id="highlight"></canvas>
-        <div id="content_wrapper">
-
-            <aside>
-                <h4>Kandideeri</h4>
-                <p>
-                    Kandideerimiseks tuleb esitada kandideerimisdokumendid.<br/><br/> 
-                    Palun tõmmake enda arvutisse/mobiili kandideerimisavaldus ja kandidaadi ankeet.<br/><br/>
-                    Antud dokumendid tuleb ära täita ja digiallkirjastada. Seejärel tuleb dokumendid üles laadida ja ära saata.
-                </p>
-            </aside>
-
-            <div id="content">					
-                <h4 class="content_heading">Kandideerimine</h4>
-                
-                <h4>Kandideerimisavaldus</h4>
-                <p>
-                    <a href="./doc/kandideerimisavaldus.pdf">Tõmba kandideerimisavaldus alla siit.</a><br />
-                    Vali täidetud ja digiallkirjastatud kandideerimisavaldus:<br />
-                    <input type="file" name="kandideerimisavaldus">
-                </p>
-
-                <h4>Kandidaat</h4>
-                <p>
-                    <a href="./doc/kandidaadi_ankeet.pdf">Tõmba kandidaadi ankeet alla siit.</a><br />
-                    Vali täidetud ja digiallkirjastatud kandidaadi_ankeet:<br />
-                    <input type="file" name="kandidaadi_ankeet">
-                </p>
-
-                <div class="custom-checkbox">
-                    <input type="checkbox"><span><a href="#">Nõustun tingimustega.</a></span>
-                </div>
-                
-                <a href="#" id="candidatebutton" class="button">Kandideeri!</a>		
-            </div>			
-        </div>
-    </div>
+				<a href="#" id="candidatebutton" class="button">Kandideeri!</a>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
