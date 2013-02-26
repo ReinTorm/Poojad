@@ -165,7 +165,7 @@ canvas#highlight {
 #content {
   float: left;
   width: 680px;
-  padding: 10px 15px 15px 15px;
+  padding: 10px 15px 15px 30px;
   min-height: 500px;
   box-shadow: inset 8px 0 10px -6px #ddd;
 }
@@ -321,21 +321,15 @@ canvas#highlight {
 }
 
 #profile{
-  position: relative;
-  padding-top: 20px;
-}
-#profile p {
-  padding-top: 7px;
+  padding-top: 30px;
 }
 
 #avatar img {
   float: left;
-  position: relative;
-  padding-top: 20px;
   padding-right: 10px;
   padding-bottom: 10px;
-  width: 150px;
-  height: 150px;
+  width: 160px;
+  height: 160px;
   background-size: cover;
 }
 
