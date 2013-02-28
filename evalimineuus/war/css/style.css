@@ -3,11 +3,15 @@
   padding: 0;
 }
 
+html {
+  overflow: -moz-scrollbars-vertical; 
+  overflow-y: scroll;
+}
+
 body {
   background-color: #ebebeb;
   font-family: Arial, Verdana, Tahoma, sans-serif;
 }
-
 a {
   text-decoration: none;
   color: #000;
@@ -58,14 +62,7 @@ p#error {
 }
 
 /*Navigation*/
-
-body#votepage a#votenav,
-body#candidatepage a#candidatenav,
-body#profilepage a#profilenav,
-body#statpage a#statnav {
-    text-decoration: underline;
-}
-
+.ui-tabs .ui-tabs-nav li.ui-tabs-active {text-decoration: underline;}
 
 /*wrapper start*/
 /*--------------------------------------------------------*/
@@ -77,7 +74,7 @@ body#statpage a#statnav {
 
 #logo {
   position: absolute;
-  background-image: url(img/logo.png);
+  background-image: url(../img/logo.png);
   width: 400px;
   height: 46px;
   float: left;
@@ -111,11 +108,12 @@ header nav ul li {
   display: inline;
   list-style-type: none;
   padding-left: 20px;
+  outline: none;
 }
 
 canvas#highlight {
   position: absolute;
-  margin-top: 70px;
+  margin: 70px -10px;
   width: 960px;
   height: 10px;
   background-color: #008bcf;
@@ -127,11 +125,12 @@ canvas#highlight {
   -webkit-border-top-right-radius: 6px;
   -khtml-border-top-right-radius: 6px;
   border-top-right-radius: 6px;
-  behavior: url(/border-radius.htc);
+  /*  behavior: url(../border-radius.htc);*/  
   z-index: 1;
 }
 
-#content_wrapper {
+.tab {
+  position: relative;
   float: left;
   width: 960px;
   margin: 20px 0 50px 0;
@@ -140,7 +139,7 @@ canvas#highlight {
   -webkit-border-radius: 6px;
   -khtml-border-radius: 6px;
   border-radius: 6px;
-  behavior: url(/border-radius.htc);
+  /*  behavior: url(../border-radius.htc);*/  
   -moz-box-shadow: 0 2px 5px #ccc;
   -webkit-box-shadow: 0 2px 5px #ccc;
   box-shadow: 0 2px 5px #ccc;
@@ -148,31 +147,33 @@ canvas#highlight {
   filter: progid:DXImageTransform.Microsoft.Shadow(Strength=5, Direction=90, Color='#ccc');
 }
 
-#content_wrapper aside {
+.tab aside {
+  position: relative;
   float: left;
   width: 190px;
   padding: 10px 20px 10px 20px;
   font-size: 12px;
 }
 
-#content_wrapper aside p {
+.tab aside p {
   color: #808080;
 }
-#content_wrapper aside p:hover {
+.tab aside p:hover {
   color: #404040;
 }
 
-#content {
+.tab #content {
   float: left;
   width: 680px;
   padding: 10px 15px 15px 30px;
   min-height: 500px;
-  box-shadow: inset 8px 0 10px -6px #ddd;
+  box-shadow: -8px 0 10px -6px #ddd;
 }
 /*wrapper end*/
 
 /*Custom buttons*/
 /*--------------------------------------------------------*/
+.statbutton,
 .button {
   background-color: #eee;
   border: 1px solid #ccc;
@@ -183,6 +184,7 @@ canvas#highlight {
   padding: 12px 20px 12px 20px;
   margin-top: 10px;
 }
+.statbutton:hover,
 .button:hover {
   background-color: #008bcf;
   color: #fff;
@@ -324,7 +326,7 @@ canvas#highlight {
   padding-top: 30px;
 }
 
-#avatar img {
+#avatar {
   float: left;
   padding-right: 10px;
   padding-bottom: 10px;
@@ -344,22 +346,23 @@ canvas#highlight {
 /*Statistics pages*/
 /*--------------------------------------------------------*/
 
-#statbutton {
+.statbutton {
   width:165px;
   float: left;
   font-size: 13px;
   padding: 3px 10px 3px 10px;
+  cursor: pointer;
 }
-#currentstatbutton {
-  width:165px;
-  background-color: #008bcf;
-  border: 1px solid #007CCF;
-  color: #fff;
-  text-align:center;
-  font-weight:bold;
-  float: left;
-  padding: 3px 10px 3px 10px;
-  margin-top: 10px;
+#currentstatbutton { /*Kui ma olen JQuery'ga lehtede vahetamise ära teinud, siis tuleb see ka ümber teha nagu praegu nav on igal lehel.*/
+width:165px;
+background-color: #008bcf;
+border: 1px solid #007CCF;
+color: #fff;
+text-align:center;
+font-weight:bold;
+float: left;
+padding: 3px 10px 3px 10px;
+margin-top: 10px;
 }
 
 #candidatebutton,
@@ -404,7 +407,7 @@ canvas#highlight {
   margin-left:150px;
 }
 
-#area_statistics select{
+#areastat-content select{
   width: auto;
   background-color: #eee;
   border: 1px solid #ccc;
@@ -488,3 +491,7 @@ canvas#highlight {
   font-size: 20px;
 }
 /*Candidate page end*/
+
+.switcher-content {
+  display: none;
+}

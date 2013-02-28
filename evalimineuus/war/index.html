@@ -1,48 +1,48 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>eValimine</title>
-<link rel="stylesheet" href="style.css">
+	<meta charset="utf-8">
+	<title>eValimine</title>
+	<link rel="stylesheet" href="css/style.css">
+
+	<!-- järgnev on statistika lehtedele -->
+	<script type='text/javascript' src='js/jquery.js'></script>
+	<script type='text/javascript' src='js/jquery.content-panel-switcher.js'></script> 
+	<script type='text/javascript'>$(document).ready(function() {jcps.fader(200, '#switcher-panel');});</script>
+
+	<!-- järgnev üldisele navigeerimisele (+ title) -->
+	<script src="js/jquery-1.8.3.js"></script>
+	<script src="js/jquery-ui-1.9.2.custom.js"></script>
+	<script type='text/javascript'>$(document).ready(function() {$( "#wrapper" ).tabs().bind('tabsactivate', function(event, ui) {document.title = document.getElementById(ui.newPanel.prop("id")).getAttribute("data-title");});});
+	</script>
 </head>
-<body id="votepage">
+<body>
 	<div id="wrapper">
-		<header>
-			<a href="#" id="logo"></a>
-			<nav>
-				<p id="username">Tere, Kalle Blomkvist!</p>
-				<ul>
-					<li><a href="index.html" id="votenav">Hääleta</a></li>
-					<li><a href="kandidatuur.html" id="candidatenav">Kandideeri</a></li>
-					<li><a href="statistika.html" id="statnav">Statistika</a></li>
-					<li><a href="me.html" id="profilenav">Minu Andmed</a></li>
-					<li><a href="#">Logi välja</a></li>
+		<header><a href="index.html" id="logo"></a>
+			<nav><p id="username">Tere, Kalle Blomkvist!</p>
+				<ul><li><a href="#votepage">Hääleta</a></li>
+					<li><a href="#applypage">Kandideeri</a></li>
+					<li><a href="#statpage">Statistika</a></li>
+					<li><a href="#profilepage">Minu Andmed</a></li>
+					<li><a>Logi välja</a></li>
 				</ul>
 			</nav>
-		</header>
+			<canvas id="highlight"></canvas>
+		</header><!-- header -->
 
-		<canvas id="highlight"></canvas>
-		<div id="content_wrapper">
+
+
+
+
+		<div id="votepage" data-title="eValimine - Hääleta" class="tab">
 			<aside>
-				<h4>Kandidaadid</h4>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-					Pellentesque posuere sodales ante id facilisis. Vestibulum euismod
-					mattis nisl, id consequat tortor suscipit vitae. Maecenas sit amet
-					dolor nibh. Quisque vitae commodo augue. Nullam bibendum posuere
-					est, non gravida ante lacinia quis. Vestibulum imperdiet orci eu
-					nisl posuere a gravida orci ullamcorper. Nullam quis lacus ipsum.<br />
-					<br /> Etiam vel nisl diam. Integer purus mauris, malesuada sed
-					tristique tristique, cursus nec urna.
+				<h4>Hääletamine</h4>
+				<p>Hääletamine läbi eValimiste rakenduse on ülimalt lihtne!<br/><br/>
+					Selleks et anda hääl kasutage meie kasutajasõbraliku otsingut ning peale sobiva kandidaadi leidmist vajutage palun "Hääleta".<br/><br/>
+					Kui kõik läks edukalt, siis kuvatakse teile kohane teade.
 				</p>
 			</aside>
-
 			<div id="content">
-
-				<div id="popupmessage">
-					<p>Aitäh hääletamast! Iga hääl on oluline!</p>
-				</div>
-
 				<h4 class="content_heading">Kandidaadid</h4>
 				<ul id="advanced_search">
 					<li>
@@ -66,26 +66,16 @@
 					<li>
 						<h5>Erakond:</h5>
 						<ul id="checkboxes" class="custom-checkbox">
-							<li><label><input type="checkbox" /><span>Eesti
-										Iseseisvuspartei</span></label></li>
-							<li><label><input type="checkbox" /><span>Eesti
-										Keskerakond</span></label></li>
-							<li><label><input type="checkbox" /><span>Eesti
-										Konservatiivne Rahvaerakond</span></label></li>
-							<li><label><input type="checkbox" /><span>Eesti
-										Reformierakond</span></label></li>
-							<li><label><input type="checkbox" /><span>Eesti
-										Vabaduspartei – Põllumeeste Kogu</span></label></li>
-							<li><label><input type="checkbox" /><span>Eestimaa
-										Ühendatud Vasakpartei</span></label></li>
-							<li><label><input type="checkbox" /><span>Erakond
-										Eesti Kristlikud Demokraadid</span></label></li>
-							<li><label><input type="checkbox" /><span>Erakond
-										Eestimaa Rohelised</span></label></li>
-							<li><label><input type="checkbox" /><span>Erakond
-										Isamaa ja Res Publica Liit</span></label></li>
-							<li><label><input type="checkbox" /><span>Sotsiaaldemokraatlik
-										Erakond</span></label></li>
+							<li><label><input type="checkbox" /><span>Eesti Iseseisvuspartei</span></label></li>
+							<li><label><input type="checkbox" /><span>Eesti Keskerakond</span></label></li>
+							<li><label><input type="checkbox" /><span>Eesti Konservatiivne Rahvaerakond</span></label></li>
+							<li><label><input type="checkbox" /><span>Eesti Reformierakond</span></label></li>
+							<li><label><input type="checkbox" /><span>Eesti Vabaduspartei – Põllumeeste Kogu</span></label></li>
+							<li><label><input type="checkbox" /><span>Eestimaa Ühendatud Vasakpartei</span></label></li>
+							<li><label><input type="checkbox" /><span>Erakond Eesti Kristlikud Demokraadid</span></label></li>
+							<li><label><input type="checkbox" /><span>Erakond Eestimaa Rohelised</span></label></li>
+							<li><label><input type="checkbox" /><span>Erakond Isamaa ja Res Publica Liit</span></label></li>
+							<li><label><input type="checkbox" /><span>Sotsiaaldemokraatlik Erakond</span></label></li>
 							<li><label><input type="checkbox" /><span>Üksikkandidaat</span></label></li>
 						</ul>
 					</li>
@@ -118,60 +108,206 @@
 					</li>
 					<li>
 						<div id="profile">
-							<div id="avatar">
-								<img src="img/avatar.jpg">
-							</div>
+							<img src="img/avatar.jpg" id="avatar">
 							<h1>Artur Käpp</h1>
-							<p>
-								<b>Vanus:</b> 25
-							</p>
-							<p>
-								<b>Nohik:</b> Jah
-							</p>
-							<p>
-								<b>Fame:</b> 2510
-							</p>
-							<p>
-								<b>Facebook:</b> <a href="http://www.facebook.com/ArturKp">
-									Artur Käpp</a>
-							</p>
-							<p>
-								<b>Skype:</b> MineOlenArturKp
-							</p>
-							<p>
-								<b>Veel midagi:</b> Nope
-							</p>
+							<p><b>Vanus:</b> 25</p>
+							<p><b>Nohik:</b> Jah</p>
+							<p><b>Fame:</b> 2510</p>
+							<p><b>Facebook:</b> <a href="http://www.facebook.com/ArturKp">Artur Käpp</a></p>
+							<p><b>Skype:</b> MineOlenArturKp</p>
+							<p><b>Veel midagi:</b> Nope</p>
 							<h4>What's up?</h4>
-							<p>Aenean id nisi id justo posuere bibendum eu et nulla.
-								Suspendisse hendrerit massa vel orci luctus rutrum vestibulum
-								nisi lacinia. Mauris feugiat convallis porta. Nunc in
-								scelerisque orci. Mauris pulvinar laoreet tortor, ut faucibus
-								tellus porta in. In accumsan nisl quis nunc laoreet ut aliquet
-								risus adipiscing. Duis vitae ligula ac massa gravida aliquet.
-								Duis malesuada mollis urna, ac sagittis risus gravida ac. Morbi
-								ultricies diam et purus iaculis non rhoncus purus tincidunt.</p>
+							<p>Aenean id nisi id justo posuere bibendum eu et nulla. Suspendisse hendrerit massa vel orci luctus rutrum vestibulum nisi lacinia. Mauris feugiat convallis porta. Nunc in scelerisque orci. Mauris pulvinar laoreet tortor, ut faucibus tellus porta in. In accumsan nisl quis nunc laoreet ut aliquet risus adipiscing. Duis vitae ligula ac massa gravida aliquet. Duis malesuada mollis urna, ac sagittis risus gravida ac. Morbi ultricies diam et purus iaculis non rhoncus purus tincidunt.</p>
 							<h4>Lorem Ipsum</h4>
-							<p>Aenean id nisi id justo posuere bibendum eu et nulla.
-								Suspendisse hendrerit massa vel orci luctus rutrum vestibulum
-								nisi lacinia. Mauris feugiat convallis porta. Nunc in
-								scelerisque orci. Mauris pulvinar laoreet tortor, ut faucibus
-								tellus porta in. In accumsan nisl quis nunc laoreet ut aliquet
-								risus adipiscing. Duis vitae ligula ac massa gravida aliquet.
-								Duis malesuada mollis urna, a sagittis risus gravida ac. Morbi
-								ultricies diam et purus iaculis non rhoncus purus tincidunt.</p>
-						</div> <a href="" id="votebutton" class="button">Hääleta!</a>
+							<p>Aenean id nisi id justo posuere bibendum eu et nulla. Suspendisse hendrerit massa vel orci luctus rutrum vestibulum nisi lacinia. Mauris feugiat convallis porta. Nunc in scelerisque orci. Mauris pulvinar laoreet tortor, ut faucibus tellus porta in. In accumsan nisl quis nunc laoreet ut aliquet risus adipiscing. Duis vitae ligula ac massa gravida aliquet. Duis malesuada mollis urna, a sagittis risus gravida ac. Morbi ultricies diam et purus iaculis non rhoncus purus tincidunt.</p>
+						</div> 
+						<a href="" id="votebutton" class="button">Hääleta!</a>
 					</li>
 				</ul>
-			</div>
-		</div>
-	</div>
-	<script type="text/javascript"
-		src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-	<script type="text/javascript"
-		src="bouncebox-plugin/jquery.easing.1.3.js"></script>
-	<script type="text/javascript"
-		src="bouncebox-plugin/jquery.bouncebox.1.0.js"></script>
-	<script type="text/javascript" src="script.js"></script>
+			</div><!-- content -->
+		</div><!-- votepage -->
 
+
+
+
+
+		<div id="applypage" data-title="eValimine - Kandideeri" class="tab">
+			<aside>
+				<h4>Kandideeri</h4>
+				<p>Kandideerimiseks tuleb esitada kandideerimisdokumendid.<br/><br/> Palun tõmmake enda arvutisse/mobiili kandideerimisavaldus ja kandidaadi ankeet.<br/><br/> 
+					Antud dokumendid tuleb ära täita ja digiallkirjastada. Seejärel tuleb dokumendid üles laadida ja ära saata.
+				</p>
+			</aside>
+			<div id="content">
+				<h4 class="content_heading">Kandideerimine</h4>
+
+				<h4>Kandideerimisavaldus</h4>
+				<p><a href="./doc/kandideerimisavaldus.pdf">Tõmba kandideerimisavaldus alla siit.</a><br/> 
+					Vali täidetud ja digiallkirjastatud kandideerimisavaldus:<br/> 
+					<input type="file" name="kandideerimisavaldus">
+				</p>
+
+				<h4>Kandidaat</h4>
+				<p><a href="./doc/kandidaadi_ankeet.pdf">Tõmba kandidaadi ankeet alla siit.</a><br/> 
+					Vali täidetud ja digiallkirjastatud kandidaadi_ankeet:<br /> <input type="file" name="kandidaadi_ankeet">
+				</p>
+
+				<div class="custom-checkbox"><input type="checkbox"><span><a href="#">Nõustun tingimustega.</a></span></div>
+
+				<a href="#" id="candidatebutton" class="button">Kandideeri!</a>
+			</div><!--content-->
+		</div><!--applypage-->
+
+
+
+
+
+		<div id="statpage" data-title="eValimine - Statistika" class="tab">
+			<aside>
+				<h4>Vaata statistikat</h4>
+				<a id="kanditstat" class="statbutton switcher">Kandidaatide lõikes</a> 
+				<a id="areastat" class="statbutton switcher">Piirkondade lõikes</a> 
+				<a id="parteistat" class="statbutton switcher">Parteide lõikes</a> 
+				<a id="riikstat" class="statbutton switcher">Riigi lõikes</a>
+			</aside>
+			<div id="content">
+				<div id="switcher-panel"></div><!-- Siin sees kuvatakse statistika vaated, küll aga sinna sisse otseselt ei kirjuta midagi!-->
+
+
+				<div id="kanditstat-content" class="switcher-content">
+					<h4 class="content_heading">Kandidaatide lõikes</h4>
+					<table id="stattable">
+						<tr><th>Koht</th><th>Number</th><th>Nimi</th><th>Partei</th><th>Piirkond</th><th>Hääli</th></tr>
+						<tr><td>1</td><td>123</td><td>Jaanus Lehmamees</td><td>Reformierakond</td><td>Tartumaa</td><td>20000</td></tr>
+						<tr><td>2</td><td>4535</td><td>Taavi Tont</td><td>-</td><td>Tallinn</td><td>18000</td></tr>
+						<tr><td>3</td><td>456</td><td>Ants Auto</td><td>Keskerakond</td><td>Võru</td><td>14554</td></tr>
+						<tr><td>4</td><td>643</td><td>Liina Lähtme</td><td>Isamaa ja Respublica</td><td>Narva</td><td>12000</td></tr>
+						<tr><td>5</td><td>12</td><td>Keio Kuusk</td><td>Kristlikud Demokraadid</td><td>Tartu</td><td>8900</td></tr>
+						<tr><td>6</td><td>767</td><td>Koit Auto</td><td>Keskerakond</td><td>Viljandi</td><td>4544</td></tr>
+						<tr><td>3</td><td>456</td><td>Ants Auto</td><td>Keskerakond</td><td>Võru</td><td>2324</td></tr>
+					</table>
+					<a href="tabelprint.html" id="printbutton" class="button">Prindi statistika</a>
+				</div><!-- kanditstat-content -->
+
+
+
+				<div id="areastat-content" class="switcher-content">
+					<h4 class="content_heading">Piirkondade lõikes</h4>
+					Valimisringkond: 
+					<select>
+						<option value="" disabled="disabled" selected="selected">Vali valimisringkond</option>
+						<option value="1">1 – Tallinna Haabersti, Põhja-Tallinna ja Kristiine linnaosa</option>
+						<option value="2">2 – Tallinna Kesklinna, Lasnamäe ja Pirita linnaosa</option>
+						<option value="3">3 – Tallinna Mustamäe ja Nõmme linnaosa</option>
+						<option value="4">4 – Harju- (v.a Tallinn) ja Raplamaa</option>
+						<option value="5">5 – Hiiu-, Lääne- ja Saaremaa</option>
+						<option value="6">6 – Lääne-Virumaa</option>
+						<option value="7">7 – Ida-Virumaa</option>
+						<option value="8">8 – Järva- ja Viljandimaa</option>
+						<option value="9">9 – Jõgeva- ja Tartumaa (v.a Tartu linn)</option>
+						<option value="10">10 – Tartu linn</option>
+						<option value="11">11 – Võru-, Valga- ja Põlvamaa</option>
+						<option value="12">12 – Pärnumaa</option>
+					</select><br>
+
+					<table id="stattable">
+						<tr><th>Koht</th><th>Partei</th><th>Populaarseim kandidaat</th><th>Hääli</th></tr>
+						<tr><td>1</td><td>Partei1</td><td>Orbit Üks</td><td>9999</td></tr>
+						<tr><td>2</td><td>Partei2</td><td>Orbit Kaks</td><td>9998</td></tr>
+						<tr><td>3</td><td>Partei3</td><td>Orbit Kolm</td><td>9997</td></tr>
+						<tr><td>4</td><td>Partei4</td><td>Orbit Neli</td><td>9996</td></tr>
+						<tr><td>5</td><td>Partei5</td><td>Orbit Viis</td><td>9995</td></tr>
+						<tr><td>6</td><td>Partei6</td><td>Orbit Kuus</td><td>9994</td></tr>
+						<tr><td>7</td><td>Partei7</td><td>Orbit Seitse</td><td>9993</td></tr>
+						<tr><td>8</td><td>Partei8</td><td>Orbit Kaheksa</td><td>9992</td></tr>
+						<tr><td>9</td><td>Partei9</td><td>Orbit Üheksa</td><td>9991</td></tr>
+						<tr><td>10</td><td>Partei10</td><td>Orbit Kümme</td><td>9990</td></tr>				
+					</table>
+					<a href="piirkondprint.html" id="printbutton" class="button">Prindi statistika</a>
+				</div><!--areastat-content-->
+
+
+
+				<div id="parteistat-content" class="switcher-content">
+					<h4 class="content_heading">Parteide lõikes</h4>
+					<img src="./img/statistika.png" alt="Pie chart" id="statimg">
+					<a href="parteiprint.html" id="printbutton" class="button">Prindi statistika</a>
+				</div><!-- parteistat-content -->
+
+
+
+				<div id="riikstat-content" class="switcher-content">
+					<h4 class="content_heading">Riigi lõikes</h4>
+					<img src="./img/Eesti_maakonnad.png" alt="Eesti maakonnad" width="600" width="500"> 
+					<a href="riikprint.html" id="printbutton" class="button">Prindi statistika</a>
+				</div><!-- riikstat-content -->
+
+				
+			</div><!-- content -->
+		</div><!-- statpage -->
+
+
+
+
+
+		<div id="profilepage" data-title="eValimine - Minu andmed" class="tab">
+			<aside>
+				<h4>Minu andmed</h4>
+				<p>Siin saad muuta seda kuidas teised sind valimiste keskonnas näevad. <br/><br />
+					NB: kandideerimiseks on kõik väljad vajalikud. (ka. pilt)
+				</p>
+			</aside>
+			<div id="content">
+				<h4 class="content_heading">Minu Andmed</h4>
+				<div id="left_column">
+					Eesnimi: <input type="text" name="fname"><br /> Perenimi: <input
+					type="text" name="lname"><br> Vanus: <input
+					type="text" name="age"><br> Valimispiirkond: 
+					<select>
+						<option value="" disabled="disabled" selected="selected">Vali valimisringkond</option>
+						<option value="1">1 – Tallinna Haabersti, Põhja-Tallinna ja Kristiine linnaosa</option>
+						<option value="2">2 – Tallinna Kesklinna, Lasnamäe ja Pirita linnaosa</option>
+						<option value="3">3 – Tallinna Mustamäe ja Nõmme linnaosa</option>
+						<option value="4">4 – Harju- (v.a Tallinn) ja Raplamaa</option>
+						<option value="5">5 – Hiiu-, Lääne- ja Saaremaa</option>
+						<option value="6">6 – Lääne-Virumaa</option>
+						<option value="7">7 – Ida-Virumaa</option>
+						<option value="8">8 – Järva- ja Viljandimaa</option>
+						<option value="9">9 – Jõgeva- ja Tartumaa (v.a Tartu linn)</option>
+						<option value="10">10 – Tartu linn</option>
+						<option value="11">11 – Võru-, Valga- ja Põlvamaa</option>
+						<option value="12">12 – Pärnumaa</option>
+					</select><br> 
+					E-mail: <input type="text" name="email"><br>
+					Isikukood: <input type="text" name="secnr"><br>
+					<div id="votedfor">
+						<h4>Sinu hääl</h4>
+						<p><b>Kandidaat:</b> <a href="#">Artur Käpp</a><a href="#"><img src="./img/cross_remove.png"></a>
+						</p>
+					</div>
+				</div><!-- left_column -->
+				<div id="right_column">
+					<ul>
+						<li><img src="./img/avatar.jpg" id="avatar"></li>
+						<li><p id="error">Pilt on kandideerimiseks vajalik!</p></li>
+						<li><a href="#">Muuda pilti!</a></li>
+					</ul>
+					<div id="mystatus">
+						<h4>Kandidatuur</h4>
+						<table>
+							<tr><td width="100"><b>Staatus</b></td><td width="150">Kandideerinud</td></tr>
+							<tr><td><b>Erakond</b></td><td>Üksikkandidaat</td></tr>
+							<tr><td><b>Valimispiirkond</b></td><td>1. Tallinna Haabersti, Põhja-Tallinna ja Kristiine linnaosa</td></tr>
+							<tr><td><b>Häälte arv</b></td><td>2324</td></tr>
+						</table>
+					</div>
+				</div><!-- right_column -->
+			</div><!-- content -->
+		</div><!-- profilepage -->
+
+
+
+
+	</div><!-- wrapper -->
 </body>
 </html>
