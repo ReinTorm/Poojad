@@ -68,8 +68,7 @@ p#error {
 /*--------------------------------------------------------*/
 #wrapper {
   width: 960px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
 }
 
 #logo {
@@ -78,10 +77,10 @@ p#error {
   width: 400px;
   height: 46px;
   float: left;
-  margin-top: 12px;
 }
 
 p#username {
+  padding-top: 10px;
   text-align: right;
   font-weight: bold;
   font-size: 12px;
@@ -89,12 +88,10 @@ p#username {
 }
 
 header {
-  margin: 0px 10px;
+  margin: 15px 10px;
 }
 
 header nav {
-  float: right;
-  margin-top: 17px;
   font-size: 12px;
   width: 940px;
   color: #404040;
@@ -113,7 +110,7 @@ header nav ul li {
 
 canvas#highlight {
   position: absolute;
-  margin: 70px -10px;
+  margin: 35px -10px;
   width: 960px;
   height: 10px;
   background-color: #008bcf;
@@ -130,7 +127,6 @@ canvas#highlight {
 }
 
 .tab {
-  position: relative;
   float: left;
   width: 960px;
   margin: 20px 0 50px 0;
@@ -148,7 +144,6 @@ canvas#highlight {
 }
 
 .tab aside {
-  position: relative;
   float: left;
   width: 190px;
   padding: 10px 20px 10px 20px;
@@ -253,9 +248,7 @@ canvas#highlight {
 .custom-checkbox input[type="checkbox"]:disabled + span {    
   display: inline-block;
   vertical-align: middle;
-
   cursor: default;
-
   -moz-opacity: .4;
   -webkit-opacity: .4;
   opacity: .4;
@@ -291,12 +284,12 @@ canvas#highlight {
 #results_wrapper {
   background: #eee;
   border: 1px solid #ccc;
-  overflow: auto;
   font-size: 12px;
   color: #404040;
   padding: 0px;
   width: 260px;
   height: 320px;
+  overflow: auto;
 }
 #radioboxes {
   width: 110px;
@@ -328,8 +321,7 @@ canvas#highlight {
 
 #avatar {
   float: left;
-  padding-right: 10px;
-  padding-bottom: 10px;
+  padding: 0 10px 10px 0;
   width: 160px;
   height: 160px;
   background-size: cover;
@@ -403,15 +395,15 @@ margin-top: 10px;
 }
 
 #statimg {
-  margin-top:20px;
-  margin-left:150px;
+  margin-top: 20px;
+  margin-left: 150px;
 }
 
 #areastat-content select{
   width: auto;
   background-color: #eee;
   border: 1px solid #ccc;
-  margin-right:20px;
+  margin-right: 20px;
   outline: none;
   margin-bottom: 20px;
 }
@@ -431,8 +423,7 @@ margin-top: 10px;
   background-color: #eee;
   border: 1px solid #ccc;
   font-size: 12px;
-  margin-right:20px;
-  margin-top: 8px;
+  margin: 8px 20px 0 0;
   outline: none;
 }
 
