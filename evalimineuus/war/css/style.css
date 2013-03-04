@@ -178,6 +178,7 @@ canvas#highlight {
   font-size: 13px;
   padding: 12px 20px 12px 20px;
   margin-top: 10px;
+  cursor: pointer;
 }
 .statbutton:hover,
 .button:hover {
@@ -485,4 +486,24 @@ margin-top: 10px;
 
 .switcher-content {
   display: none;
+}
+
+@media print
+{
+  
+  html, body {
+    visibility: hidden;
+    height:100%; 
+    overflow: hidden;
+  }
+  #content * { 
+    visibility: visible; 
+  }
+  #content { 
+    position: absolute; 
+    top: 40px; 
+    width: auto !important;
+  }
+  #printbutton { display: none; }
+
 }

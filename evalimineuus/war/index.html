@@ -28,6 +28,7 @@
 		$(window).bind('hashchange', myTabActions);
 	});
 	</script>
+
 </head>
 <body>
 	<div id="wrapper">
@@ -201,7 +202,7 @@
 						<tr><td>6</td><td>767</td><td>Koit Auto</td><td>Keskerakond</td><td>Viljandi</td><td>4544</td></tr>
 						<tr><td>3</td><td>456</td><td>Ants Auto</td><td>Keskerakond</td><td>Võru</td><td>2324</td></tr>
 					</table>
-					<a href="tabelprint.html" id="printbutton" class="button">Prindi statistika</a>
+					<a onClick="window.print()" id="printbutton" class="button">Prindi statistika</a>
 				</div><!-- kanditstat-content -->
 
 
@@ -238,7 +239,7 @@
 						<tr><td>9</td><td>Partei9</td><td>Orbit Üheksa</td><td>9991</td></tr>
 						<tr><td>10</td><td>Partei10</td><td>Orbit Kümme</td><td>9990</td></tr>				
 					</table>
-					<a href="piirkondprint.html" id="printbutton" class="button">Prindi statistika</a>
+					<a onClick="window.print()" id="printbutton" class="button">Prindi statistika</a>
 				</div><!--areastat-content-->
 
 
@@ -246,7 +247,7 @@
 				<div id="parteistat-content" class="switcher-content">
 					<h4 class="content_heading">Parteide lõikes</h4>
 					<img src="./img/statistika.png" alt="Pie chart" id="statimg">
-					<a href="parteiprint.html" id="printbutton" class="button">Prindi statistika</a>
+					<a onClick="window.print()" id="printbutton" class="button">Prindi statistika</a>
 				</div><!-- parteistat-content -->
 
 
@@ -254,10 +255,10 @@
 				<div id="riikstat-content" class="switcher-content">
 					<h4 class="content_heading">Riigi lõikes</h4>
 					<img src="./img/Eesti_maakonnad.png" alt="Eesti maakonnad" width="600" width="500"> 
-					<a href="riikprint.html" id="printbutton" class="button">Prindi statistika</a>
+					<a onClick="window.print()" id="printbutton" class="button">Prindi statistika</a>
 				</div><!-- riikstat-content -->
 
-				
+
 			</div><!-- content -->
 		</div><!-- statpage -->
 
