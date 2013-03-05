@@ -1,6 +1,9 @@
 * {
   margin: 0;
   padding: 0;
+  -moz-box-sizing: border-box; 
+  -webkit-box-sizing: border-box; 
+  box-sizing: border-box;
 }
 
 html {
@@ -12,6 +15,7 @@ body {
   background-color: #ebebeb;
   font-family: Arial, Verdana, Tahoma, sans-serif;
 }
+
 a {
   text-decoration: none;
   color: #000;
@@ -29,7 +33,7 @@ h2 {
 
 h4 {
   padding-bottom: 10px;
-  padding-top: 6px;
+  padding-top: 20px;
   color: #404040;
   font-size: 16px;
 }
@@ -48,38 +52,25 @@ p#error {
   text-align: center;
 }
 
-#popupmessage{
-  background: #C8E3A1;
-  border: 1px solid #ACD36F;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  display: none;
-}
-
-#popupmessage p {
-  font-size:14px;
-  padding: 10px;
-}
-
-/*Navigation*/
-.ui-tabs .ui-tabs-nav li.ui-tabs-active {text-decoration: underline;}
 
 /*wrapper start*/
 /*--------------------------------------------------------*/
 #wrapper {
-  width: 960px;
-  margin: 0 auto;
+  max-width: 960px;
+  margin: 10px auto;
 }
 
-#logo {
+header #logo {
   position: absolute;
   background-image: url(../img/logo.png);
   width: 400px;
   height: 46px;
   float: left;
+  margin-left: 10px;
 }
 
-p#username {
+header #username {
+  margin-right: 10px;
   padding-top: 10px;
   text-align: right;
   font-weight: bold;
@@ -87,13 +78,9 @@ p#username {
   color: #404040;
 }
 
-header {
-  margin: 15px 10px;
-}
-
 header nav {
+  margin-right: 10px;
   font-size: 12px;
-  width: 940px;
   color: #404040;
 }
 
@@ -108,11 +95,14 @@ header nav ul li {
   outline: none;
 }
 
-canvas#highlight {
-  position: absolute;
-  margin: 35px -10px;
-  width: 960px;
+nav ul li.ui-tabs-active {
+  text-decoration: underline;
+}
+
+#highlight {
+  width: 100%;
   height: 10px;
+  margin-bottom: -10px;
   background-color: #008bcf;
   -moz-border-top-left-radius: 6px;
   -webkit-border-top-left-radius: 6px;
@@ -123,13 +113,12 @@ canvas#highlight {
   -khtml-border-top-right-radius: 6px;
   border-top-right-radius: 6px;
   /*  behavior: url(../border-radius.htc);*/  
-  z-index: 1;
 }
 
 .tab {
+  width: 100%;
+  margin-bottom: 50px;
   float: left;
-  width: 960px;
-  margin: 20px 0 50px 0;
   background-color: #fff;
   -moz-border-radius: 6px;
   -webkit-border-radius: 6px;
@@ -145,8 +134,8 @@ canvas#highlight {
 
 .tab aside {
   float: left;
-  width: 190px;
-  padding: 10px 20px 10px 20px;
+  width: 23%;
+  padding: 0 20px 10px 20px;
   font-size: 12px;
 }
 
@@ -159,10 +148,10 @@ canvas#highlight {
 
 .tab #content {
   float: left;
-  width: 680px;
-  padding: 10px 15px 15px 30px;
+  width: 77%;
   min-height: 500px;
-  box-shadow: -8px 0 10px -6px #ddd;
+  padding: 0 20px 15px 20px;
+  box-shadow: -7px 4px 10px -6px #ddd; 
 }
 /*wrapper end*/
 
@@ -176,7 +165,7 @@ canvas#highlight {
   text-align:center;
   font-weight:bold;
   font-size: 13px;
-  padding: 12px 20px 12px 20px;
+  padding: 12px 20px;
   margin-top: 10px;
   cursor: pointer;
 }
@@ -195,10 +184,11 @@ canvas#highlight {
 /*--------------------------------------------------------*/
 .custom-radiobox label,
 .custom-checkbox label {
-  padding: 5px;
+  padding: 4px;
   cursor: pointer;
-  display: block;
   vertical-align: middle;
+  overflow: hidden;
+  white-space: nowrap;
 }
 .custom-radiobox input[type="radio"]:hover,
 .custom-checkbox input[type="checkbox"]:hover {
@@ -207,6 +197,9 @@ canvas#highlight {
 .custom-radiobox input[type="radio"],
 .custom-checkbox input[type="checkbox"] {
   opacity: 0;
+  margin-top: 1px;
+  width: 14px;
+  height: 14px;
   position: absolute;
 }
 .custom-radiobox input[type="radio"] + span::before,
@@ -260,24 +253,23 @@ canvas#highlight {
 
 /*index file*/
 /*--------------------------------------------------------*/
-#advanced_search li {
+#advanced_search>li {
   float: left;
   list-style-type: none;
-  padding-right: 20px;
+  margin-right: 1%;
 }
-#advanced_search li:nth-child(3) {
+#advanced_search>li:nth-child(1){
+  width: 19%;
+}
+
+#advanced_search>li:nth-child(2){
+  width: 44%;
+}
+
+#advanced_search>li:nth-child(3) {
+  width: 35%;
+  margin-right: 0;
   padding-right: 0;
-}
-#advanced_search li select {
-  width: 200px;
-  height: 40px;
-  padding: 5px;
-  font-size: 12px;
-  -webkit-appearance: none;
-  background: #eee;
-  border: 1px solid #ccc;
-  outline: none;
-  overflow: hidden;
 }
 
 #radioboxes,
@@ -287,33 +279,24 @@ canvas#highlight {
   border: 1px solid #ccc;
   font-size: 12px;
   color: #404040;
-  padding: 0px;
-  width: 260px;
   height: 320px;
   overflow: auto;
 }
-#radioboxes {
-  width: 110px;
-}
-#radioboxes li,
-#checkboxes li {
-  clear: left;
-  padding: 0px;
-}
 
 #results {
-  padding: 5px 5px 0px 10px;
+  padding: 5px 10px;
   font-size: 12px;
   color: #000;
   overflow: hidden;
 }
-#results a {
+
+#radioboxes li,
+#checkboxes li,
+#results li {
+  clear: left;
   display: block;
   margin-bottom: 5px;
-}
-#results li {
-  float: left;
-  clear: left;
+  white-space: nowrap;
 }
 
 #profile{
@@ -322,15 +305,16 @@ canvas#highlight {
 
 #avatar {
   float: left;
-  padding: 0 10px 10px 0;
-  width: 160px;
-  height: 160px;
+  padding-right: 10px;
+  width: 170px;
+  height: 170px;
   background-size: cover;
 }
 
 #votebutton {
   float: right;
   font-size: 20px;
+  margin: 10px 10px;
 }
 /*Index file end*/
 
@@ -340,28 +324,18 @@ canvas#highlight {
 /*--------------------------------------------------------*/
 
 .statbutton {
-  width:165px;
+  min-width: 115px;
+  width: 100%;
   float: left;
   font-size: 13px;
-  padding: 3px 10px 3px 10px;
+  padding: 3px 10px;
   cursor: pointer;
 }
-#currentstatbutton { /*Kui ma olen JQuery'ga lehtede vahetamise ära teinud, siis tuleb see ka ümber teha nagu praegu nav on igal lehel.*/
-width:165px;
-background-color: #008bcf;
-border: 1px solid #007CCF;
-color: #fff;
-text-align:center;
-font-weight:bold;
-float: left;
-padding: 3px 10px 3px 10px;
-margin-top: 10px;
-}
 
-#candidatebutton,
 #printbutton {
   float: right;
   font-size: 20px;
+  margin: 10px 0;
 }
 
 #stattable {
@@ -396,17 +370,18 @@ margin-top: 10px;
 }
 
 #statimg {
-  margin-top: 20px;
-  margin-left: 150px;
+  display: block;
+  margin: 20px auto;
+  max-width: 100%;
 }
 
-#areastat-content select{
-  width: auto;
+#switcher-panel select{
+  min-width: 150px;
+  max-width: 100%;
   background-color: #eee;
   border: 1px solid #ccc;
-  margin-right: 20px;
   outline: none;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 /*Statistics pages end*/
 
@@ -414,50 +389,73 @@ margin-top: 10px;
 
 /*User page*/
 /*------------------------------------------------------------------*/
-#left_column {
-  float: left;
+#my_data{
+  display: block;
 }
-#left_column input[type="text"],
-#left_column select {
+#avatar_block {
+  display: inline-block;
+}
+#avatar_block p {
+  clear: left;
+  float: left;
+  font-size: 10px;
+  margin-right: 20px;
+}
+#avatar_block img { 
+  width: 110px; height: 110px; 
+  background-size: cover;
+}
+
+#my_data_block{
+  width: 320px;
+  font-size: 12px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+#my_data_block label {
+  line-height: 20px;
+  display: block;
+  vertical-align: middle;
+  float: left;
+  width: 80px;
+}
+
+#profilepage #content input[type="text"],
+#profilepage #content select {
+  line-height: 20px;
   height: 20px;
-  width: 150px;
+  width: 220px;
   background-color: #eee;
   border: 1px solid #ccc;
   font-size: 12px;
-  margin: 8px 20px 0 0;
+  margin: 2px 10px;
   outline: none;
 }
 
+#mystatus,
 #votedfor {
-  padding-top: 60px;
+  font-size: 12px;
+  float: left;
+  clear: left;
+  display: inline-block;
 }
+
 #votedfor a {
-  padding-left: 20px;
+  margin-left: 20px;
 }
-#votedfor img {
+#votedfor a img {
   width: 20px;
   height: 20px;
+  margin-left: -10px;
   background-size: cover;
   vertical-align: middle;
 }
 
-#right_column {
-  display: inline-block;
+#savebutton {
   float: right;
-  width: 300px;
-}
-#right_column ul li {
-  list-style-type: none;
-  display: inline-block;
-  margin-right: 50px;
-}
-#right_column img {
-  padding: 0px;
-}
-
-#mystatus {
-  padding-top: 50px;
-  font-size: 12px;
+  font-size: 20px;
+  margin: 10px 10px;
 }
 /*User page end*/
 
@@ -466,21 +464,15 @@ margin-top: 10px;
 /*Candidate page*/
 /*------------------------------------------------------------------------------*/
 #content input[type="file"] {
-  width: 400px;
+  max-width: 100%;
+  margin: 10px 0;
   border: 1px solid #ccc;
-}
-
-#tingimused ul {
-  width: 180px;
-  background: #fff;
-  border: none;
-  height: auto;
-  overflow: hidden;
 }
 
 #candidatebutton{
   float: right;
   font-size: 20px;
+  margin: 10px 10px;
 }
 /*Candidate page end*/
 
@@ -490,7 +482,7 @@ margin-top: 10px;
 
 @media print
 {
-  
+
   html, body {
     visibility: hidden;
     height:100%; 
@@ -504,6 +496,181 @@ margin-top: 10px;
     top: 40px; 
     width: auto !important;
   }
-  #printbutton { display: none; }
+  #printbutton { 
+    display: none; 
+  }
 
+}
+@media screen and (max-width: 960px) {
+  #wrapper {
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+}
+@media screen and (max-width: 820px) {
+  aside {
+    width: 100% !important;
+  }
+  aside h4{
+    display: none;
+  }
+  #statpage aside {
+    width: 40% !important;
+    display: block;
+    margin-left: 30%;
+    margin-right: 30%;
+  }
+  #statpage aside h4 {
+    display: block;
+    text-align: center;
+  }
+  #statpage aside .statbutton{
+    margin-top: 4px;
+  }
+
+
+  aside p {
+    margin-top: 20px;
+    color: #404040 !important;
+    margin-bottom: 0px;
+  }
+  aside br {
+    display: none;
+  }
+  #content {
+    width: 100% !important;
+  }
+  header #logo {
+    background-image: url(../img/logo-medium.png);
+    width: 205px;
+  }
+  .tab #content {
+    min-height: 200px;
+  }
+  .tab #content h4 {
+    padding-top: 0;
+  }
+
+
+  #savebutton,
+  #printbutton,
+  #candidatebutton,
+  #votebutton {
+    width: 40%;
+    margin-left: 30%;
+    margin-right: 30%;
+  }
+}
+
+@media screen and (max-width: 630px) {
+  header #logo {
+    background-image: url(../img/logo-small.png);
+    width: 41px;
+  }
+  #statpage aside {
+    width: 60% !important;
+    margin-left: 20%;
+    margin-right: 20%;
+  }
+
+  #radioboxes {
+    height: auto;
+    width: 100% !important;
+  }
+  #advanced_search>li:nth-child(1){
+    width: 100%;
+  }
+  #advanced_search>li:nth-child(2){
+    padding-top: 10px;
+    width: 49%;
+  }
+  #advanced_search>li:nth-child(3){
+    padding-top: 10px;
+    width: 50%;
+  }
+  #advanced_search>li:nth-child(1)>ul li {
+    display: inline-block;
+    padding: 5px;
+  }
+  #profile h1{
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  #wrapper {
+    margin-right: 0;
+    margin-left: 0;
+  }
+  p#username {
+    min-width: 320px;
+    width: 100%;
+    text-align: center;
+  }
+  #statpage aside {
+    width: 100% !important;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  header {
+    width: 100%;
+  }
+  header #logo {
+    position: relative;
+    background-image: url(../img/logo-medium.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    margin: 0 0 10px 0;
+  }
+  header nav ul {
+    min-width: 320px;
+    width: 100%;
+    text-align: center;
+  }
+  header nav ul li {
+    white-space: nowrap;
+    display: inline;
+    list-style-type: none;
+    padding-left: 10px;
+    outline: none;
+  }
+  header nav ul li:first-child {
+    margin-left: 2px;
+  }
+  header nav ul li:last-child{
+    padding-right: 2px;
+  }
+  #checkboxes{
+    height: 100%;
+  }
+  #advanced_search>li:nth-child(2){
+    width: 100%;
+  }
+  #advanced_search>li:nth-child(3){
+    width: 100%;
+  }
+  #savebutton,
+  #printbutton,
+  #candidatebutton,
+  #votebutton {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  #printbutton{
+    padding: 2px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  #highlight{
+    width: 320px;
+  }
+  #wrapper{
+    width: 320px;
+  }
+  header #logo {
+    width: 320px;
+  }
 }

@@ -39,13 +39,12 @@
 					<li><a href="#votepage">Hääleta</a></li>
 					<li><a href="#applypage">Kandideeri</a></li>
 					<li><a href="#statpage">Statistika</a></li>
-					<li><a href="#profilepage">Minu Andmed</a></li>
-					<li><a>Logi välja</a></li>
+					<li><a href="#profilepage">Profiil</a></li>
+					<li><a href="">Logi välja</a></li>
 				</ul>
 			</nav>
-			<canvas id="highlight"></canvas>
 		</header><!-- header -->
-
+		<canvas id="highlight"></canvas>
 
 
 
@@ -99,26 +98,26 @@
 						<h5>Kandidaadid:</h5>
 						<div id="results_wrapper">
 							<ul id="results">
-								<li><a href="#">Ashlyn Gilbreath</a></li>
-								<li><a href="#">Sherwood Odwyer</a></li>
-								<li><a href="#">June Burkhard</a></li>
-								<li><a href="#">Bibi Viruet</a></li>
-								<li><a href="#">Blake Hales</a></li>
-								<li><a href="#">Lisandra Krieger</a></li>
-								<li><a href="#">Elvis Tift</a></li>
-								<li><a href="#">Gabriela Peebles</a></li>
-								<li><a href="#">Kandy Gardner</a></li>
-								<li><a href="#">Sha Palko</a></li>
-								<li><a href="#">Tommie Neel</a></li>
-								<li><a href="#">Jonathon Speidel</a></li>
-								<li><a href="#">Hal Blanche</a></li>
-								<li><a href="#">Shawanna Helstrom</a></li>
-								<li><a href="#">Dianna Frazee</a></li>
-								<li><a href="#">Cathrine Cruze</a></li>
-								<li><a href="#">Esmeralda Dahlquist</a></li>
-								<li><a href="#">Darby Frankel</a></li>
-								<li><a href="#">Joeann Vert</a></li>
-								<li><a href="#">Kraig Hadsell</a></li>
+								<li><a href="">Ashlyn Gilbreath</a></li>
+								<li><a href="">Sherwood Odwyer</a></li>
+								<li><a href="">June Burkhard</a></li>
+								<li><a href="">Bibi Viruet</a></li>
+								<li><a href="">Blake Hales</a></li>
+								<li><a href="">Lisandra Krieger</a></li>
+								<li><a href="">Elvis Tift</a></li>
+								<li><a href="">Gabriela Peebles</a></li>
+								<li><a href="">Kandy Gardner</a></li>
+								<li><a href="">Sha Palko</a></li>
+								<li><a href="">Tommie Neel</a></li>
+								<li><a href="">Jonathon Speidel</a></li>
+								<li><a href="">Hal Blanche</a></li>
+								<li><a href="">Shawanna Helstrom</a></li>
+								<li><a href="">Dianna Frazee</a></li>
+								<li><a href="">Cathrine Cruze</a></li>
+								<li><a href="">Esmeralda Dahlquist</a></li>
+								<li><a href="">Darby Frankel</a></li>
+								<li><a href="">Joeann Vert</a></li>
+								<li><a href="">Kraig Hadsell</a></li>
 							</ul>
 						</div>
 					</li>
@@ -137,9 +136,9 @@
 							<h4>Lorem Ipsum</h4>
 							<p>Aenean id nisi id justo posuere bibendum eu et nulla. Suspendisse hendrerit massa vel orci luctus rutrum vestibulum nisi lacinia. Mauris feugiat convallis porta. Nunc in scelerisque orci. Mauris pulvinar laoreet tortor, ut faucibus tellus porta in. In accumsan nisl quis nunc laoreet ut aliquet risus adipiscing. Duis vitae ligula ac massa gravida aliquet. Duis malesuada mollis urna, a sagittis risus gravida ac. Morbi ultricies diam et purus iaculis non rhoncus purus tincidunt.</p>
 						</div> 
-						<a href="" id="votebutton" class="button">Hääleta!</a>
 					</li>
 				</ul>
+				<a href="" id="votebutton" class="button">Hääleta!</a>
 			</div><!-- content -->
 		</div><!-- votepage -->
 
@@ -165,12 +164,18 @@
 
 				<h4>Kandidaat</h4>
 				<p><a href="./doc/kandidaadi_ankeet.pdf">Tõmba kandidaadi ankeet alla siit.</a><br/> 
-					Vali täidetud ja digiallkirjastatud kandidaadi_ankeet:<br /> <input type="file" name="kandidaadi_ankeet">
+					Vali täidetud ja digiallkirjastatud kandidaadi_ankeet:<br /> 
+					<input type="file" name="kandidaadi_ankeet">
 				</p>
 
-				<div class="custom-checkbox"><input type="checkbox"><span><a href="#">Nõustun tingimustega.</a></span></div>
+				<div class="custom-checkbox">
+					<h4>Tingimused</h4>
+					<p>
+						<label><input type="checkbox"><span>Nõustun<a href="">"kandideerimise tingimustega"</a></label>.</span>
+					</p>
+				</div>
 
-				<a href="#" id="candidatebutton" class="button">Kandideeri!</a>
+				<a href="" id="candidatebutton" class="button">Kandideeri!</a>
 			</div><!--content-->
 		</div><!--applypage-->
 
@@ -254,7 +259,7 @@
 
 				<div id="riikstat-content" class="switcher-content">
 					<h4 class="content_heading">Riigi lõikes</h4>
-					<img src="./img/Eesti_maakonnad.png" alt="Eesti maakonnad" width="600" width="500"> 
+					<img src="./img/Eesti_maakonnad.png" alt="Eesti maakonnad" id="statimg" width="600" width="500"> 
 					<a onClick="window.print()" id="printbutton" class="button">Prindi statistika</a>
 				</div><!-- riikstat-content -->
 
@@ -275,49 +280,53 @@
 			</aside>
 			<div id="content">
 				<h4 class="content_heading">Minu Andmed</h4>
-				<div id="left_column">
-					Eesnimi: <input type="text" name="fname"><br /> Perenimi: <input
-					type="text" name="lname"><br> Vanus: <input
-					type="text" name="age"><br> Valimispiirkond: 
-					<select>
-						<option value="" disabled="disabled" selected="selected">Vali valimisringkond</option>
-						<option value="1">1 – Tallinna Haabersti, Põhja-Tallinna ja Kristiine linnaosa</option>
-						<option value="2">2 – Tallinna Kesklinna, Lasnamäe ja Pirita linnaosa</option>
-						<option value="3">3 – Tallinna Mustamäe ja Nõmme linnaosa</option>
-						<option value="4">4 – Harju- (v.a Tallinn) ja Raplamaa</option>
-						<option value="5">5 – Hiiu-, Lääne- ja Saaremaa</option>
-						<option value="6">6 – Lääne-Virumaa</option>
-						<option value="7">7 – Ida-Virumaa</option>
-						<option value="8">8 – Järva- ja Viljandimaa</option>
-						<option value="9">9 – Jõgeva- ja Tartumaa (v.a Tartu linn)</option>
-						<option value="10">10 – Tartu linn</option>
-						<option value="11">11 – Võru-, Valga- ja Põlvamaa</option>
-						<option value="12">12 – Pärnumaa</option>
-					</select><br> 
-					E-mail: <input type="text" name="email"><br>
-					Isikukood: <input type="text" name="secnr"><br>
-					<div id="votedfor">
-						<h4>Sinu hääl</h4>
-						<p><b>Kandidaat:</b> <a href="#">Artur Käpp</a><a href="#"><img src="./img/cross_remove.png"></a>
-						</p>
-					</div>
-				</div><!-- left_column -->
-				<div id="right_column">
-					<ul>
-						<li><img src="./img/avatar.jpg" id="avatar"></li>
-						<li><p id="error">Pilt on kandideerimiseks vajalik!</p></li>
-						<li><a href="#">Muuda pilti!</a></li>
-					</ul>
-					<div id="mystatus">
-						<h4>Kandidatuur</h4>
-						<table>
-							<tr><td width="100"><b>Staatus</b></td><td width="150">Kandideerinud</td></tr>
-							<tr><td><b>Erakond</b></td><td>Üksikkandidaat</td></tr>
-							<tr><td><b>Valimispiirkond</b></td><td>1. Tallinna Haabersti, Põhja-Tallinna ja Kristiine linnaosa</td></tr>
-							<tr><td><b>Häälte arv</b></td><td>2324</td></tr>
-						</table>
-					</div>
-				</div><!-- right_column -->
+				<div id="my_data">
+					<div id="avatar_block">
+						
+						<p><img src="./img/avatar.jpg"></p>
+						<p id="error">Pilt on kandideerimiseks vajalik!</p>
+						<p><a href="">Muuda pilti!</a></p>
+
+					</div><!-- avatar_block -->
+					<div id="my_data_block">
+						<label>Eesnimi:</label><input type="text" name="fname"><br /> 
+						<label>Perenimi:</label><input type="text" name="lname"><br /> 
+						<label>Vanus:</label><input type="text" name="age"><br /> 
+						<label>Valimispiirkond:</label>
+						<select>
+							<option value="" disabled="disabled" selected="selected">Vali valimisringkond</option>
+							<option value="1">1 – Tallinna Haabersti, Põhja-Tallinna ja Kristiine linnaosa</option>
+							<option value="2">2 – Tallinna Kesklinna, Lasnamäe ja Pirita linnaosa</option>
+							<option value="3">3 – Tallinna Mustamäe ja Nõmme linnaosa</option>
+							<option value="4">4 – Harju- (v.a Tallinn) ja Raplamaa</option>
+							<option value="5">5 – Hiiu-, Lääne- ja Saaremaa</option>
+							<option value="6">6 – Lääne-Virumaa</option>
+							<option value="7">7 – Ida-Virumaa</option>
+							<option value="8">8 – Järva- ja Viljandimaa</option>
+							<option value="9">9 – Jõgeva- ja Tartumaa (v.a Tartu linn)</option>
+							<option value="10">10 – Tartu linn</option>
+							<option value="11">11 – Võru-, Valga- ja Põlvamaa</option>
+							<option value="12">12 – Pärnumaa</option>
+						</select><br> 
+						<label>E-mail:</label><input type="text" name="email"><br>
+						<label>Isikukood:</label><input type="text" name="secnr"><br>
+					</div><!-- my_data_block -->
+				</div><!-- my_data -->
+				<div id="votedfor">
+					<h4>Sinu hääl</h4>
+					<p><b>Kandidaat:</b> <a href="">Artur Käpp</a><a href=""><img src="./img/cross_remove.png"></a>
+					</p>
+				</div>
+				<div id="mystatus">
+					<h4>Kandidatuur</h4>
+					<table>
+						<tr><td width="100"><b>Staatus</b></td><td width="150">Kandideerinud</td></tr>
+						<tr><td><b>Erakond</b></td><td>Üksikkandidaat</td></tr>
+						<tr><td><b>Valimispiirkond</b></td><td>1. Tallinna Haabersti, Põhja-Tallinna ja Kristiine linnaosa</td></tr>
+						<tr><td><b>Häälte arv</b></td><td>2324</td></tr>
+					</table>
+				</div>
+				<a href="" id="savebutton" class="button">Salvesta!</a>
 			</div><!-- content -->
 		</div><!-- profilepage -->
 
