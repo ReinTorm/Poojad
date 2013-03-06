@@ -9,6 +9,7 @@
 	<script type='text/javascript' src='js/jquery.content-panel-switcher.js'></script> 
 	<script src="js/jquery-1.8.3.js"></script>
 	<script src="js/jquery-ui-1.9.2.custom.js"></script>
+	<script type='text/javascript' charset='utf-8' src='js/popbox.js'></script>
 
 	<script type='text/javascript'>
 	$(document).ready(function() {
@@ -26,13 +27,16 @@
 		};
 		$('nav li a').click(myTabActions);
 		$(window).bind('hashchange', myTabActions);
+
+		$('.popbox').popbox();
+
 	});
 	</script>
 
 </head>
 <body>
 	<div id="wrapper">
-		<header><a href="index.html" id="logo"></a>
+		<header><a href="javascript:void(0);" id="logo"></a>
 			<p id="username">Tere, Kalle Blomkvist!</p>
 			<nav >
 				<ul>
@@ -40,7 +44,7 @@
 					<li><a href="#applypage">Kandideeri</a></li>
 					<li><a href="#statpage">Statistika</a></li>
 					<li><a href="#profilepage">Profiil</a></li>
-					<li><a href="">Logi välja</a></li>
+					<li><a href="javascript:void(0);">Logi välja</a></li>
 				</ul>
 			</nav>
 		</header><!-- header -->
@@ -98,26 +102,26 @@
 						<h5>Kandidaadid:</h5>
 						<div id="results_wrapper">
 							<ul id="results">
-								<li><a href="">Ashlyn Gilbreath</a></li>
-								<li><a href="">Sherwood Odwyer</a></li>
-								<li><a href="">June Burkhard</a></li>
-								<li><a href="">Bibi Viruet</a></li>
-								<li><a href="">Blake Hales</a></li>
-								<li><a href="">Lisandra Krieger</a></li>
-								<li><a href="">Elvis Tift</a></li>
-								<li><a href="">Gabriela Peebles</a></li>
-								<li><a href="">Kandy Gardner</a></li>
-								<li><a href="">Sha Palko</a></li>
-								<li><a href="">Tommie Neel</a></li>
-								<li><a href="">Jonathon Speidel</a></li>
-								<li><a href="">Hal Blanche</a></li>
-								<li><a href="">Shawanna Helstrom</a></li>
-								<li><a href="">Dianna Frazee</a></li>
-								<li><a href="">Cathrine Cruze</a></li>
-								<li><a href="">Esmeralda Dahlquist</a></li>
-								<li><a href="">Darby Frankel</a></li>
-								<li><a href="">Joeann Vert</a></li>
-								<li><a href="">Kraig Hadsell</a></li>
+								<li><a href="javascript:void(0);">Ashlyn Gilbreath</a></li>
+								<li><a href="javascript:void(0);">Sherwood Odwyer</a></li>
+								<li><a href="javascript:void(0);">June Burkhard</a></li>
+								<li><a href="javascript:void(0);">Bibi Viruet</a></li>
+								<li><a href="javascript:void(0);">Blake Hales</a></li>
+								<li><a href="javascript:void(0);">Lisandra Krieger</a></li>
+								<li><a href="javascript:void(0);">Elvis Tift</a></li>
+								<li><a href="javascript:void(0);">Gabriela Peebles</a></li>
+								<li><a href="javascript:void(0);">Kandy Gardner</a></li>
+								<li><a href="javascript:void(0);">Sha Palko</a></li>
+								<li><a href="javascript:void(0);">Tommie Neel</a></li>
+								<li><a href="javascript:void(0);">Jonathon Speidel</a></li>
+								<li><a href="javascript:void(0);">Hal Blanche</a></li>
+								<li><a href="javascript:void(0);">Shawanna Helstrom</a></li>
+								<li><a href="javascript:void(0);">Dianna Frazee</a></li>
+								<li><a href="javascript:void(0);">Cathrine Cruze</a></li>
+								<li><a href="javascript:void(0);">Esmeralda Dahlquist</a></li>
+								<li><a href="javascript:void(0);">Darby Frankel</a></li>
+								<li><a href="javascript:void(0);">Joeann Vert</a></li>
+								<li><a href="javascript:void(0);">Kraig Hadsell</a></li>
 							</ul>
 						</div>
 					</li>
@@ -138,7 +142,7 @@
 						</div> 
 					</li>
 				</ul>
-				<a href="" id="votebutton" class="button">Hääleta!</a>
+				<a href="javascript:void(0);" id="votebutton" class="button">Hääleta!</a>
 			</div><!-- content -->
 		</div><!-- votepage -->
 
@@ -156,26 +160,80 @@
 			<div id="content">
 				<h4 class="content_heading">Kandideerimine</h4>
 
+
+
+
 				<h4>Kandideerimisavaldus</h4>
-				<p><a href="./doc/kandideerimisavaldus.pdf">Tõmba kandideerimisavaldus alla siit.</a><br/> 
-					Vali täidetud ja digiallkirjastatud kandideerimisavaldus:<br/> 
+				<div class='popbox' id="kandideerimisavaldus">
+					<a class='open' href='javascript:void(0);'><b>Kandideerimisavalduse saad siit!</b></a>
+					<div class='box'>
+						<form action="" method="post" id="subForm">
+							<h4>Kandidaadeerimisavaldus</h4>
+							<p>Mina, <b>Kalle Blomkvist</b>, soovin kandideerida <input type="text" name="date" placeholder="Kuupäev" /></p>
+							<p>toimuvatel Riigikogu valimistel valimisringkonnas nr: <input type="text" name="number" /></p>
+							<p> 
+								<input type="text" name="partyName" placeholder="Erakonna nimi"/>
+								<select><option value="unlisted">Üksikkandidaadina</option><option value="listed">Nimekirjas</option></select>
+							</p>
+							<h5>Kinnita, et vastan järgmistele Riigikogu valimise seaduses Riigikogu liikme kandidaadile esitatud nõuetele:</h5>
+							<p>
+								<ul>
+									<li>Olen Eesti kodanik</li>
+									<li>Olen kandidaatide registreerimise viimaseks päevaks saanud 21-aastaseks</li>
+									<li>Mind ei ole valimis]iguse osas tunnistatud teovõimetuks</li>
+									<li>Mind ei ole kohtu poolt süüdi mõistetud kuriteos ja ma ei kanna vanlakaristust</li>
+									<li>Ma ei ole kaadrikaitseväelane</li>
+									<li>Ma ei ole teise erakonna liige *</li>
+									<li>Olen registreerimiseks esitatud ainult ühes valimisringkonnas</li>
+									<li>Ma ei kandideeri samaaegselt erakonna nimekirjas ja üksikkandidaadina</li>
+									<li>Kandideerin ainult ühe erakonna kandidaatide nimekirjas *</li>
+								</ul>
+							</p>
+							<p><small>* - Ei kehti üksikkandidaadi kohta</small></p>
+							<a href="javascript:void(0);" class="close button" id="marginFixer">Laadi alla PDF</a>
+							<a href="javascript:void(0);" class="close button">Katkesta</a>
+						</form>
+					</div>
+				</div>
+				<p>Digiallkirjastatud kandideerimisavaldus:<br/> 
 					<input type="file" name="kandideerimisavaldus">
 				</p>
 
 				<h4>Kandidaat</h4>
-				<p><a href="./doc/kandidaadi_ankeet.pdf">Tõmba kandidaadi ankeet alla siit.</a><br/> 
-					Vali täidetud ja digiallkirjastatud kandidaadi_ankeet:<br /> 
+				<div class='popbox'>
+					<a class='open' href='javascript:void(0);'><b>Kandidaadi ankeedi saad siit!</b></a>
+					<div class='box'>
+						<form action="" method="post" id="subForm">
+							<h4>Kandidaadi ankeet</h4>
+							<p>* märgistatud väljad on kohustuslikud</p>
+							<input type="text" placeholder="Eesnimi *"/>
+							<input type="text" placeholder="Perekonnanimi *" />
+							<input type="text" placeholder="Isikukood *" />
+							<input type="text" placeholder="Erakondlik kuuluvus *" />
+							<input type="text" placeholder="Elukoha aadress *" />
+							<input type="text" placeholder="Mobiil" />
+							<input type="text" placeholder="Sünnikoht" />
+							<textarea type="text" placeholder="Haridus ja eriala ning õppeasutuse nimetus ja lõpetamise aeg" /></textarea>
+							<input type="text" placeholder="Teaduskraad" />
+							<input type="text" placeholder="Töökoht" />
+							<input type="text" placeholder="Amet" />
+							<a href="javascript:void(0);" class="close button" id="marginFixer">Laadi alla PDF</a>
+							<a href="javascript:void(0);" class="close button">Katkesta</a>
+						</form>
+					</div>
+				</div>
+				<p>Digiallkirjastatud kandidaadi ankeet:<br /> 
 					<input type="file" name="kandidaadi_ankeet">
 				</p>
 
 				<div class="custom-checkbox">
 					<h4>Tingimused</h4>
 					<p>
-						<label><input type="checkbox"><span>Nõustun<a href="">"kandideerimise tingimustega"</a></label>.</span>
+						<label><input type="checkbox"><span>Olen tutvunud <b><a href="javascript:void(0);">"kandideerimise tingimustega"</a></b></label>.</span>
 					</p>
 				</div>
 
-				<a href="" id="candidatebutton" class="button">Kandideeri!</a>
+				<a href="javascript:void(0);" id="candidatebutton" class="button">Kandideeri!</a>
 			</div><!--content-->
 		</div><!--applypage-->
 
@@ -282,10 +340,10 @@
 				<h4 class="content_heading">Minu Andmed</h4>
 				<div id="my_data">
 					<div id="avatar_block">
-						
+
 						<p><img src="./img/avatar.jpg"></p>
 						<p id="error">Pilt on kandideerimiseks vajalik!</p>
-						<p><a href="">Muuda pilti!</a></p>
+						<p><a href="javascript:void(0);">Muuda pilti!</a></p>
 
 					</div><!-- avatar_block -->
 					<div id="my_data_block">
@@ -314,7 +372,7 @@
 				</div><!-- my_data -->
 				<div id="votedfor">
 					<h4>Sinu hääl</h4>
-					<p><b>Kandidaat:</b> <a href="">Artur Käpp</a><a href=""><img src="./img/cross_remove.png"></a>
+					<p><b>Kandidaat:</b> <a href="javascript:void(0);">Artur Käpp</a><a href="javascript:void(0);"><img src="./img/cross_remove.png"></a>
 					</p>
 				</div>
 				<div id="mystatus">
@@ -326,7 +384,7 @@
 						<tr><td><b>Häälte arv</b></td><td>2324</td></tr>
 					</table>
 				</div>
-				<a href="" id="savebutton" class="button">Salvesta!</a>
+				<a href="javascript:void(0);" id="savebutton" class="button">Salvesta!</a>
 			</div><!-- content -->
 		</div><!-- profilepage -->
 
