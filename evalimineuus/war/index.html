@@ -167,7 +167,7 @@
 				<div class='popbox' id="kandideerimisavaldus">
 					<a class='open' href='javascript:void(0);'><b>Kandideerimisavalduse saad siit!</b></a>
 					<div class='box'>
-						<form action="" method="post" id="subForm">
+						<form action="/submittedData" method="post" id="subForm">
 							<h4>Kandidaadeerimisavaldus</h4>
 							<p>Mina, <b>Kalle Blomkvist</b>, soovin kandideerida <input type="text" name="date" placeholder="Kuupäev" /></p>
 							<p>toimuvatel Riigikogu valimistel valimisringkonnas nr: <input type="text" name="number" /></p>
@@ -190,7 +190,7 @@
 								</ul>
 							</p>
 							<p><small>* - Ei kehti üksikkandidaadi kohta</small></p>
-							<a href="javascript:void(0);" class="close button" id="marginFixer">Laadi alla PDF</a>
+							<a href="javascript:void(0);" onclick="$(this).closest('form').submit();" class="close button" id="marginFixer">Laadi alla PDF</a>
 							<a href="javascript:void(0);" class="close button">Katkesta</a>
 						</form>
 					</div>
@@ -203,21 +203,21 @@
 				<div class='popbox'>
 					<a class='open' href='javascript:void(0);'><b>Kandidaadi ankeedi saad siit!</b></a>
 					<div class='box'>
-						<form action="" method="post" id="subForm">
+						<form action="/submittedData" method="POST" id="canditFields">
 							<h4>Kandidaadi ankeet</h4>
 							<p>* märgistatud väljad on kohustuslikud</p>
-							<input type="text" placeholder="Eesnimi *"/>
-							<input type="text" placeholder="Perekonnanimi *" />
-							<input type="text" placeholder="Isikukood *" />
-							<input type="text" placeholder="Erakondlik kuuluvus *" />
-							<input type="text" placeholder="Elukoha aadress *" />
-							<input type="text" placeholder="Mobiil" />
-							<input type="text" placeholder="Sünnikoht" />
-							<textarea placeholder="Haridus ja eriala ning õppeasutuse nimetus ja lõpetamise aeg" /></textarea>
-							<input type="text" placeholder="Teaduskraad" />
-							<input type="text" placeholder="Töökoht" />
-							<input type="text" placeholder="Amet" />
-							<a href="javascript:void(0);" class="close button" id="marginFixer">Laadi alla PDF</a>
+							<input type="text" name="fname" placeholder="Eesnimi *" />
+							<input type="text" name="lname" placeholder="Perekonnanimi *" />
+							<input type="text" name="socnumber" placeholder="Isikukood *" />
+							<input type="text" name="party" placeholder="Erakondlik kuuluvus *" />
+							<input type="text" name="address" placeholder="Elukoha aadress *" />
+							<input type="text" name="phone" placeholder="Mobiil" />
+							<input type="text" name="pob" placeholder="Sünnikoht" />
+							<textarea name="education" placeholder="Haridus ja eriala ning õppeasutuse nimetus ja lõpetamise aeg"></textarea>
+							<input type="text" name="degree" placeholder="Teaduskraad" />
+							<input type="text" name="workp" placeholder="Töökoht" />
+							<input type="text" name="job" placeholder="Amet" />
+							<a href="javascript:void(0);" onclick="$(this).closest('form').submit();" class="close button" id="marginFixer">Laadi alla PDF</a>
 							<a href="javascript:void(0);" class="close button">Katkesta</a>
 						</form>
 					</div>
