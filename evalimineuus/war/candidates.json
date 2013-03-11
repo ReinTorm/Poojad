@@ -4,9 +4,10 @@
 		"person" : {
 			"name" : "Mihkel Visnapuu",
 			"age" : "20",
-			"id" : "12345",
-			"party" : "-",	
-			"constituency" : "Tartumaa",
+			"id" : "1",
+			"party" : "-",
+			"constituency_nr" : "10",
+			"constituency" : "Tartu linn",
 			"facebook" : "www.facebook.com/mihkelvis",
 			"skype" : "mvisna",
 			"other" : "-",
@@ -17,11 +18,12 @@
 	}, {
 		"id" : "2222",
 		"person" : {
-			"name" : "Artur K√§pp",
+			"name" : "Artur K‰pp",
 			"age" : "25",
-			"id" : "1234",
+			"id" : "2",
 			"party" : "-",
-			"constituency" : "Tartumaa",
+			"constituency_nr" : "10",
+			"constituency" : "Tartu linn",
 			"facebook" : "www.facebook.com/ArturKp",
 			"skype" : "MinaOlenArturKp",
 			"other" : "-",
@@ -34,9 +36,10 @@
 		"person" : {
 			"name" : "Rein Torm",
 			"age" : "21",
-			"id" : "123456",
-			"party" : "-",	
-			"constituency" : "Tartumaa",
+			"id" : "3",
+			"party" : "-",
+			"constituency_nr" : "10",
+			"constituency" : "Tartu linn",
 			"facebook" : "www.facebook.com/rein.torm",
 			"skype" : "rein_torm",
 			"other" : "-",
@@ -44,6 +47,54 @@
 			"stext" : "Aenean id nisi id justo posuere bibendum eu et nulla. Suspendisse hendrerit massa vel orci luctus rutrum vestibulum nisi lacinia.",
 			"ltext" : "Aenean id nisi id justo posuere bibendum eu et nulla. Suspendisse hendrerit massa vel orci luctus rutrum vestibulum nisi lacinia. Mauris feugiat convallis porta. Nunc in scelerisque orci. Mauris pulvinar laoreet tortor, ut faucibus tellus porta in. In accumsan nisl quis nunc laoreet ut aliquet risus adipiscing. Duis vitae ligula ac massa gravida aliquet. Duis malesuada mollis urna, a sagittis risus gravida ac. Morbi ultricies diam et purus iaculis non rhoncus purus tincidunt."
 		}
-	}
+	}, {
+		"id" : "4444",
+		"person" : {
+			"name" : "Tınu Tallinnast",
+			"age" : "21",
+			"id" : "4",
+			"party" : "Eesti Keskerakond",
+			"constituency_nr" : "1",
+			"constituency" : "Tallinna Haabersti, Pıhja-Tallinna ja Kristiine linnaosa",
+			"facebook" : "www.facebook.com/MinaOlenTınuTallinast",
+			"skype" : "jou_qttid_mis_teete",
+			"other" : "-",
+			
+			"stext" : "Aenean id nisi id justo posuere bibendum eu et nulla. Suspendisse hendrerit massa vel orci luctus rutrum vestibulum nisi lacinia.",
+			"ltext" : "Aenean id nisi id justo posuere bibendum eu et nulla. Suspendisse hendrerit massa vel orci luctus rutrum vestibulum nisi lacinia. Mauris feugiat convallis porta. Nunc in scelerisque orci. Mauris pulvinar laoreet tortor, ut faucibus tellus porta in. In accumsan nisl quis nunc laoreet ut aliquet risus adipiscing. Duis vitae ligula ac massa gravida aliquet. Duis malesuada mollis urna, a sagittis risus gravida ac. Morbi ultricies diam et purus iaculis non rhoncus purus tincidunt."
+		}
+	}, {
+		"id" : "5555",
+		"person" : {
+			"name" : "Urma Tallinnast",
+			"age" : "21",
+			"id" : "5",
+			"party" : "Sotsiaaldemokraatlik Erakond",
+			"constituency_nr" : "1",
+			"constituency" : "Tallinna Haabersti, Pıhja-Tallinna ja Kristiine linnaosa",
+			"facebook" : "www.facebook.com/MinaOlenUrmaTallinast",
+			"skype" : "urmaaaaa",
+			"other" : "-",
+			
+			"stext" : "Aenean id nisi id justo posuere bibendum eu et nulla. Suspendisse hendrerit massa vel orci luctus rutrum vestibulum nisi lacinia.",
+			"ltext" : "Aenean id nisi id justo posuere bibendum eu et nulla. Suspendisse hendrerit massa vel orci luctus rutrum vestibulum nisi lacinia. Mauris feugiat convallis porta. Nunc in scelerisque orci. Mauris pulvinar laoreet tortor, ut faucibus tellus porta in. In accumsan nisl quis nunc laoreet ut aliquet risus adipiscing. Duis vitae ligula ac massa gravida aliquet. Duis malesuada mollis urna, a sagittis risus gravida ac. Morbi ultricies diam et purus iaculis non rhoncus purus tincidunt."
+		}
+	}, {
+		"id" : "6666",
+		"person" : {
+			"name" : "Sjeen Saaremaalt",
+			"age" : "21",
+			"id" : "6",
+			"party" : "-",	
+			"constituency_nr" : "5",
+			"constituency" : "Hiiu-, L‰‰ne- ja Saaremaa",
+			"facebook" : "www.facebook.com/MinaOlenSjeenSaaremaalt",
+			"skype" : "seenemets",
+			"other" : "-",
+			
+			"stext" : "Aenean id nisi id justo posuere bibendum eu et nulla. Suspendisse hendrerit massa vel orci luctus rutrum vestibulum nisi lacinia.",
+			"ltext" : "Aenean id nisi id justo posuere bibendum eu et nulla. Suspendisse hendrerit massa vel orci luctus rutrum vestibulum nisi lacinia. Mauris feugiat convallis porta. Nunc in scelerisque orci. Mauris pulvinar laoreet tortor, ut faucibus tellus porta in. In accumsan nisl quis nunc laoreet ut aliquet risus adipiscing. Duis vitae ligula ac massa gravida aliquet. Duis malesuada mollis urna, a sagittis risus gravida ac. Morbi ultricies diam et purus iaculis non rhoncus purus tincidunt."
+		}
+	}	
 	]
 }

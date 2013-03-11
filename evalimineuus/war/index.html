@@ -9,6 +9,7 @@
 <script type='text/javascript' src='js/jquery.content-panel-switcher.js'></script> 
 <script src="js/jquery-1.8.3.js"></script>
 <script src="js/jquery-ui-1.9.2.custom.js"></script>
+<script src="js/sorttable.js"></script>
 <script type='text/javascript' charset='utf-8' src='js/popbox.js'></script>
 
 <script type='text/javascript'>
@@ -130,8 +131,51 @@ $(document).ready(function() {
 		$(this).removeClass('errorField');
 	});
 	
-//JSON värk//	
-	//var kandidaat = [];
+	$('#radioboxes').on('change', function(){
+	var current_radio = $(':checked',this).val();		
+	$('#results').html("");		
+		$.getJSON('candidates.json', function(data) {			
+			for(i=0, l=data.candidates.length; i<l; ++i){
+				if (current_radio != 0){
+					if (current_radio == data.candidates[i].person.constituency_nr){
+						$('#results').append(
+							'<li><a href="javascript:previewCandidate(\''
+							+data.candidates[i].id+'\')">'+data.candidates[i].person.name+"</a></li>\n"
+						);
+					}
+				} else{
+					$('#results').append(
+						'<li><a href="javascript:previewCandidate(\''
+						+data.candidates[i].id+'\')">'+data.candidates[i].person.name+"</a></li>\n"
+					);					
+				}
+			}
+		});		
+	});
+
+	$('input:checkbox').live('change', function(){
+		var current_check = $(this).val();
+		if($(this).is(':checked')){		
+			$('#results').html("");		
+			$.getJSON('candidates.json', function(data) {				
+				for(i=0, l=data.candidates.length; i<l; ++i){
+					if (current_check == data.candidates[i].person.party){
+						$('#results').append(
+							'<li><a href="javascript:previewCandidate(\''
+							+data.candidates[i].id+'\')">'+data.candidates[i].person.name+"</a></li>\n"
+						);
+					}
+				} 
+			});
+		} else {
+			$('#results').append(
+				'<li><a href="javascript:previewCandidate(\''
+				+data.candidates[i].id+'\')">'+data.candidates[i].person.name+"</a></li>\n"
+			);
+		}
+	});
+	
+	//var kandidaat = []; //võibolla on mõistlik tekitada üks järjend kandidaatidest ja nende infost, mitte kutsuda .getJSONi esile pidevalt?
 	$.getJSON('candidates.json', function(data) {		
 		for(i=0, l=data.candidates.length; i<l; ++i){
 			//kandidaat.push(data.candidates[i]);
@@ -208,35 +252,36 @@ function previewCandidate(candidateId) {
 					<li>
 						<h5>Valimisringkond:</h5>
 						<ul id="radioboxes" class="custom-radiobox">
-							<li><label><input type="radio" name="ringkond" /><span>1</span></label></li>
-							<li><label><input type="radio" name="ringkond" /><span>2</span></label></li>
-							<li><label><input type="radio" name="ringkond" /><span>3</span></label></li>
-							<li><label><input type="radio" name="ringkond" /><span>4</span></label></li>
-							<li><label><input type="radio" name="ringkond" /><span>5</span></label></li>
-							<li><label><input type="radio" name="ringkond" /><span>6</span></label></li>
-							<li><label><input type="radio" name="ringkond" /><span>7</span></label></li>
-							<li><label><input type="radio" name="ringkond" /><span>8</span></label></li>
-							<li><label><input type="radio" name="ringkond" /><span>9</span></label></li>
-							<li><label><input type="radio" name="ringkond" /><span>10</span></label></li>
-							<li><label><input type="radio" name="ringkond" /><span>11</span></label></li>
-							<li><label><input type="radio" name="ringkond" /><span>12</span></label></li>
+							<li><label><input type="radio" name="ringkond" value="0"/><span>Kõik</span></label></li>
+							<li><label><input type="radio" name="ringkond" value="1"/><span>1 Tallinn</span></label></li>
+							<li><label><input type="radio" name="ringkond" value="2"/><span>2</span></label></li>
+							<li><label><input type="radio" name="ringkond" value="3"/><span>3</span></label></li>
+							<li><label><input type="radio" name="ringkond" value="4"/><span>4</span></label></li>
+							<li><label><input type="radio" name="ringkond" value="5"/><span>5 Saaremaa</span></label></li>
+							<li><label><input type="radio" name="ringkond" value="6"/><span>6</span></label></li>
+							<li><label><input type="radio" name="ringkond" value="7"/><span>7</span></label></li>
+							<li><label><input type="radio" name="ringkond" value="8"/><span>8</span></label></li>
+							<li><label><input type="radio" name="ringkond" value="9"/><span>9</span></label></li>
+							<li><label><input type="radio" name="ringkond" value="10"/><span>10 Tartu</span></label></li>
+							<li><label><input type="radio" name="ringkond" value="11"/><span>11</span></label></li>
+							<li><label><input type="radio" name="ringkond" value="12"/><span>12</span></label></li>
 						</ul>
 					</li>
 
 					<li>
 						<h5>Erakond:</h5>
 						<ul id="checkboxes" class="custom-checkbox">
-							<li><label><input type="checkbox" /><span>Eesti Iseseisvuspartei</span></label></li>
-							<li><label><input type="checkbox" /><span>Eesti Keskerakond</span></label></li>
-							<li><label><input type="checkbox" /><span>Eesti Konservatiivne Rahvaerakond</span></label></li>
-							<li><label><input type="checkbox" /><span>Eesti Reformierakond</span></label></li>
-							<li><label><input type="checkbox" /><span>Eesti Vabaduspartei – Põllumeeste Kogu</span></label></li>
-							<li><label><input type="checkbox" /><span>Eestimaa Ühendatud Vasakpartei</span></label></li>
-							<li><label><input type="checkbox" /><span>Erakond Eesti Kristlikud Demokraadid</span></label></li>
-							<li><label><input type="checkbox" /><span>Erakond Eestimaa Rohelised</span></label></li>
-							<li><label><input type="checkbox" /><span>Erakond Isamaa ja Res Publica Liit</span></label></li>
-							<li><label><input type="checkbox" /><span>Sotsiaaldemokraatlik Erakond</span></label></li>
-							<li><label><input type="checkbox" /><span>Üksikkandidaat</span></label></li>
+							<li><label><input type="checkbox" value="Eesti Iseseisvuspartei" /><span>Eesti Iseseisvuspartei</span></label></li>
+							<li><label><input type="checkbox" value="Eesti Keskerakond" /><span>Eesti Keskerakond</span></label></li>
+							<li><label><input type="checkbox" value="Eesti Konservatiivne Rahvaerakond" /><span>Eesti Konservatiivne Rahvaerakond</span></label></li>
+							<li><label><input type="checkbox" value="Eesti Reformierakond" /><span>Eesti Reformierakond</span></label></li>
+							<li><label><input type="checkbox" value="Eesti Vabaduspartei – Põllumeeste Kogu" /><span>Eesti Vabaduspartei – Põllumeeste Kogu</span></label></li>
+							<li><label><input type="checkbox" value="Eestimaa Ühendatud Vasakpartei" /><span>Eestimaa Ühendatud Vasakpartei</span></label></li>
+							<li><label><input type="checkbox" value="Erakond Eesti Kristlikud Demokraadid" /><span>Erakond Eesti Kristlikud Demokraadid</span></label></li>
+							<li><label><input type="checkbox" value="Erakond Eestimaa Rohelised" /><span>Erakond Eestimaa Rohelised</span></label></li>
+							<li><label><input type="checkbox" value="Erakond Isamaa ja Res Publica Liit" /><span>Erakond Isamaa ja Res Publica Liit</span></label></li>
+							<li><label><input type="checkbox" value="Sotsiaaldemokraatlik Erakond" /><span>Sotsiaaldemokraatlik Erakond</span></label></li>
+							<li><label><input type="checkbox" value="-" /><span>Üksikkandidaat</span></label></li>
 						</ul>
 					</li>
 					<li>
