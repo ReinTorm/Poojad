@@ -1,38 +1,137 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<title>eValimine</title>
-	<link rel="stylesheet" href="css/style.css">
+<meta charset="utf-8">
+<title>eValimine</title>
+<link rel="stylesheet" href="css/style.css">
 
-	<script type='text/javascript' src='js/jquery.js'></script>
-	<script type='text/javascript' src='js/jquery.content-panel-switcher.js'></script> 
-	<script src="js/jquery-1.8.3.js"></script>
-	<script src="js/jquery-ui-1.9.2.custom.js"></script>
-	<script type='text/javascript' charset='utf-8' src='js/popbox.js'></script>
+<script type='text/javascript' src='js/jquery.js'></script>
+<script type='text/javascript' src='js/jquery.content-panel-switcher.js'></script> 
+<script src="js/jquery-1.8.3.js"></script>
+<script src="js/jquery-ui-1.9.2.custom.js"></script>
+<script type='text/javascript' charset='utf-8' src='js/popbox.js'></script>
 
-	<script type='text/javascript'>
-	$(document).ready(function() {
-		jcps.fader(200, '#switcher-panel'); //statistika lehed
-		$( '#wrapper' ).tabs().bind( 'tabsshow', function(event, ui) { 
-			history.pushState(null, null, ui.tab.hash); //history #hashtag
-		});;
-		function myTabActions(){	//peidab kõik&kuvab õige, a:active - underline, title
-			var hash = window.location.hash || '#votepage';
-			$('#wrapper > div.tab').hide().filter(hash).show();
-			$('nav li').removeClass('ui-tabs-active ui-state-active');
-			$("a[href='"+hash+"']").parent('li').addClass('ui-tabs-active ui-state-active');
-			document.title = document.getElementById(hash.substring(1)).getAttribute("data-title");
-			return false;
-		};
-		$('nav li a').click(myTabActions);
-		$(window).bind('hashchange', myTabActions);
+<script type='text/javascript'>
+$(document).ready(function() {
+	jcps.fader(200, '#switcher-panel'); //statistika lehed
 
-		$('.popbox').popbox();
-
+	$( '#wrapper' ).tabs().bind( 'tabsshow', function(event, ui) { 
+		history.pushState(null, null, ui.tab.hash); //history #hashtag
 	});
-	</script>
 
+	function myTabActions(){	//peidab kõik&kuvab õige, a:active - underline, title
+		var hash = window.location.hash || '#votepage';
+		$('#wrapper > div.tab').hide().filter(hash).show();
+		$('nav li').removeClass('ui-tabs-active ui-state-active');
+		$("a[href='"+hash+"']").parent('li').addClass('ui-tabs-active ui-state-active');
+		document.title = document.getElementById(hash.substring(1)).getAttribute("data-title");
+		return false;
+	};
+	$('nav li a').click(myTabActions);
+	$(window).bind('hashchange', myTabActions);
+
+	$('.popbox').popbox();
+
+
+	$('#subForm').submit(function() {
+		var ok = true;
+		var formDate = $(this).find("input[name='date']");
+		var formNumber = $(this).find("input[name='number']");
+		var formParty = $(this).find("input[name='partyName']");
+
+
+		function testStringError (inputField) {
+			if ((/\d/g).test(inputField.val()) || inputField.val().length<3) {
+				inputField.addClass("errorField");
+				if (inputField.val().length < 1){
+					inputField.before(errorMandatory);
+				}else if ((/\d/g).test(inputField.val())){
+					inputField.before(errorNumbers);	
+				}else if(inputField.val().length<3){
+					inputField.before(errorShort);
+				}
+				ok = false;
+			}
+		}
+
+		function testShortIntegerError (inputField) {
+			if ((/\D/g).test(inputField.val())) {
+				inputField.addClass("errorField");
+				if ((/\D/g).test(inputField.val())){
+					inputField.before(errorLetters);	
+				}
+				ok = false;
+			}
+		}
+
+		$('#subForm>*').removeClass("errorField");
+		$('#subForm p.error').hide();
+
+		if( !(  formDate.val()  ).match(    /^([1][12]|[0]?[1-9])[\.-]([3][01]|[12]\d|[0]?[1-9])[\.-](\d{4}|\d{2})$/  )   ){
+			formDate.addClass("errorField");
+			ok = false
+		}
+		testStringError(formParty);
+		testShortIntegerError(formNumber);
+
+		return ok
+	});
+
+	$('#candidateForm').submit(function() {
+		var ok = true;
+		var candidateParty = $(this).find("input[name='party']");
+
+		var errorMandatory = '<p class="error">Kohustuslik!</p>';
+		var errorNumbers = '<p class="error">Ei tohi sisaldada numbreid!</p>';
+		var errorLetters = '<p class="error">Peab koosnema ainult numbritest!</p>';
+		var errorShort = '<p class="error">Liiga lühike!</p>'
+
+		$('#candidateForm>*').removeClass("errorField");
+		$('#candidateForm p.error').hide();
+
+		function testStringError (inputField) {
+			if ((/\d/g).test(inputField.val()) || inputField.val().length<3) {
+				inputField.addClass("errorField");
+				if (inputField.val().length < 1){
+					inputField.before(errorMandatory);
+				}else if ((/\d/g).test(inputField.val())){
+					inputField.before(errorNumbers);	
+				}else if(inputField.val().length<3){
+					inputField.before(errorShort);
+				}
+				ok = false;
+			}
+		}
+
+		function testIntegerError (inputField) {
+			if ((/\D/g).test(inputField.val()) || inputField.val().length<10) {
+				inputField.addClass("errorField");
+				if (inputField.val().length < 1){
+					inputField.before(errorMandatory);
+				}else if ((/\D/g).test(inputField.val())){
+					inputField.before(errorLetters);	
+				}else if(inputField.val().length<10){
+					inputField.before(errorShort);
+				}
+				ok = false;
+			}
+		}
+
+		testStringError($(this).find("input[name='fname']"));
+		testStringError($(this).find("input[name='lname']"));
+		testIntegerError($(this).find("input[name='socnumber']"));
+		testStringError($(this).find("input[name='party']"));
+		testStringError($(this).find("input[name='address']"));
+
+		return ok;
+	});
+
+	$('form input').keydown(function(event) {
+		$(this).removeClass('errorField');
+	});
+});
+
+</script>
 </head>
 <body>
 	<div id="wrapper">
@@ -190,7 +289,7 @@
 								</ul>
 							</p>
 							<p><small>* - Ei kehti üksikkandidaadi kohta</small></p>
-							<a href="javascript:void(0);" onclick="$(this).closest('form').submit();" class="close button" id="marginFixer">Laadi alla PDF</a>
+							<a href="javascript:void(0);" onclick="$(this).closest('form').submit();" class="button" id="marginFixer">Laadi alla PDF</a>
 							<a href="javascript:void(0);" class="close button">Katkesta</a>
 						</form>
 					</div>
@@ -203,10 +302,10 @@
 				<div class='popbox'>
 					<a class='open' href='javascript:void(0);'><b>Kandidaadi ankeedi saad siit!</b></a>
 					<div class='box'>
-						<form action="/submittedData" method="POST" id="canditFields">
+						<form action="/submittedData" method="POST" id="candidateForm">
 							<h4>Kandidaadi ankeet</h4>
 							<p>* märgistatud väljad on kohustuslikud</p>
-							<input type="text" name="fname" placeholder="Eesnimi *" />
+							<input type="text" name="fname" title="Eesnimi" placeholder="Eesnimi *" />
 							<input type="text" name="lname" placeholder="Perekonnanimi *" />
 							<input type="text" name="socnumber" placeholder="Isikukood *" />
 							<input type="text" name="party" placeholder="Erakondlik kuuluvus *" />
@@ -217,7 +316,7 @@
 							<input type="text" name="degree" placeholder="Teaduskraad" />
 							<input type="text" name="workp" placeholder="Töökoht" />
 							<input type="text" name="job" placeholder="Amet" />
-							<a href="javascript:void(0);" onclick="$(this).closest('form').submit();" class="close button" id="marginFixer">Laadi alla PDF</a>
+							<a href="javascript:void(0);" onclick="$(this).closest('form').submit();" class="button" id="marginFixer">Laadi alla PDF</a>
 							<a href="javascript:void(0);" class="close button">Katkesta</a>
 						</form>
 					</div>
@@ -251,7 +350,6 @@
 			</aside>
 			<div id="content">
 				<div id="switcher-panel"></div><!-- Siin sees kuvatakse statistika vaated, küll aga sinna sisse otseselt ei kirjuta midagi!-->
-
 
 				<div id="kanditstat-content" class="switcher-content">
 					<h4 class="content_heading">Kandidaatide lõikes</h4>
@@ -342,7 +440,7 @@
 					<div id="avatar_block">
 
 						<p><img src="./img/avatar.jpg"></p>
-						<p id="error">Pilt on kandideerimiseks vajalik!</p>
+						<p class="error">Pilt on kandideerimiseks vajalik!</p>
 						<p><a href="javascript:void(0);">Muuda pilti!</a></p>
 
 					</div><!-- avatar_block -->
