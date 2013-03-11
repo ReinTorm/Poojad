@@ -44,7 +44,7 @@ p {
   padding-bottom: 10px;
 }
 
-p#error {
+p.error {
   color: #FF3B3B !important;
 }
 
