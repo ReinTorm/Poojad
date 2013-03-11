@@ -709,6 +709,7 @@ nav ul li.ui-tabs-active {
 .box textarea {
   height: 50px;
   resize:vertical;
+  font-family: Arial, Verdana, Tahoma, sans-serif;
 }
 .box h4 {
   padding-top: 0;
@@ -721,7 +722,7 @@ nav ul li.ui-tabs-active {
   padding: 10px;
   background-color: #fff;
 }
-#marginFixer {
+.box a#marginFixer {
   margin-right: 4%;
 }
 
@@ -774,4 +775,22 @@ nav ul li.ui-tabs-active {
   margin-left: 20px;
   font-size: 12px;
   color: #404040;
+}
+
+.errorField{
+  background-color: #ff9999;
+  border: 1px solid #ff1a1a;
+}
+
+.errorField::-webkit-input-placeholder{ /* WebKit browsers */
+    color:    #404040;
+}
+.errorField:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #404040;
+}
+.errorField::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #404040;
+}
+.errorField:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    #404040;
 }
