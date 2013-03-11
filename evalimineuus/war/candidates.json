@@ -1,0 +1,49 @@
+{
+	"candidates" : [ {
+		"id" : "1111",
+		"person" : {
+			"name" : "Mihkel Visnapuu",
+			"age" : "20",
+			"id" : "12345",
+			"party" : "-",	
+			"constituency" : "Tartumaa",
+			"facebook" : "www.facebook.com/mihkelvis",
+			"skype" : "mvisna",
+			"other" : "-",
+			
+			"stext" : "Aenean id nisi id justo posuere bibendum eu et nulla. Suspendisse hendrerit massa vel orci luctus rutrum vestibulum nisi lacinia.",
+			"ltext" : "Aenean id nisi id justo posuere bibendum eu et nulla. Suspendisse hendrerit massa vel orci luctus rutrum vestibulum nisi lacinia. Mauris feugiat convallis porta. Nunc in scelerisque orci. Mauris pulvinar laoreet tortor, ut faucibus tellus porta in. In accumsan nisl quis nunc laoreet ut aliquet risus adipiscing. Duis vitae ligula ac massa gravida aliquet. Duis malesuada mollis urna, a sagittis risus gravida ac. Morbi ultricies diam et purus iaculis non rhoncus purus tincidunt."
+		}
+	}, {
+		"id" : "2222",
+		"person" : {
+			"name" : "Artur Käpp",
+			"age" : "25",
+			"id" : "1234",
+			"party" : "-",
+			"constituency" : "Tartumaa",
+			"facebook" : "www.facebook.com/ArturKp",
+			"skype" : "MinaOlenArturKp",
+			"other" : "-",
+
+			"stext" : "Aenean id nisi id justo posuere bibendum eu et nulla. Suspendisse hendrerit massa vel orci luctus rutrum vestibulum nisi lacinia.",
+			"ltext" : "Aenean id nisi id justo posuere bibendum eu et nulla. Suspendisse hendrerit massa vel orci luctus rutrum vestibulum nisi lacinia. Mauris feugiat convallis porta. Nunc in scelerisque orci. Mauris pulvinar laoreet tortor, ut faucibus tellus porta in. In accumsan nisl quis nunc laoreet ut aliquet risus adipiscing. Duis vitae ligula ac massa gravida aliquet. Duis malesuada mollis urna, a sagittis risus gravida ac. Morbi ultricies diam et purus iaculis non rhoncus purus tincidunt."
+		}
+	}, {
+		"id" : "3333",
+		"person" : {
+			"name" : "Rein Torm",
+			"age" : "21",
+			"id" : "123456",
+			"party" : "-",	
+			"constituency" : "Tartumaa",
+			"facebook" : "www.facebook.com/rein.torm",
+			"skype" : "rein_torm",
+			"other" : "-",
+			
+			"stext" : "Aenean id nisi id justo posuere bibendum eu et nulla. Suspendisse hendrerit massa vel orci luctus rutrum vestibulum nisi lacinia.",
+			"ltext" : "Aenean id nisi id justo posuere bibendum eu et nulla. Suspendisse hendrerit massa vel orci luctus rutrum vestibulum nisi lacinia. Mauris feugiat convallis porta. Nunc in scelerisque orci. Mauris pulvinar laoreet tortor, ut faucibus tellus porta in. In accumsan nisl quis nunc laoreet ut aliquet risus adipiscing. Duis vitae ligula ac massa gravida aliquet. Duis malesuada mollis urna, a sagittis risus gravida ac. Morbi ultricies diam et purus iaculis non rhoncus purus tincidunt."
+		}
+	}
+	]
+}
