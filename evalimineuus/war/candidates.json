@@ -1,4 +1,4 @@
-{
+Ôªø{
 	"candidates" : [ {
 		"id" : "1111",
 		"person" : {
@@ -18,7 +18,7 @@
 	}, {
 		"id" : "2222",
 		"person" : {
-			"name" : "Artur K‰pp",
+			"name" : "Artur K√§pp",
 			"age" : "25",
 			"id" : "2",
 			"party" : "-",
@@ -50,13 +50,13 @@
 	}, {
 		"id" : "4444",
 		"person" : {
-			"name" : "Tınu Tallinnast",
+			"name" : "T√µnu Tallinnast",
 			"age" : "21",
 			"id" : "4",
 			"party" : "Eesti Keskerakond",
 			"constituency_nr" : "1",
-			"constituency" : "Tallinna Haabersti, Pıhja-Tallinna ja Kristiine linnaosa",
-			"facebook" : "www.facebook.com/MinaOlenTınuTallinast",
+			"constituency" : "Tallinna Haabersti, P√µhja-Tallinna ja Kristiine linnaosa",
+			"facebook" : "www.facebook.com/MinaOlenTonuTallinast",
 			"skype" : "jou_qttid_mis_teete",
 			"other" : "-",
 			
@@ -71,7 +71,7 @@
 			"id" : "5",
 			"party" : "Sotsiaaldemokraatlik Erakond",
 			"constituency_nr" : "1",
-			"constituency" : "Tallinna Haabersti, Pıhja-Tallinna ja Kristiine linnaosa",
+			"constituency" : "Tallinna Haabersti, P√µhja-Tallinna ja Kristiine linnaosa",
 			"facebook" : "www.facebook.com/MinaOlenUrmaTallinast",
 			"skype" : "urmaaaaa",
 			"other" : "-",
@@ -87,7 +87,7 @@
 			"id" : "6",
 			"party" : "-",	
 			"constituency_nr" : "5",
-			"constituency" : "Hiiu-, L‰‰ne- ja Saaremaa",
+			"constituency" : "Hiiu-, L√§√§ne- ja Saaremaa",
 			"facebook" : "www.facebook.com/MinaOlenSjeenSaaremaalt",
 			"skype" : "seenemets",
 			"other" : "-",
