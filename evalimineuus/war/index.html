@@ -30,7 +30,7 @@ $(document).ready(function() {
 	};
 	$('nav li a').click(myTabActions);
 	$(window).bind('hashchange', myTabActions);
-
+	
 	$('.popbox').popbox();
 
 
@@ -131,90 +131,44 @@ $(document).ready(function() {
 		$(this).removeClass('errorField');
 	});
 	
-	$('#radioboxes').on('change', function(){
-	var current_radio = $(':checked',this).val();		
-	$('#results').html("");		
-		$.getJSON('candidates.json', function(data) {			
+	function updateResults() {
+		$('#results').html("");		
+		var current_radiobox = $('input:checked', '#radioboxes').val();
+		$.getJSON('candidates.json', function(data) {
 			for(i=0, l=data.candidates.length; i<l; ++i){
-				if (current_radio != 0){
-					if (current_radio == data.candidates[i].person.constituency_nr){
-						$('#results').append(
-							'<li><a href="javascript:previewCandidate(\''
-							+data.candidates[i].id+'\')">'+data.candidates[i].person.name+"</a></li>\n"
-						);
-					}
-				} else{
-					$('#results').append(
-						'<li><a href="javascript:previewCandidate(\''
-						+data.candidates[i].id+'\')">'+data.candidates[i].person.name+"</a></li>\n"
-					);					
+				var candidate = data.candidates[i];
+				if ((current_radiobox == 0 || current_radiobox == candidate.person.constituency_nr) && $('#checkboxes input:checkbox[value="'+candidate.person.party+'"]').is(':checked')){
+					$('#results').append('<li><a href="javascript:previewCandidate('+candidate.id+')">'+candidate.person.name+"</a></li>\n");
 				}
 			}
-		});		
-	});
-
-	$('input:checkbox').live('change', function(){
-		var current_check = $(this).val();
-		if($(this).is(':checked')){		
-			$('#results').html("");		
-			$.getJSON('candidates.json', function(data) {				
-				for(i=0, l=data.candidates.length; i<l; ++i){
-					if (current_check == data.candidates[i].person.party){
-						$('#results').append(
-							'<li><a href="javascript:previewCandidate(\''
-							+data.candidates[i].id+'\')">'+data.candidates[i].person.name+"</a></li>\n"
-						);
-					}
-				} 
-			});
-		} else {
-			$('#results').append(
-				'<li><a href="javascript:previewCandidate(\''
-				+data.candidates[i].id+'\')">'+data.candidates[i].person.name+"</a></li>\n"
-			);
-		}
-	});
-	
-	//var kandidaat = []; //võibolla on mõistlik tekitada üks järjend kandidaatidest ja nende infost, mitte kutsuda .getJSONi esile pidevalt?
-	$.getJSON('candidates.json', function(data) {		
-		for(i=0, l=data.candidates.length; i<l; ++i){
-			//kandidaat.push(data.candidates[i]);
-			$('#results').append(
-				'<li><a href="javascript:previewCandidate(\''
-				+data.candidates[i].id+'\')">'+data.candidates[i].person.name+"</a></li>\n"
-			);
-		}
-		//alert(".."+data.candidates[0].id);
-		//alert(".."+data.candidates[0].person.id);		
-		//alert(".."+data.candidates.length);
 		});
-		
-		//previewCandidate("1111")	//näitab kohe alguses kandidaati
+	}
+	$('#radioboxes, #checkboxes').on('change', updateResults);
 });
 
 function previewCandidate(candidateId) {
 	$.getJSON('candidates.json', function(data) {
 		for(i=0, l=data.candidates.length; i<l; ++i){
-			if (data.candidates[i].id == candidateId)
-				x = i;
+			if (data.candidates[i].id == candidateId){
+				$('#profile').html("");					
+				$('#profile').append(
+					'<img src="img/avatar.jpg" id="avatar">'+
+					'<h1>'+data.candidates[i].person.name+'</h1>'+
+					'<p><b>Vanus: </b>'+data.candidates[i].person.age+'</p>'+
+					'<p><b>Partei: </b>'+data.candidates[i].person.party+'</p>'+
+					'<p><b>Valimisringkond: </b>'+data.candidates[i].person.constituency+'</p>'+					
+					'<p><b>Facebook: </b><a href="'+data.candidates[i].person.facebook+'">'+data.candidates[i].person.name+'</a></p>'+
+					'<p><b>Skype: </b>'+data.candidates[i].person.skype+'</p>'+
+					'<p><b>Muu: </b>'+data.candidates[i].person.other+'</p>'+
+					"<h4>What's up?</h4>"+
+					'<p>'+data.candidates[i].person.stext+'</p>'+
+					'<h4>Lorem Ipsum</h4>'+
+					'<p>'+data.candidates[i].person.ltext+'</p>'
+				);
+				break;
+			}
 		}
-		$('#profile').html("");					
-		$('#profile').append(
-			'<img src="img/avatar.jpg" id="avatar">'+
-			'<h1>'+data.candidates[x].person.name+'</h1>'+
-			'<p><b>Vanus: </b>'+data.candidates[x].person.age+'</p>'+
-			'<p><b>Partei: </b>'+data.candidates[x].person.party+'</p>'+
-			'<p><b>Valimisringkond: </b>'+data.candidates[x].person.constituency+'</p>'+					
-			'<p><b>Facebook: </b> '+data.candidates[x].person.facebook+'</p>'+
-			'<p><b>Skype: </b>'+data.candidates[x].person.skype+'</p>'+
-			'<p><b>Muu: </b>'+data.candidates[x].person.other+'</p>'+
-			"<h4>What's up?</h4>"+
-			'<p>'+data.candidates[x].person.stext+'</p>'+
-			'<h4>Lorem Ipsum</h4>'+
-			'<p>'+data.candidates[x].person.ltext+'</p>'
-		);
 	});
-
 }
 
 </script>
@@ -252,7 +206,7 @@ function previewCandidate(candidateId) {
 					<li>
 						<h5>Valimisringkond:</h5>
 						<ul id="radioboxes" class="custom-radiobox">
-							<li><label><input type="radio" name="ringkond" value="0"/><span>Kõik</span></label></li>
+							<li><label><input type="radio" name="ringkond" value="0" checked="checked"/><span>Kõik</span></label></li>
 							<li><label><input type="radio" name="ringkond" value="1"/><span>1 Tallinn</span></label></li>
 							<li><label><input type="radio" name="ringkond" value="2"/><span>2</span></label></li>
 							<li><label><input type="radio" name="ringkond" value="3"/><span>3</span></label></li>
@@ -281,7 +235,7 @@ function previewCandidate(candidateId) {
 							<li><label><input type="checkbox" value="Erakond Eestimaa Rohelised" /><span>Erakond Eestimaa Rohelised</span></label></li>
 							<li><label><input type="checkbox" value="Erakond Isamaa ja Res Publica Liit" /><span>Erakond Isamaa ja Res Publica Liit</span></label></li>
 							<li><label><input type="checkbox" value="Sotsiaaldemokraatlik Erakond" /><span>Sotsiaaldemokraatlik Erakond</span></label></li>
-							<li><label><input type="checkbox" value="-" /><span>Üksikkandidaat</span></label></li>
+							<li><label><input type="checkbox" value="Üksikkandidaat" /><span>Üksikkandidaat</span></label></li>
 						</ul>
 					</li>
 					<li>
