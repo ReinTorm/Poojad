@@ -375,7 +375,7 @@ nav ul li.ui-tabs-active {
   max-width: 100%;
 }
 
-#switcher-panel select{
+.stat-content select{
   min-width: 150px;
   max-width: 100%;
   background-color: #eee;
@@ -477,7 +477,7 @@ nav ul li.ui-tabs-active {
 }
 /*Candidate page end*/
 
-.switcher-content {
+.stat-content {
   display: none;
 }
 
@@ -794,3 +794,6 @@ nav ul li.ui-tabs-active {
 .errorField:-ms-input-placeholder { /* Internet Explorer 10+ */
     color:    #404040;
 }
+
+.hover{text-decoration:underline;}
+.alphabetic{cursor:pointer;}

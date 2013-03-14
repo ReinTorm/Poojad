@@ -1,177 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>eValimine</title>
-<link rel="stylesheet" href="css/style.css">
+	<meta charset="utf-8">
+	<title>eValimine</title>
+	<link rel="stylesheet" href="css/style.css">
 
-<script type='text/javascript' src='js/jquery.js'></script>
-<script type='text/javascript' src='js/jquery.content-panel-switcher.js'></script> 
-<script src="js/jquery-1.8.3.js"></script>
-<script src="js/jquery-ui-1.9.2.custom.js"></script>
-<script src="js/sorttable.js"></script>
-<script type='text/javascript' charset='utf-8' src='js/popbox.js'></script>
-
-<script type='text/javascript'>
-$(document).ready(function() {
-	jcps.fader(200, '#switcher-panel'); //statistika lehed
-
-	$( '#wrapper' ).tabs().bind( 'tabsshow', function(event, ui) { 
-		history.pushState(null, null, ui.tab.hash); //history #hashtag
-	});
-
-	function myTabActions(){	//peidab kõik&kuvab õige, a:active - underline, title
-		var hash = window.location.hash || '#votepage';
-		$('#wrapper > div.tab').hide().filter(hash).show();
-		$('nav li').removeClass('ui-tabs-active ui-state-active');
-		$("a[href='"+hash+"']").parent('li').addClass('ui-tabs-active ui-state-active');
-		document.title = document.getElementById(hash.substring(1)).getAttribute("data-title");
-		return false;
-	};
-	$('nav li a').click(myTabActions);
-	$(window).bind('hashchange', myTabActions);
-	
-	$('.popbox').popbox();
-
-
-	$('#subForm').submit(function() {
-		var ok = true;
-		var formDate = $(this).find("input[name='date']");
-		var formNumber = $(this).find("input[name='number']");
-		var formParty = $(this).find("input[name='partyName']");
-
-
-		function testStringError (inputField) {
-			if ((/\d/g).test(inputField.val()) || inputField.val().length<3) {
-				inputField.addClass("errorField");
-				if (inputField.val().length < 1){
-					inputField.before(errorMandatory);
-				}else if ((/\d/g).test(inputField.val())){
-					inputField.before(errorNumbers);	
-				}else if(inputField.val().length<3){
-					inputField.before(errorShort);
-				}
-				ok = false;
-			}
-		}
-
-		function testShortIntegerError (inputField) {
-			if ((/\D/g).test(inputField.val())) {
-				inputField.addClass("errorField");
-				if ((/\D/g).test(inputField.val())){
-					inputField.before(errorLetters);	
-				}
-				ok = false;
-			}
-		}
-
-		$('#subForm>*').removeClass("errorField");
-		$('#subForm p.error').hide();
-
-		if( !(  formDate.val()  ).match(    /^([1][12]|[0]?[1-9])[\.-]([3][01]|[12]\d|[0]?[1-9])[\.-](\d{4}|\d{2})$/  )   ){
-			formDate.addClass("errorField");
-			ok = false
-		}
-		testStringError(formParty);
-		testShortIntegerError(formNumber);
-
-		return ok
-	});
-
-	$('#candidateForm').submit(function() {
-		var ok = true;
-		var candidateParty = $(this).find("input[name='party']");
-
-		var errorMandatory = '<p class="error">Kohustuslik!</p>';
-		var errorNumbers = '<p class="error">Ei tohi sisaldada numbreid!</p>';
-		var errorLetters = '<p class="error">Peab koosnema ainult numbritest!</p>';
-		var errorShort = '<p class="error">Liiga lühike!</p>'
-
-		$('#candidateForm>*').removeClass("errorField");
-		$('#candidateForm p.error').hide();
-
-		function testStringError (inputField) {
-			if ((/\d/g).test(inputField.val()) || inputField.val().length<3) {
-				inputField.addClass("errorField");
-				if (inputField.val().length < 1){
-					inputField.before(errorMandatory);
-				}else if ((/\d/g).test(inputField.val())){
-					inputField.before(errorNumbers);	
-				}else if(inputField.val().length<3){
-					inputField.before(errorShort);
-				}
-				ok = false;
-			}
-		}
-
-		function testIntegerError (inputField) {
-			if ((/\D/g).test(inputField.val()) || inputField.val().length<10) {
-				inputField.addClass("errorField");
-				if (inputField.val().length < 1){
-					inputField.before(errorMandatory);
-				}else if ((/\D/g).test(inputField.val())){
-					inputField.before(errorLetters);	
-				}else if(inputField.val().length<10){
-					inputField.before(errorShort);
-				}
-				ok = false;
-			}
-		}
-
-		testStringError($(this).find("input[name='fname']"));
-		testStringError($(this).find("input[name='lname']"));
-		testIntegerError($(this).find("input[name='socnumber']"));
-		testStringError($(this).find("input[name='party']"));
-		testStringError($(this).find("input[name='address']"));
-
-		return ok;
-	});
-
-	$('form input').keydown(function(event) {
-		$(this).removeClass('errorField');
-	});
-	
-	function updateResults() {
-		$('#results').html("");		
-		var current_radiobox = $('input:checked', '#radioboxes').val();
-		$.getJSON('candidates.json', function(data) {
-			for(i=0, l=data.candidates.length; i<l; ++i){
-				var candidate = data.candidates[i];
-				if ((current_radiobox == 0 || current_radiobox == candidate.person.constituency_nr) && $('#checkboxes input:checkbox[value="'+candidate.person.party+'"]').is(':checked')){
-					$('#results').append('<li><a href="javascript:previewCandidate('+candidate.id+')">'+candidate.person.name+"</a></li>\n");
-				}
-			}
-		});
-	}
-	$('#radioboxes, #checkboxes').on('change', updateResults);
-});
-
-function previewCandidate(candidateId) {
-	$.getJSON('candidates.json', function(data) {
-		for(i=0, l=data.candidates.length; i<l; ++i){
-			if (data.candidates[i].id == candidateId){
-				$('#profile').html("");					
-				$('#profile').append(
-					'<img src="img/avatar.jpg" id="avatar">'+
-					'<h1>'+data.candidates[i].person.name+'</h1>'+
-					'<p><b>Vanus: </b>'+data.candidates[i].person.age+'</p>'+
-					'<p><b>Partei: </b>'+data.candidates[i].person.party+'</p>'+
-					'<p><b>Valimisringkond: </b>'+data.candidates[i].person.constituency+'</p>'+					
-					'<p><b>Facebook: </b><a href="'+data.candidates[i].person.facebook+'">'+data.candidates[i].person.name+'</a></p>'+
-					'<p><b>Skype: </b>'+data.candidates[i].person.skype+'</p>'+
-					'<p><b>Muu: </b>'+data.candidates[i].person.other+'</p>'+
-					"<h4>What's up?</h4>"+
-					'<p>'+data.candidates[i].person.stext+'</p>'+
-					'<h4>Lorem Ipsum</h4>'+
-					'<p>'+data.candidates[i].person.ltext+'</p>'
-				);
-				break;
-			}
-		}
-	});
-}
-
-</script>
+	<script type='text/javascript' src='js/jquery.js'></script>
+	<script type='text/javascript' src="js/jquery-1.8.3.js"></script>
+	<script type='text/javascript' src="js/jquery-ui-1.9.2.custom.js"></script>
+	<script type='text/javascript' src="js/sorttable.js"></script>
+	<script type='text/javascript' charset='utf-8' src='js/popbox.js'></script>
+	<script type='text/javascript' charset='utf-8' src='js/document.js'></script> <!--Ise kirjutatud scriptid-->
 </head>
 <body>
 	<div id="wrapper">
@@ -352,152 +191,159 @@ function previewCandidate(candidateId) {
 		<div id="statpage" data-title="eValimine - Statistika" class="tab">
 			<aside>
 				<h4>Vaata statistikat</h4>
-				<a id="kanditstat" class="statbutton switcher">Kandidaatide lõikes</a> 
-				<a id="areastat" class="statbutton switcher">Piirkondade lõikes</a> 
-				<a id="parteistat" class="statbutton switcher">Parteide lõikes</a> 
-				<a id="riikstat" class="statbutton switcher">Riigi lõikes</a>
+				<a id="kanditstat" class="statbutton">Kandidaatide lõikes</a> 
+				<a id="areastat" class="statbutton">Piirkondade lõikes</a> 
+				<a id="parteistat" class="statbutton">Parteide lõikes</a> 
+				<a id="riikstat" class="statbutton">Riigi lõikes</a>
 			</aside>
 			<div id="content">
-				<div id="switcher-panel"></div><!-- Siin sees kuvatakse statistika vaated, küll aga sinna sisse otseselt ei kirjuta midagi!-->
 
-				<div id="kanditstat-content" class="switcher-content">
+				<div id="kanditstat-content" class="stat-content">
 					<h4 class="content_heading">Kandidaatide lõikes</h4>
-					<table id="stattable">
-						<tr><th>Koht</th><th>Number</th><th>Nimi</th><th>Partei</th><th>Piirkond</th><th>Hääli</th></tr>
-						<tr><td>1</td><td>123</td><td>Jaanus Lehmamees</td><td>Reformierakond</td><td>Tartumaa</td><td>20000</td></tr>
-						<tr><td>2</td><td>4535</td><td>Taavi Tont</td><td>-</td><td>Tallinn</td><td>18000</td></tr>
-						<tr><td>3</td><td>456</td><td>Ants Auto</td><td>Keskerakond</td><td>Võru</td><td>14554</td></tr>
-						<tr><td>4</td><td>643</td><td>Liina Lähtme</td><td>Isamaa ja Respublica</td><td>Narva</td><td>12000</td></tr>
-						<tr><td>5</td><td>12</td><td>Keio Kuusk</td><td>Kristlikud Demokraadid</td><td>Tartu</td><td>8900</td></tr>
-						<tr><td>6</td><td>767</td><td>Koit Auto</td><td>Keskerakond</td><td>Viljandi</td><td>4544</td></tr>
-						<tr><td>3</td><td>456</td><td>Ants Auto</td><td>Keskerakond</td><td>Võru</td><td>2324</td></tr>
-					</table>
-					<a onClick="window.print()" id="printbutton" class="button">Prindi statistika</a>
-				</div><!-- kanditstat-content -->
+					<table id="stattable" class="sortable">
+						<thead>
+							<tr><th class="alphabetic">Koht</th><th class="alphabetic">Number</th><th class="alphabetic">Nimi</th><th class="alphabetic">Partei</th><th class="alphabetic">Piirkond</th><th class="alphabetic">Hääli</th></tr>
+						</thead>
+						<tbody>
+							<tr><td>1</td><td>123</td><td>Jaanus Lehmamees</td><td>Reformierakond</td><td>Tartumaa</td><td>20000</td></tr>
+							<tr><td>2</td><td>4535</td><td>Taavi Tont</td><td>-</td><td>Tallinn</td><td>18000</td></tr>
+							<tr><td>3</td><td>456</td><td>Ants Auto</td><td>Keskerakond</td><td>Võru</td><td>14554</td></tr>
+							<tr><td>4</td><td>643</td><td>Liina Lähtme</td><td>Isamaa ja Respublica</td><td>Narva</td><td>12000</td></tr>
+							<tr><td>5</td><td>12</td><td>Keio Kuusk</td><td>Kristlikud Demokraadid</td><td>Tartu</td><td>8900</td></tr>
+							<tr><td>6</td><td>767</td><td>Koit Auto</td><td>Keskerakond</td><td>Viljandi</td><td>4544</td></tr>
+							<tr><td>3</td><td>456</td><td>Ants Auto</td><td>Keskerakond</td><td>Võru</td><td>2324</td></tr>
+							<tbody>
+							</table>
+							<a onClick="window.print()" id="printbutton" class="button">Prindi statistika</a>
+						</div><!-- kanditstat-content -->
 
 
 
-				<div id="areastat-content" class="switcher-content">
-					<h4 class="content_heading">Piirkondade lõikes</h4>
-					Valimisringkond: 
-					<select>
-						<option value="" disabled="disabled" selected="selected">Vali valimisringkond</option>
-						<option value="1">1 – Tallinna Haabersti, Põhja-Tallinna ja Kristiine linnaosa</option>
-						<option value="2">2 – Tallinna Kesklinna, Lasnamäe ja Pirita linnaosa</option>
-						<option value="3">3 – Tallinna Mustamäe ja Nõmme linnaosa</option>
-						<option value="4">4 – Harju- (v.a Tallinn) ja Raplamaa</option>
-						<option value="5">5 – Hiiu-, Lääne- ja Saaremaa</option>
-						<option value="6">6 – Lääne-Virumaa</option>
-						<option value="7">7 – Ida-Virumaa</option>
-						<option value="8">8 – Järva- ja Viljandimaa</option>
-						<option value="9">9 – Jõgeva- ja Tartumaa (v.a Tartu linn)</option>
-						<option value="10">10 – Tartu linn</option>
-						<option value="11">11 – Võru-, Valga- ja Põlvamaa</option>
-						<option value="12">12 – Pärnumaa</option>
-					</select><br>
+						<div id="areastat-content" class="stat-content">
+							<h4 class="content_heading">Piirkondade lõikes</h4>
+							Valimisringkond: 
+							<select>
+								<option value="" disabled="disabled" selected="selected">Vali valimisringkond</option>
+								<option value="1">1 – Tallinna Haabersti, Põhja-Tallinna ja Kristiine linnaosa</option>
+								<option value="2">2 – Tallinna Kesklinna, Lasnamäe ja Pirita linnaosa</option>
+								<option value="3">3 – Tallinna Mustamäe ja Nõmme linnaosa</option>
+								<option value="4">4 – Harju- (v.a Tallinn) ja Raplamaa</option>
+								<option value="5">5 – Hiiu-, Lääne- ja Saaremaa</option>
+								<option value="6">6 – Lääne-Virumaa</option>
+								<option value="7">7 – Ida-Virumaa</option>
+								<option value="8">8 – Järva- ja Viljandimaa</option>
+								<option value="9">9 – Jõgeva- ja Tartumaa (v.a Tartu linn)</option>
+								<option value="10">10 – Tartu linn</option>
+								<option value="11">11 – Võru-, Valga- ja Põlvamaa</option>
+								<option value="12">12 – Pärnumaa</option>
+							</select><br>
 
-					<table id="stattable">
-						<tr><th>Koht</th><th>Partei</th><th>Populaarseim kandidaat</th><th>Hääli</th></tr>
-						<tr><td>1</td><td>Partei1</td><td>Orbit Üks</td><td>9999</td></tr>
-						<tr><td>2</td><td>Partei2</td><td>Orbit Kaks</td><td>9998</td></tr>
-						<tr><td>3</td><td>Partei3</td><td>Orbit Kolm</td><td>9997</td></tr>
-						<tr><td>4</td><td>Partei4</td><td>Orbit Neli</td><td>9996</td></tr>
-						<tr><td>5</td><td>Partei5</td><td>Orbit Viis</td><td>9995</td></tr>
-						<tr><td>6</td><td>Partei6</td><td>Orbit Kuus</td><td>9994</td></tr>
-						<tr><td>7</td><td>Partei7</td><td>Orbit Seitse</td><td>9993</td></tr>
-						<tr><td>8</td><td>Partei8</td><td>Orbit Kaheksa</td><td>9992</td></tr>
-						<tr><td>9</td><td>Partei9</td><td>Orbit Üheksa</td><td>9991</td></tr>
-						<tr><td>10</td><td>Partei10</td><td>Orbit Kümme</td><td>9990</td></tr>				
-					</table>
-					<a onClick="window.print()" id="printbutton" class="button">Prindi statistika</a>
-				</div><!--areastat-content-->
-
-
-
-				<div id="parteistat-content" class="switcher-content">
-					<h4 class="content_heading">Parteide lõikes</h4>
-					<img src="./img/statistika.png" alt="Pie chart" id="statimg">
-					<a onClick="window.print()" id="printbutton" class="button">Prindi statistika</a>
-				</div><!-- parteistat-content -->
+							<table id="stattable" class="sortable">
+								<thead>
+									<tr><th class="alphabetic">Koht</th><th class="alphabetic">Partei</th><th class="alphabetic">Populaarseim kandidaat</th><th class="alphabetic">Hääli</th></tr>
+								</thead>
+								<tbody>
+									<tr><td>1</td><td>Partei1</td><td>Orbit Üks</td><td>9999</td></tr>
+									<tr><td>2</td><td>Partei2</td><td>Orbit Kaks</td><td>9998</td></tr>
+									<tr><td>3</td><td>Partei3</td><td>Orbit Kolm</td><td>9997</td></tr>
+									<tr><td>4</td><td>Partei4</td><td>Orbit Neli</td><td>9996</td></tr>
+									<tr><td>5</td><td>Partei5</td><td>Orbit Viis</td><td>9995</td></tr>
+									<tr><td>6</td><td>Partei6</td><td>Orbit Kuus</td><td>9994</td></tr>
+									<tr><td>7</td><td>Partei7</td><td>Orbit Seitse</td><td>9993</td></tr>
+									<tr><td>8</td><td>Partei8</td><td>Orbit Kaheksa</td><td>9992</td></tr>
+									<tr><td>9</td><td>Partei9</td><td>Orbit Üheksa</td><td>9991</td></tr>
+									<tr><td>10</td><td>Partei10</td><td>Orbit Kümme</td><td>9990</td></tr>
+								</tbody>	
+							</table>
+							<a onClick="window.print()" id="printbutton" class="button">Prindi statistika</a>
+						</div><!--areastat-content-->
 
 
 
-				<div id="riikstat-content" class="switcher-content">
-					<h4 class="content_heading">Riigi lõikes</h4>
-					<img src="./img/Eesti_maakonnad.png" alt="Eesti maakonnad" id="statimg" width="600" width="500"> 
-					<a onClick="window.print()" id="printbutton" class="button">Prindi statistika</a>
-				</div><!-- riikstat-content -->
-
-
-			</div><!-- content -->
-		</div><!-- statpage -->
+						<div id="parteistat-content" class="stat-content">
+							<h4 class="content_heading">Parteide lõikes</h4>
+							<img src="./img/statistika.png" alt="Pie chart" id="statimg">
+							<a onClick="window.print()" id="printbutton" class="button">Prindi statistika</a>
+						</div><!-- parteistat-content -->
 
 
 
+						<div id="riikstat-content" class="stat-content">
+							<h4 class="content_heading">Riigi lõikes</h4>
+							<img src="./img/Eesti_maakonnad.png" alt="Eesti maakonnad" id="statimg" width="600" width="500"> 
+							<a onClick="window.print()" id="printbutton" class="button">Prindi statistika</a>
+						</div><!-- riikstat-content -->
 
 
-		<div id="profilepage" data-title="eValimine - Minu andmed" class="tab">
-			<aside>
-				<h4>Minu andmed</h4>
-				<p>Siin saad muuta seda kuidas teised sind valimiste keskonnas näevad. <br/><br />
-					NB: kandideerimiseks on kõik väljad vajalikud. (ka. pilt)
-				</p>
-			</aside>
-			<div id="content">
-				<h4 class="content_heading">Minu Andmed</h4>
-				<div id="my_data">
-					<div id="avatar_block">
-
-						<p><img src="./img/avatar.jpg"></p>
-						<p class="error">Pilt on kandideerimiseks vajalik!</p>
-						<p><a href="javascript:void(0);">Muuda pilti!</a></p>
-
-					</div><!-- avatar_block -->
-					<div id="my_data_block">
-						<label>Eesnimi:</label><input type="text" name="fname"><br /> 
-						<label>Perenimi:</label><input type="text" name="lname"><br /> 
-						<label>Vanus:</label><input type="text" name="age"><br /> 
-						<label>Valimispiirkond:</label>
-						<select>
-							<option value="" disabled="disabled" selected="selected">Vali valimisringkond</option>
-							<option value="1">1 – Tallinna Haabersti, Põhja-Tallinna ja Kristiine linnaosa</option>
-							<option value="2">2 – Tallinna Kesklinna, Lasnamäe ja Pirita linnaosa</option>
-							<option value="3">3 – Tallinna Mustamäe ja Nõmme linnaosa</option>
-							<option value="4">4 – Harju- (v.a Tallinn) ja Raplamaa</option>
-							<option value="5">5 – Hiiu-, Lääne- ja Saaremaa</option>
-							<option value="6">6 – Lääne-Virumaa</option>
-							<option value="7">7 – Ida-Virumaa</option>
-							<option value="8">8 – Järva- ja Viljandimaa</option>
-							<option value="9">9 – Jõgeva- ja Tartumaa (v.a Tartu linn)</option>
-							<option value="10">10 – Tartu linn</option>
-							<option value="11">11 – Võru-, Valga- ja Põlvamaa</option>
-							<option value="12">12 – Pärnumaa</option>
-						</select><br> 
-						<label>E-mail:</label><input type="text" name="email"><br>
-						<label>Isikukood:</label><input type="text" name="secnr"><br>
-					</div><!-- my_data_block -->
-				</div><!-- my_data -->
-				<div id="votedfor">
-					<h4>Sinu hääl</h4>
-					<p><b>Kandidaat:</b> <a href="javascript:void(0);">Artur Käpp</a><a href="javascript:void(0);"><img src="./img/cross_remove.png"></a>
-					</p>
-				</div>
-				<div id="mystatus">
-					<h4>Kandidatuur</h4>
-					<table>
-						<tr><td width="100"><b>Staatus</b></td><td width="150">Kandideerinud</td></tr>
-						<tr><td><b>Erakond</b></td><td>Üksikkandidaat</td></tr>
-						<tr><td><b>Valimispiirkond</b></td><td>1. Tallinna Haabersti, Põhja-Tallinna ja Kristiine linnaosa</td></tr>
-						<tr><td><b>Häälte arv</b></td><td>2324</td></tr>
-					</table>
-				</div>
-				<a href="javascript:void(0);" id="savebutton" class="button">Salvesta!</a>
-			</div><!-- content -->
-		</div><!-- profilepage -->
+					</div><!-- content -->
+				</div><!-- statpage -->
 
 
 
 
-	</div><!-- wrapper -->
-</body>
-</html>
+
+				<div id="profilepage" data-title="eValimine - Minu andmed" class="tab">
+					<aside>
+						<h4>Minu andmed</h4>
+						<p>Siin saad muuta seda kuidas teised sind valimiste keskonnas näevad. <br/><br />
+							NB: kandideerimiseks on kõik väljad vajalikud. (ka. pilt)
+						</p>
+					</aside>
+					<div id="content">
+						<h4 class="content_heading">Minu Andmed</h4>
+						<div id="my_data">
+							<div id="avatar_block">
+
+								<p><img src="./img/avatar.jpg"></p>
+								<p class="error">Pilt on kandideerimiseks vajalik!</p>
+								<p><a href="javascript:void(0);">Muuda pilti!</a></p>
+
+							</div><!-- avatar_block -->
+							<div id="my_data_block">
+								<label>Eesnimi:</label><input type="text" name="fname"><br /> 
+								<label>Perenimi:</label><input type="text" name="lname"><br /> 
+								<label>Vanus:</label><input type="text" name="age"><br /> 
+								<label>Valimispiirkond:</label>
+								<select>
+									<option value="" disabled="disabled" selected="selected">Vali valimisringkond</option>
+									<option value="1">1 – Tallinna Haabersti, Põhja-Tallinna ja Kristiine linnaosa</option>
+									<option value="2">2 – Tallinna Kesklinna, Lasnamäe ja Pirita linnaosa</option>
+									<option value="3">3 – Tallinna Mustamäe ja Nõmme linnaosa</option>
+									<option value="4">4 – Harju- (v.a Tallinn) ja Raplamaa</option>
+									<option value="5">5 – Hiiu-, Lääne- ja Saaremaa</option>
+									<option value="6">6 – Lääne-Virumaa</option>
+									<option value="7">7 – Ida-Virumaa</option>
+									<option value="8">8 – Järva- ja Viljandimaa</option>
+									<option value="9">9 – Jõgeva- ja Tartumaa (v.a Tartu linn)</option>
+									<option value="10">10 – Tartu linn</option>
+									<option value="11">11 – Võru-, Valga- ja Põlvamaa</option>
+									<option value="12">12 – Pärnumaa</option>
+								</select><br> 
+								<label>E-mail:</label><input type="text" name="email"><br>
+								<label>Isikukood:</label><input type="text" name="secnr"><br>
+							</div><!-- my_data_block -->
+						</div><!-- my_data -->
+						<div id="votedfor">
+							<h4>Sinu hääl</h4>
+							<p><b>Kandidaat:</b> <a href="javascript:void(0);">Artur Käpp</a><a href="javascript:void(0);"><img src="./img/cross_remove.png"></a>
+							</p>
+						</div>
+						<div id="mystatus">
+							<h4>Kandidatuur</h4>
+							<table>
+								<tr><td width="100"><b>Staatus</b></td><td width="150">Kandideerinud</td></tr>
+								<tr><td><b>Erakond</b></td><td>Üksikkandidaat</td></tr>
+								<tr><td><b>Valimispiirkond</b></td><td>1. Tallinna Haabersti, Põhja-Tallinna ja Kristiine linnaosa</td></tr>
+								<tr><td><b>Häälte arv</b></td><td>2324</td></tr>
+							</table>
+						</div>
+						<a href="javascript:void(0);" id="savebutton" class="button">Salvesta!</a>
+					</div><!-- content -->
+				</div><!-- profilepage -->
+
+
+
+
+			</div><!-- wrapper -->
+		</body>
+		</html>
