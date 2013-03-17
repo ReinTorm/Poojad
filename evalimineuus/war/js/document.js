@@ -166,16 +166,19 @@ $(document).ready(function() {
 	});
 
 	function updateResults() {
-		$('#results').html("");
+		results = $('#results');
+		results.html("");
+		results.addClass("loading");
 		var current_radiobox = $('input:checked', '#radioboxes').val();
 		$.getJSON('candidates.json', function(data) {
 			for (i = 0, l = data.candidates.length; i < l; ++i) {
 				var candidate = data.candidates[i];
 				if ((current_radiobox == 0 || current_radiobox == candidate.person.constituency_nr) && $('#checkboxes input:checkbox[value="' + candidate.person.party + '"]').is(':checked')) {
-					$('#results').append('<li><a href="javascript:previewCandidate(' + candidate.id + ')">' + candidate.person.name + "</a></li>\n");
+					results.append('<li><a href="javascript:previewCandidate(' + candidate.id + ')">' + candidate.person.name + "</a></li>\n");
 				}
 			}
 		});
+		setTimeout(function(){results.removeClass("loading")}, 1000);
 	}
 
 	$('#radioboxes, #checkboxes').on('change', updateResults);
@@ -197,4 +200,3 @@ function previewCandidate(candidateId) {
 		}
 	});
 }
-
