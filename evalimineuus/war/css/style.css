@@ -117,7 +117,6 @@ nav ul li.ui-tabs-active {
 
 .tab {
   width: 100%;
-  margin-bottom: 50px;
   float: left;
   background-color: #fff;
   -moz-border-radius: 6px;
@@ -808,4 +807,27 @@ nav ul li.ui-tabs-active {
   position: relative;
   background: rgba(255,255,255,0.8) url("../img/ajax-loader.gif") no-repeat center center;
   z-index: 1001;
+}
+
+#footer {
+  float: left;
+  width: 100%;
+  margin-top: 10px;
+}
+
+#footer p{
+  font-size: 12px;
+  color: #808080;
+  text-align: center;
+}
+
+p#notice {
+  text-align: center;
+  min-width: 320px;
+  max-width: 460px;
+  padding: 0px 10px;
+  font-size: 11px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #404040;
 }
