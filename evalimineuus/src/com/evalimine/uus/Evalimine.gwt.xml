@@ -20,7 +20,7 @@
   <!-- Other module inherits                                      -->
 
   <!-- Specify the app entry point class.                         -->
-  <entry-point class='com.evalimine.uus.client.Evalimine'/>
+  <!-- <entry-point class='com.evalimine.uus.client.Evalimine'/>  -->
 
   <!-- Specify the paths for translatable code                    -->
   <source path='client'/>
