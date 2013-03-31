@@ -117,6 +117,7 @@ nav ul li.ui-tabs-active {
 
 .tab {
   width: 100%;
+  min-height:360px;
   float: left;
   background-color: #fff;
   -moz-border-radius: 6px;
@@ -830,4 +831,27 @@ p#notice {
   margin-left: auto;
   margin-right: auto;
   color: #404040;
+}
+
+a#googlelogin{
+	display:block;
+	background:transparent url("../img/White-signin_Long_base_32dp.png") center top no-repeat;
+	background-size: contain;
+	width:200px;
+	height:35px;
+  	margin: 50px auto;
+}
+
+a#googlelogin:hover{
+	background:transparent url("../img/White-signin_Long_hover_32dp.png") center top no-repeat;
+	background-size: contain;
+	width:200px;
+	height:35px;
+	}
+	
+a#googlelogin:active{
+	background:transparent url("../img/White-signin_Long_press_32dp.png") center top no-repeat;
+	background-size: contain;
+	width:200px;
+	height:35px;
 }

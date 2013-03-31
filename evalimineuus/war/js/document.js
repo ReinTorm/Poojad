@@ -5,22 +5,6 @@ $(document).ready(function() {
 		document.getElementById(pageToShow).style.display = 'block';
 	});
 
-	$('#wrapper').tabs().bind('tabsshow', function(event, ui) {
-		history.pushState(null, null, ui.tab.hash);
-	});
-
-	function myTabActions() {
-		var hash = window.location.hash || '#votepage';
-		$('#wrapper > div.tab').hide().filter(hash).show();
-		$('nav li').removeClass('ui-tabs-active ui-state-active');
-		$("a[href='" + hash + "']").parent('li').addClass('ui-tabs-active ui-state-active');
-		document.title = document.getElementById(hash.substring(1)).getAttribute("data-title");
-		return false;
-	}
-
-	$('nav li a').click(myTabActions);
-	$(window).bind('hashchange', myTabActions);
-
 	$('.popbox').popbox();
 
 	$('#subForm').submit(function() {

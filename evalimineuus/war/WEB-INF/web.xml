@@ -1,6 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.5" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee                http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.5" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee                http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 
-	<!-- Servlets -->
+    <sessions-enabled>true</sessions-enabled>
+
 	<servlet>
 		<servlet-name>showParameters</servlet-name>
 		<servlet-class>com.evalimine.uus.server.ShowParameters</servlet-class>
@@ -10,11 +12,75 @@
 		<servlet-name>showParameters</servlet-name>
 		<url-pattern>/submittedData</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>DatabaseTest</servlet-name>
+		<servlet-class>com.evalimine.uus.server.DatabaseTest</servlet-class>
+	</servlet>
 
-	<!-- Default page to serve -->
+	<servlet-mapping>
+		<servlet-name>DatabaseTest</servlet-name>
+		<url-pattern>/dbtest</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+	    <servlet-name>jTest</servlet-name>
+	    <jsp-file>/db.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>jTest</servlet-name>
+	    <url-pattern>/jsptest</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	    <servlet-name>votePage</servlet-name>
+	    <jsp-file>/index.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>votePage</servlet-name>
+	    <url-pattern>/vote</url-pattern>
+	</servlet-mapping>
+		
+	<servlet>
+	    <servlet-name>applyPage</servlet-name>
+	    <jsp-file>/applypage.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>applyPage</servlet-name>
+	    <url-pattern>/apply</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	    <servlet-name>statPage</servlet-name>
+	    <jsp-file>/statpage.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>statPage</servlet-name>
+	    <url-pattern>/statistics</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	    <servlet-name>profilePage</servlet-name>
+	    <jsp-file>/profilepage.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>profilePage</servlet-name>
+	    <url-pattern>/profile</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	    <servlet-name>loginPage</servlet-name>
+	    <jsp-file>/login.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>loginPage</servlet-name>
+	    <url-pattern>/login</url-pattern>
+	</servlet-mapping>
+	
+	<!-- Default page to serve 
 	<welcome-file-list>
-		<welcome-file>index.html</welcome-file>
-	</welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list> -->
 
 	<servlet>
 		<servlet-name>SystemServiceServlet</servlet-name>
@@ -29,5 +95,4 @@
 		<servlet-name>SystemServiceServlet</servlet-name>
 		<url-pattern>/_ah/spi/*</url-pattern>
 	</servlet-mapping>
-
 </web-app>
