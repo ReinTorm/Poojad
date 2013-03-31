@@ -94,8 +94,11 @@ header nav ul li {
   padding-left: 20px;
   outline: none;
 }
-
-nav ul li.ui-tabs-active {
+body#votepage a#votenav,
+body#applypage a#applynav,
+body#statpage a#statnav,
+body#loginpage a#loginnav,
+body#profilepage a#profilenav {
   text-decoration: underline;
 }
 

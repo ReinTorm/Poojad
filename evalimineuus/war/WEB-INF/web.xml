@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.5" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee                http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 
-    <sessions-enabled>true</sessions-enabled>
-
 	<servlet>
 		<servlet-name>showParameters</servlet-name>
 		<servlet-class>com.evalimine.uus.server.ShowParameters</servlet-class>
@@ -75,6 +73,15 @@
 	<servlet-mapping>
 	    <servlet-name>loginPage</servlet-name>
 	    <url-pattern>/login</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>logout</servlet-name>
+		<servlet-class>com.evalimine.uus.server.LogoutServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>logout</servlet-name>
+		<url-pattern>/logout</url-pattern>
 	</servlet-mapping>
 	
 	<!-- Default page to serve 

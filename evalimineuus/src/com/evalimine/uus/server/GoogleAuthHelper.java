@@ -1,5 +1,8 @@
 package com.evalimine.uus.server;
 
+import java.io.IOException;
+import java.util.Arrays;
+
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
 import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeRequestUrl;
@@ -11,8 +14,6 @@ import com.google.api.client.http.HttpTransport;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.jackson.JacksonFactory;
-import java.io.IOException;
-import java.util.Arrays;
 
 public final class GoogleAuthHelper {
 
@@ -20,17 +21,17 @@ public final class GoogleAuthHelper {
 	 * Please provide a value for the CLIENT_ID constant before proceeding, set
 	 * this up at https://code.google.com/apis/console/
 	 */
-	private static final String CLIENT_ID = "654044822365.apps.googleusercontent.com";
+	private static final String CLIENT_ID = "654044822365-dheg16o8eu2l549aoeh8ncr9cjt5rbpn.apps.googleusercontent.com";
 	/**
 	 * Please provide a value for the CLIENT_SECRET constant before proceeding,
 	 * set this up at https://code.google.com/apis/console/
 	 */
-	private static final String CLIENT_SECRET = "1R2PzfRtU7_KwW1y-DKr7xEE";
+	private static final String CLIENT_SECRET = "N4z9kELzPKY6o8_n2jPXjVqW";
 
 	/**
 	 * Callback URI that google will redirect to after successful authentication
 	 */
-	private static final String CALLBACK_URI = "urn:ietf:wg:oauth:2.0:oob";
+	private static final String CALLBACK_URI = "https://3valimine.appspot.com/login";
 
 	// start google authentication constants
 	private static final Iterable<String> SCOPE = Arrays.asList("https://www.googleapis.com/auth/userinfo.profile;https://www.googleapis.com/auth/userinfo.email".split(";"));

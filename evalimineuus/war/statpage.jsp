@@ -5,7 +5,7 @@
 	<title>eValimine - Statistika</title>
 	<link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body id="statpage">
 	<div id="wrapper">
 		<jsp:include page="header.jsp" />
 		<canvas id="highlight"></canvas>
