@@ -30,7 +30,7 @@ public final class GoogleAuthHelper {
 	/**
 	 * Callback URI that google will redirect to after successful authentication
 	 */
-	private static final String CALLBACK_URI = "localhost";
+	private static final String CALLBACK_URI = "3valimine.appspot.com/login.jsp:";
 
 	// start google authentication constants
 	private static final Iterable<String> SCOPE = Arrays.asList("https://www.googleapis.com/auth/userinfo.profile;https://www.googleapis.com/auth/userinfo.email".split(";"));
