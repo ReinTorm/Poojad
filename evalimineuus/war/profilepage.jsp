@@ -3,11 +3,11 @@
 <head>
 	<meta charset="utf-8">
 	<title>eValimine - Profiil</title>
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="/css/style.css">
 </head>
 <body id="profilepage">
 	<div id="wrapper">
-		<jsp:include page="header.jsp" />
+		<jsp:include page="/header.jsp" />
 		<canvas id="highlight"></canvas>
 		<div id="profilepage" class="tab">
 			<aside>
@@ -68,8 +68,8 @@
 			</div><!-- content -->
 		</div><!-- profilepage -->
 		
-		<jsp:include page="footer.jsp" />
+		<jsp:include page="/footer.jsp" />
 	</div><!-- wrapper -->
-	<jsp:include page="scripts.jsp" />
+	<jsp:include page="/scripts.jsp" />
 </body>
 </html>

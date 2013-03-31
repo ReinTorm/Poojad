@@ -480,10 +480,6 @@ body#profilepage a#profilenav {
 }
 /*Candidate page end*/
 
-.stat-content {
-  display: none;
-}
-
 @media print
 {
 

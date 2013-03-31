@@ -1,9 +1,4 @@
 $(document).ready(function() {
-	$('a.statbutton').on('click', function() {
-		$('.stat-content').hide();
-		var pageToShow = $(this).attr('id') + "-content";
-		document.getElementById(pageToShow).style.display = 'block';
-	});
 
 	$('.popbox').popbox();
 

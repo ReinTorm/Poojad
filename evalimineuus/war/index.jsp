@@ -7,7 +7,7 @@
 </head>
 <body id="votepage">
 	<div id="wrapper">
-		<jsp:include page="header.jsp" />
+		<jsp:include page="/header.jsp" />
 		<canvas id="highlight"></canvas>
 
 		<div id="votepage" class="tab">
@@ -72,8 +72,8 @@
 			</div><!-- content -->
 		</div><!-- votepage -->
 
-		<jsp:include page="footer.jsp" />
+		<jsp:include page="/footer.jsp" />
 	</div><!-- wrapper -->
-	<jsp:include page="scripts.jsp" />
+	<jsp:include page="/scripts.jsp" />
 </body>
 </html>

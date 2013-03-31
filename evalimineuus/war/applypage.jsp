@@ -3,11 +3,11 @@
 <head>
 	<meta charset="utf-8">
 	<title>eValimine - Kandideeri</title>
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="/css/style.css">
 </head>
 <body id="applypage">
 	<div id="wrapper">
-		<jsp:include page="header.jsp" />
+		<jsp:include page="/header.jsp" />
 		<canvas id="highlight"></canvas>
 		<div id="applypage" class="tab">
 			<aside>
@@ -93,8 +93,8 @@
 			</div><!--content-->
 		</div><!--applypage-->
 
-		<jsp:include page="footer.jsp" />
+		<jsp:include page="/footer.jsp" />
 	</div><!-- wrapper -->
-	<jsp:include page="scripts.jsp" />
+	<jsp:include page="/scripts.jsp" />
 </body>
 </html>

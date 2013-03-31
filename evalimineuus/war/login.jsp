@@ -1,7 +1,5 @@
 <%@page import="com.evalimine.uus.server.GoogleAuthHelper"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"%><!DOCTYPE html>
-
-
 <html>
 <head>
 	<meta charset="utf-8">
@@ -10,7 +8,7 @@
 </head>
 <body id="loginpage">
 	<div id="wrapper">
-		<jsp:include page="header.jsp" />
+		<jsp:include page="/header.jsp" />
 		<canvas id="highlight"></canvas>
 
 		<div class="tab">
@@ -36,8 +34,8 @@
 		%>
 		</div>
 
-		<jsp:include page="footer.jsp" />
+		<jsp:include page="/footer.jsp" />
 	</div><!-- wrapper -->
-	<jsp:include page="scripts.jsp" />
+	<jsp:include page="/scripts.jsp" />
 </body>
 </html>

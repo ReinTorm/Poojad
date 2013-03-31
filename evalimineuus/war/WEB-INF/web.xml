@@ -36,7 +36,7 @@
 	</servlet>
 	<servlet-mapping>
 	    <servlet-name>votePage</servlet-name>
-	    <url-pattern>/vote</url-pattern>
+	    <url-pattern>/vote/*</url-pattern>
 	</servlet-mapping>
 		
 	<servlet>
@@ -45,7 +45,7 @@
 	</servlet>
 	<servlet-mapping>
 	    <servlet-name>applyPage</servlet-name>
-	    <url-pattern>/apply</url-pattern>
+	    <url-pattern>/apply/*</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
@@ -54,16 +54,68 @@
 	</servlet>
 	<servlet-mapping>
 	    <servlet-name>statPage</servlet-name>
-	    <url-pattern>/statistics</url-pattern>
+	    <url-pattern>/statistics/*</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+	    <servlet-name>areastat</servlet-name>
+	    <jsp-file>/statpage.jsp</jsp-file>
+	    <init-param>
+        	<param-name>subpage</param-name>
+        	<param-value>areastat</param-value>
+   		</init-param>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>areastat</servlet-name>
+	    <url-pattern>/statistics/piirkond/*</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	    <servlet-name>canditstat</servlet-name>
+	    <jsp-file>/statpage.jsp</jsp-file>
+	    <init-param>
+        	<param-name>subpage</param-name>
+        	<param-value>canditstat</param-value>
+   		</init-param>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>canditstat</servlet-name>
+	    <url-pattern>/statistics/kandidaat/*</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	    <servlet-name>parteistat</servlet-name>
+	    <jsp-file>/statpage.jsp</jsp-file>
+	    <init-param>
+        	<param-name>subpage</param-name>
+        	<param-value>parteistat</param-value>
+   		</init-param>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>parteistat</servlet-name>
+	    <url-pattern>/statistics/partei/*</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	    <servlet-name>riikstat</servlet-name>
+	    <jsp-file>/statpage.jsp</jsp-file>
+	    <init-param>
+        	<param-name>subpage</param-name>
+        	<param-value>riikstat</param-value>
+   		</init-param>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>riikstat</servlet-name>
+	    <url-pattern>/statistics/riik/*</url-pattern>
+	</servlet-mapping>	
+
 	<servlet>
 	    <servlet-name>profilePage</servlet-name>
 	    <jsp-file>/profilepage.jsp</jsp-file>
 	</servlet>
 	<servlet-mapping>
 	    <servlet-name>profilePage</servlet-name>
-	    <url-pattern>/profile</url-pattern>
+	    <url-pattern>/profile/*</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
@@ -72,7 +124,7 @@
 	</servlet>
 	<servlet-mapping>
 	    <servlet-name>loginPage</servlet-name>
-	    <url-pattern>/login</url-pattern>
+	    <url-pattern>/login/*</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
@@ -81,7 +133,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>logout</servlet-name>
-		<url-pattern>/logout</url-pattern>
+		<url-pattern>/logout/*</url-pattern>
 	</servlet-mapping>
 	
 	<!-- Default page to serve 

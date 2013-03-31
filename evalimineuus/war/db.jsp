@@ -2,7 +2,7 @@
 <HTML>
 <HEAD>
 	<TITLE>Database Test</TITLE>
-	<link rel='stylesheet' href='css/style.css'></HEAD>
+	<link rel='stylesheet' href='/css/style.css'></HEAD>
 </head>
 <body>
 	<h2 align="center">Database jsp test</h2>
