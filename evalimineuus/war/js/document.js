@@ -146,36 +146,82 @@ $(document).ready(function() {
 
 	function updateResults() {
 		results = $('#results');
-		results.html("");
-		results.addClass("loading");
-		var current_radiobox = $('input:checked', '#radioboxes').val();
-		$.getJSON('candidates.json', function(data) {
-			for (i = 0, l = data.candidates.length; i < l; ++i) {
-				var candidate = data.candidates[i];
-				if ((current_radiobox == 0 || current_radiobox == candidate.person.constituency_nr) && $('#checkboxes input:checkbox[value="' + candidate.person.party + '"]').is(':checked')) {
-					results.append('<li><a href="javascript:previewCandidate(' + candidate.id + ')">' + candidate.person.name + "</a></li>\n");
-				}
-			}
-		});
-		setTimeout(function(){results.removeClass("loading")}, 1000);
+		var current_radiobox = $('#radioboxes.custom-radiobox input[type=radio]:checked').val();
+		var current_checked = $("#checkboxes.custom-checkbox input[type=checkbox]:checked").map(function () {return this.value;}).get();
+		
+		if(current_checked.length>0){
+			var jsonObj = [];
+			jsonObj.push({radio: current_radiobox, checkboxes: current_checked});
+			$.ajax({ 
+				url: "/getCandidates",
+				type: "post",
+				data: JSON.stringify(jsonObj),
+				contentType: 'application/json; charset=utf-8',
+				dataType: 'json',
+				beforeSend: function() { results.addClass("loading"); },
+				complete: function() { results.removeClass("loading"); },
+				success: function(jsonData){
+					results.html("");
+					for (i = 0; i < jsonData.length; i++) {
+						var c = jsonData[i];
+						results.append('<li><a href="javascript:previewCandidate(' + c.PID + ')">' + c.PID + " - " + c.Firstname + " " + c.Lastname + "</a></li>\n");
+					}
+				},
+				error: function (xhr, ajaxOptions, thrownError) {
+			        results.html(xhr.status);
+			        results.html(thrownError);
+			    }
+			});
+		} else {
+			results.html("");
+		}
 	}
 
 	$('#radioboxes, #checkboxes').on('change', updateResults);
 });
 
 function previewCandidate(candidateId) {
-	$.getJSON('candidates.json', function(data) {
-		for (i = 0, l = data.candidates.length; i < l; ++i) {
-			if (data.candidates[i].id == candidateId) {
-				$('#profile').html("");
-				$('#profile').append(
-						'<img src="img/avatar.jpg" id="avatar">' + '<h1>' + data.candidates[i].person.name + '</h1>' + '<p><b>Vanus: </b>' + data.candidates[i].person.age + '</p>'
-								+ '<p><b>Partei: </b>' + data.candidates[i].person.party + '</p>' + '<p><b>Valimisringkond: </b>' + data.candidates[i].person.constituency + '</p>'
-								+ '<p><b>Facebook: </b><a href="' + data.candidates[i].person.facebook + '">' + data.candidates[i].person.name + '</a></p>' + '<p><b>Skype: </b>'
-								+ data.candidates[i].person.skype + '</p>' + '<p><b>Muu: </b>' + data.candidates[i].person.other + '</p>' + "<h4>What's up?</h4>" + '<p>'
-								+ data.candidates[i].person.stext + '</p>' + '<h4>Lorem Ipsum</h4>' + '<p>' + data.candidates[i].person.ltext + '</p>');
-				break;
-			}
-		}
+	profile = $('#profile');
+	var jsonObj = [];
+	jsonObj.push({userId: candidateId});
+	$.ajax({ 
+		url: "/getCandidates",
+		type: "post",
+		data: JSON.stringify(jsonObj),
+		contentType: 'application/json; charset=utf-8',
+		dataType: 'json',
+		success: function(jsonData){
+			var c = jsonData[0];
+			 $('#profile span#name').html(c.Firstname + " " + c.Lastname);
+			 $('#profile span#birthdate').html(c.Birthdate);
+			 $('#profile span#party').html(c.PartyName);
+			 $('#profile span#constituency').html(c.ConstituencyName);
+			 $('#profile span#facebook').html("<a href='www.facebook.com/" + c.Facebook_Id + "'>"+c.Firstname + " " + c.Lastname +"</a>");
+			 $('#profile span#skype').html(c.Skype);
+			 $('#profile span#skype').html(c.Skype);
+			 $('#profile span#other').html(c.Other);
+			 $('#profile span#shortText').html(c.ShortInfo); 
+			 $('#profile span#longText').html(c.LongInfo); 
+			 profile.show();
+		},
+		error: function(xhr, ajaxOptions, thrownError) {
+	        alert(xhr.status);
+	        alert(thrownError);
+	    }
 	});
+//	
+//	$.getJSON('candidates.json', function(data) {
+//		for (i = 0, l = data.candidates.length; i < l; ++i) {
+//			if (data.candidates[i].id == candidateId) {
+//				$('#profile').append(
+//						'<img src="img/avatar.jpg" id="avatar">' + '<h1>' + data.candidates[i].person.name + '</h1>' + '<p><b>Vanus: </b>' + data.candidates[i].person.age + '</p>'
+//								+ '<p><b>Partei: </b>' + data.candidates[i].person.party + '</p>' + '<p><b>Valimisringkond: </b>' + data.candidates[i].person.constituency + '</p>'
+//								+ '<p><b>Facebook: </b><a href="' + data.candidates[i].person.facebook + '">' + data.candidates[i].person.name + '</a></p>' + '<p><b>Skype: </b>'
+//								+ data.candidates[i].person.skype + '</p>' + '<p><b>Muu: </b>' + data.candidates[i].person.other + '</p>' + "<h4>What's up?</h4>" + '<p>'
+//								+ data.candidates[i].person.stext + '</p>' + '<h4>Lorem Ipsum</h4>' + '<p>' + data.candidates[i].person.ltext + '</p>');
+//				break;
+//			}
+//		}
+//	});
 }
+

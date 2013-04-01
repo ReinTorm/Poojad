@@ -24,36 +24,39 @@
 					<li>
 						<h5>Valimisringkond:</h5>
 						<ul id="radioboxes" class="custom-radiobox">
-							<li><label><input type="radio" name="ringkond" value="0" checked="checked"/><span>Kõik</span></label></li>
-							<li><label><input type="radio" name="ringkond" value="1"/><span>1 Tallinn</span></label></li>
-							<li><label><input type="radio" name="ringkond" value="2"/><span>2</span></label></li>
-							<li><label><input type="radio" name="ringkond" value="3"/><span>3</span></label></li>
-							<li><label><input type="radio" name="ringkond" value="4"/><span>4</span></label></li>
-							<li><label><input type="radio" name="ringkond" value="5"/><span>5 Saaremaa</span></label></li>
-							<li><label><input type="radio" name="ringkond" value="6"/><span>6</span></label></li>
-							<li><label><input type="radio" name="ringkond" value="7"/><span>7</span></label></li>
-							<li><label><input type="radio" name="ringkond" value="8"/><span>8</span></label></li>
-							<li><label><input type="radio" name="ringkond" value="9"/><span>9</span></label></li>
-							<li><label><input type="radio" name="ringkond" value="10"/><span>10 Tartu</span></label></li>
-							<li><label><input type="radio" name="ringkond" value="11"/><span>11</span></label></li>
-							<li><label><input type="radio" name="ringkond" value="12"/><span>12</span></label></li>
+						<li><label><input type="radio" name="ringkond" value="0" checked="checked"/><span>Kõik</span></label></li>
+						<% java.sql.Connection c = null;
+							try {
+								java.sql.DriverManager.registerDriver(new com.google.appengine.api.rdbms.AppEngineDriver());
+								c = java.sql.DriverManager.getConnection("jdbc:google:rdbms:valiminee:evalimine2");
+								java.sql.ResultSet rs = c.createStatement().executeQuery("SELECT * FROM db.constituency");
+								while (rs.next()){
+									String CID = rs.getString("CID");
+							        String cname = rs.getString("ConstituencyName");
+									out.println("<li><label title= '" + cname + "'><input type='radio' name='ringkond' value='" + CID + "'/><span>" + CID + " - " + cname + "</span></label></li>");								
+							    }
+							} catch (java.sql.SQLException e) {
+								e.printStackTrace();
+								out.println(e.toString());
+							} %>
 						</ul>
 					</li>
 
 					<li>
 						<h5>Erakond:</h5>
-						<ul id="checkboxes" class="custom-checkbox">
-							<li><label><input type="checkbox" value="Eesti Iseseisvuspartei" /><span>Eesti Iseseisvuspartei</span></label></li>
-							<li><label><input type="checkbox" value="Eesti Keskerakond" /><span>Eesti Keskerakond</span></label></li>
-							<li><label><input type="checkbox" value="Eesti Konservatiivne Rahvaerakond" /><span>Eesti Konservatiivne Rahvaerakond</span></label></li>
-							<li><label><input type="checkbox" value="Eesti Reformierakond" /><span>Eesti Reformierakond</span></label></li>
-							<li><label><input type="checkbox" value="Eesti Vabaduspartei – Põllumeeste Kogu" /><span>Eesti Vabaduspartei – Põllumeeste Kogu</span></label></li>
-							<li><label><input type="checkbox" value="Eestimaa Ühendatud Vasakpartei" /><span>Eestimaa Ühendatud Vasakpartei</span></label></li>
-							<li><label><input type="checkbox" value="Erakond Eesti Kristlikud Demokraadid" /><span>Erakond Eesti Kristlikud Demokraadid</span></label></li>
-							<li><label><input type="checkbox" value="Erakond Eestimaa Rohelised" /><span>Erakond Eestimaa Rohelised</span></label></li>
-							<li><label><input type="checkbox" value="Erakond Isamaa ja Res Publica Liit" /><span>Erakond Isamaa ja Res Publica Liit</span></label></li>
-							<li><label><input type="checkbox" value="Sotsiaaldemokraatlik Erakond" /><span>Sotsiaaldemokraatlik Erakond</span></label></li>
-							<li><label><input type="checkbox" value="Üksikkandidaat" /><span>Üksikkandidaat</span></label></li>
+						<ul id="checkboxes" class="custom-checkbox">		
+						<% 
+							try {
+								java.sql.ResultSet rs = c.createStatement().executeQuery("SELECT * FROM db.party");
+								while (rs.next()){
+									int partyID = rs.getInt("PartyID");
+							        String pname = rs.getString("PartyName");
+									out.println("<li><label><input type='checkbox' value='"+partyID+"' /><span>"+pname+"</span></label></li>");
+							    }
+							} catch (java.sql.SQLException e) {
+								e.printStackTrace();
+								out.println(e.toString());
+							} %>
 						</ul>
 					</li>
 					<li>
@@ -64,7 +67,19 @@
 						</div>
 					</li>
 					<li>
-						<div id="profile">							
+						<div id="profile">
+							<img src="img/avatar.jpg" id="avatar">
+							<h1><span id="name"></span></h1>
+							<p><b>Sünniaeg: </b><span id="birthdate"></span></p>
+							<p><b>Partei: </b><span id="party"></span></p>
+							<p><b>Valimisringkond: </b><span id="constituency"></span></p>
+							<p><b>Facebook: </b><span id="facebook"></span></a></p>
+							<p><b>Skype: </b> <span id="skype"></span></p>
+							<p><b>Muu: </b> <span id="other"></span></p>
+							<h4>Kokkuvõte</h4>
+							<p><span id="shortText"></span></p>
+							<h4>Minust</h4>
+							<p><span id="longText"></span></p>					
 						</div> 
 					</li>
 				</ul>

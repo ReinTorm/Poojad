@@ -12,6 +12,16 @@
 	</servlet-mapping>
 	
 	<servlet>
+		<servlet-name>getCandit</servlet-name>
+		<servlet-class>com.evalimine.uus.server.CandidatesFinder</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>getCandit</servlet-name>
+		<url-pattern>/getCandidates</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
 		<servlet-name>DatabaseTest</servlet-name>
 		<servlet-class>com.evalimine.uus.server.DatabaseTest</servlet-class>
 	</servlet>

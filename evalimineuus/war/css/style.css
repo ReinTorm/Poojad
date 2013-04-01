@@ -424,6 +424,10 @@ body#profilepage a#profilenav {
   width: 80px;
 }
 
+#profile {
+	display: none;
+}
+
 #profilepage #content input[type="text"],
 #profilepage #content select {
   line-height: 20px;

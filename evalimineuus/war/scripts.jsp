@@ -3,4 +3,5 @@
 <script type="text/javascript" src="/js/jquery-ui-1.9.2.custom.js"></script>
 <script type="text/javascript" src="/js/sorttable.js"></script>
 <script type="text/javascript" src='/js/popbox.js'></script>
+<script type="text/javascript" src='/js/json2.js'></script>
 <script type="text/javascript" src='/js/document.js'></script>
