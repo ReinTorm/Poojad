@@ -302,6 +302,26 @@ body#profilepage a#profilenav {
   white-space: nowrap;
 }
 
+#resultSearch{
+	float: left;
+	width: 98%;
+	margin: 1% 1% 2% 1%;
+	padding-left: 5px;
+	line-height: 22px;
+  	height: 30px;
+  	background-color: #f4f4f4;
+ 	border: 1px solid #ccc;
+  	font-size: 12px;
+  	outline: none;
+	background-image:url('/img/icon-small-search.png');
+	-webkit-background-size: 20px auto;
+  	-moz-background-size: 20px auto;
+ 	-o-background-size: 20px auto;
+ 	background-size: 20px auto;
+	background-position: right;
+    background-repeat: no-repeat;
+}
+
 #profile{
   padding-top: 30px;
 }
@@ -809,7 +829,7 @@ body#profilepage a#profilenav {
   width: 100%;
   height: 100%;
   position: relative;
-  background: rgba(255,255,255,0.8) url("../img/ajax-loader.gif") no-repeat center center;
+  background: rgba(255,255,255,0.8) url("../img/ajax-loader.gif") no-repeat center center !important;
   z-index: 1001;
 }
 

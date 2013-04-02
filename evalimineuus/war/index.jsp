@@ -44,7 +44,7 @@
 
 					<li>
 						<h5>Erakond:</h5>
-						<ul id="checkboxes" class="custom-checkbox">		
+						<ul id="checkboxes" class="custom-checkbox">
 						<% 
 							try {
 								java.sql.ResultSet rs = c.createStatement().executeQuery("SELECT * FROM db.party");
@@ -62,6 +62,7 @@
 					<li>
 						<h5>Kandidaadid:</h5>
 						<div id="results_wrapper">
+						<input type="text" id="resultSearch"></input>
 							<ul id="results">
 							</ul>
 						</div>
@@ -69,6 +70,7 @@
 					<li>
 						<div id="profile">
 							<img src="img/avatar.jpg" id="avatar">
+							
 							<h1><span id="name"></span></h1>
 							<p><b>Sünniaeg: </b><span id="birthdate"></span></p>
 							<p><b>Partei: </b><span id="party"></span></p>

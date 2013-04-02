@@ -145,7 +145,7 @@ $(document).ready(function() {
 	});
 
 	function updateResults() {
-		results = $('#results');
+		results = document.getElementById("results");
 		var current_radiobox = $('#radioboxes.custom-radiobox input[type=radio]:checked').val();
 		var current_checked = $("#checkboxes.custom-checkbox input[type=checkbox]:checked").map(function () {return this.value;}).get();
 		
@@ -158,13 +158,17 @@ $(document).ready(function() {
 				data: JSON.stringify(jsonObj),
 				contentType: 'application/json; charset=utf-8',
 				dataType: 'json',
-				beforeSend: function() { results.addClass("loading"); },
-				complete: function() { results.removeClass("loading"); },
+				beforeSend: function() { $('#results_wrapper').addClass("loading"); },
+				complete: function() {  $('#results_wrapper').removeClass("loading"); },
 				success: function(jsonData){
-					results.html("");
+					results.innerHTML = "";
 					for (i = 0; i < jsonData.length; i++) {
 						var c = jsonData[i];
-						results.append('<li><a href="javascript:previewCandidate(' + c.PID + ')">' + c.PID + " - " + c.Firstname + " " + c.Lastname + "</a></li>\n");
+						var linode = document.createElement('li');
+						var anode = document.createElement('a');
+						anode.setAttribute('href', 'javascript:previewCandidate('+c.PID+')');
+						anode.appendChild(document.createTextNode(c.Firstname + " " + c.Lastname));
+						results.appendChild(linode).appendChild(anode);
 					}
 				},
 				error: function (xhr, ajaxOptions, thrownError) {
@@ -173,7 +177,7 @@ $(document).ready(function() {
 			    }
 			});
 		} else {
-			results.html("");
+			results.innerHTML = "";
 		}
 	}
 
@@ -225,3 +229,17 @@ function previewCandidate(candidateId) {
 //	});
 }
 
+var rows = document.getElementById('results').getElementsByTagName("li");
+$('#resultSearch').keyup(function() {
+	
+	var input = document.getElementById('resultSearch').value;
+    var val = input.trim($(input).val()).replace(/ +/g, ' ').toLowerCase();
+    for(var i=0; i<rows.length;i++){
+		rows[i].style.display="block";
+    	var rowValue = rows[i].getElementsByTagName("a").item(0).childNodes[0].nodeValue;
+    	var val2 = rowValue.replace(/\s+/g, ' ').toLowerCase();
+    	if(!~val2.indexOf(val)){
+    		rows[i].style.display="none";
+    	}
+    }
+});
