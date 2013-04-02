@@ -85,6 +85,7 @@
 						</div> 
 					</li>
 				</ul>
+				<% %>
 				<a href="javascript:void(0);" id="votebutton" class="button">Hääleta!</a>
 			</div><!-- content -->
 		</div><!-- votepage -->

@@ -52,7 +52,7 @@ $(document).ready(function() {
 		var errorMandatory = '<p class="error">Kohustuslik!</p>';
 		var errorNumbers = '<p class="error">Ei tohi sisaldada numbreid!</p>';
 		var errorLetters = '<p class="error">Peab koosnema ainult numbritest!</p>';
-		var errorShort = '<p class="error">Liiga lÃ¼hike!</p>'
+		var errorShort = '<p class="error">Liiga lühike!</p>'
 
 		$('#candidateForm>*').removeClass("errorField");
 		$('#candidateForm p.error').hide();
@@ -200,12 +200,13 @@ function previewCandidate(candidateId) {
 			 $('#profile span#birthdate').html(c.Birthdate);
 			 $('#profile span#party').html(c.PartyName);
 			 $('#profile span#constituency').html(c.ConstituencyName);
-			 $('#profile span#facebook').html("<a href='www.facebook.com/" + c.Facebook_Id + "'>"+c.Firstname + " " + c.Lastname +"</a>");
+			 $('#profile span#facebook').html("<a href='http://www.facebook.com/" + c.Facebook_Id + "'>"+c.Firstname + " " + c.Lastname +"</a>");
 			 $('#profile span#skype').html(c.Skype);
 			 $('#profile span#skype').html(c.Skype);
 			 $('#profile span#other').html(c.Other);
 			 $('#profile span#shortText').html(c.ShortInfo); 
 			 $('#profile span#longText').html(c.LongInfo); 
+			 $('#profile img#avatar').attr('src',(c.ImgUrl==undefined ? "/img/avatar.jpg" : c.ImgUrl));
 			 profile.show();
 		},
 		error: function(xhr, ajaxOptions, thrownError) {
@@ -213,20 +214,6 @@ function previewCandidate(candidateId) {
 	        alert(thrownError);
 	    }
 	});
-//	
-//	$.getJSON('candidates.json', function(data) {
-//		for (i = 0, l = data.candidates.length; i < l; ++i) {
-//			if (data.candidates[i].id == candidateId) {
-//				$('#profile').append(
-//						'<img src="img/avatar.jpg" id="avatar">' + '<h1>' + data.candidates[i].person.name + '</h1>' + '<p><b>Vanus: </b>' + data.candidates[i].person.age + '</p>'
-//								+ '<p><b>Partei: </b>' + data.candidates[i].person.party + '</p>' + '<p><b>Valimisringkond: </b>' + data.candidates[i].person.constituency + '</p>'
-//								+ '<p><b>Facebook: </b><a href="' + data.candidates[i].person.facebook + '">' + data.candidates[i].person.name + '</a></p>' + '<p><b>Skype: </b>'
-//								+ data.candidates[i].person.skype + '</p>' + '<p><b>Muu: </b>' + data.candidates[i].person.other + '</p>' + "<h4>What's up?</h4>" + '<p>'
-//								+ data.candidates[i].person.stext + '</p>' + '<h4>Lorem Ipsum</h4>' + '<p>' + data.candidates[i].person.ltext + '</p>');
-//				break;
-//			}
-//		}
-//	});
 }
 
 var rows = document.getElementById('results').getElementsByTagName("li");
