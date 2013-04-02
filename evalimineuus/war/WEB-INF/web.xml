@@ -146,6 +146,15 @@
 		<url-pattern>/logout/*</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>voting</servlet-name>
+		<servlet-class>com.evalimine.uus.server.Voting</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>voting</servlet-name>
+		<url-pattern>/vote/*</url-pattern>
+	</servlet-mapping>
+	
 	<!-- Default page to serve 
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>

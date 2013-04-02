@@ -168,7 +168,7 @@ body#profilepage a#profilenav {
   text-align:center;
   font-weight:bold;
   font-size: 13px;
-  padding: 12px 20px;
+  padding: 12px 20px;  /*Parem kasutada line-height*/
   margin-top: 10px;
   cursor: pointer;
 }
@@ -335,9 +335,14 @@ body#profilepage a#profilenav {
 }
 
 #votebutton {
-  float: right;
+  float: left;
   font-size: 20px;
-  margin: 10px 10px;
+  width: 30%;
+  margin: 0 35%;
+  margin-top: 30px;
+  padding: 0px;
+  line-height: 50px;
+  display:none;
 }
 /*Index file end*/
 
@@ -877,4 +882,30 @@ a#googlelogin:active{
 	background-size: contain;
 	width:200px;
 	height:35px;
+}
+
+#easyNotification {
+	float: left;
+	width: 100%;
+	line-height: 28px;
+	font-size: 13px;
+	padding: 0 10px;
+	margin: 10px 0;
+	background-color: #AADBF3;
+	border: 1px solid #3AAEE7;
+}
+#easyNotification.notification{
+	background-color: #FFF400;
+	border: 1px solid #FFCD00;
+}
+
+#easyNotification.err{
+	background-color: #FF0000;
+	border: 1px solid#A60000;
+}
+#easyNotification span.close{
+	font-size: 11px;
+	float: right;
+	color: #404040;
+	cursor: pointer;
 }

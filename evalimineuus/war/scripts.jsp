@@ -4,4 +4,5 @@
 <script type="text/javascript" src="/js/sorttable.js"></script>
 <script type="text/javascript" src='/js/popbox.js'></script>
 <script type="text/javascript" src='/js/json2.js'></script>
+<script type="text/javascript" src="/js/easy.notification.js"></script>
 <script type="text/javascript" src='/js/document.js'></script>

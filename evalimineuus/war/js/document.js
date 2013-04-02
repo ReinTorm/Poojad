@@ -52,7 +52,7 @@ $(document).ready(function() {
 		var errorMandatory = '<p class="error">Kohustuslik!</p>';
 		var errorNumbers = '<p class="error">Ei tohi sisaldada numbreid!</p>';
 		var errorLetters = '<p class="error">Peab koosnema ainult numbritest!</p>';
-		var errorShort = '<p class="error">Liiga l�hike!</p>'
+		var errorShort = '<p class="error">Liiga l�hike!</p>'
 
 		$('#candidateForm>*').removeClass("errorField");
 		$('#candidateForm p.error').hide();
@@ -185,7 +185,6 @@ $(document).ready(function() {
 });
 
 function previewCandidate(candidateId) {
-	profile = $('#profile');
 	var jsonObj = [];
 	jsonObj.push({userId: candidateId});
 	$.ajax({ 
@@ -196,6 +195,7 @@ function previewCandidate(candidateId) {
 		dataType: 'json',
 		success: function(jsonData){
 			var c = jsonData[0];
+			 $('#profile img#avatar').attr('src',(c.ImgUrl==undefined ? "/img/avatar.jpg" : c.ImgUrl));
 			 $('#profile span#name').html(c.Firstname + " " + c.Lastname);
 			 $('#profile span#birthdate').html(c.Birthdate);
 			 $('#profile span#party').html(c.PartyName);
@@ -206,14 +206,44 @@ function previewCandidate(candidateId) {
 			 $('#profile span#other').html(c.Other);
 			 $('#profile span#shortText').html(c.ShortInfo); 
 			 $('#profile span#longText').html(c.LongInfo); 
-			 $('#profile img#avatar').attr('src',(c.ImgUrl==undefined ? "/img/avatar.jpg" : c.ImgUrl));
-			 profile.show();
+			 document.getElementById( "votebutton" ).setAttribute( "onClick", "javascript:vote("+c.PID+");");
+			 $('#profile').show();
+			 $('#votebutton').show();
+			 
 		},
 		error: function(xhr, ajaxOptions, thrownError) {
-	        alert(xhr.status);
-	        alert(thrownError);
+			$.easyNotification(xhr.status + " : " + thrownError);
+			$("html, body").animate({ scrollTop: 0 }, "slow");
 	    }
 	});
+}
+
+function vote(candidateId){
+	var jsonObj = [];
+	jsonObj.push({vote: candidateId});
+	
+	$.ajax({ 
+		url: "/vote",
+		type: "post",
+		data: JSON.stringify(jsonObj),
+		contentType: 'application/json; charset=utf-8',
+		dataType: 'json',
+		beforeSend: function() { $('#votebutton').removeClass("button").addClass("loading"); },
+		complete: function() {  $('#votebutton').addClass("button").removeClass("loading"); },
+		success: function(jsonData){
+			$.easyNotification(jsonData.message); 
+			$("html, body").animate({ scrollTop: 0 }, "slow");
+		},
+		error: function(xhr, ajaxOptions, thrownError) {
+	        switch(xhr.status){
+	        	case 888: $.easyNotification('Hääletamiseks logige palun sisse!'); break;
+	        	case 999: $.easyNotification('Tekkis viga!'); break;
+	        	default: $.easyNotification(xhr.status + " : " + thrownError);
+	        }
+	        $("html, body").animate({ scrollTop: 0 }, "slow");
+	    }
+	});
+	
 }
 
 var rows = document.getElementById('results').getElementsByTagName("li");
