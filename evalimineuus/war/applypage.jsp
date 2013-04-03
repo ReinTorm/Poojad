@@ -4,6 +4,7 @@
 	<meta charset="utf-8">
 	<title>eValimine - Kandideeri</title>
 	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/jquery.ketchup.css">
 </head>
 <body id="applypage">
 	<div id="wrapper">
@@ -62,17 +63,19 @@
 						<form action="/submittedData" method="POST" id="candidateForm">
 							<h4>Kandidaadi ankeet</h4>
 							<p>* märgistatud väljad on kohustuslikud</p>
-							<input type="text" name="fname" title="Eesnimi" placeholder="Eesnimi *" />
-							<input type="text" name="lname" placeholder="Perekonnanimi *" />
-							<input type="text" name="socnumber" placeholder="Isikukood *" />
-							<input type="text" name="party" placeholder="Erakondlik kuuluvus *" />
-							<input type="text" name="address" placeholder="Elukoha aadress *" />
-							<input type="text" name="phone" placeholder="Mobiil" />
-							<input type="text" name="pob" placeholder="Sünnikoht" />
-							<textarea name="education" placeholder="Haridus ja eriala ning õppeasutuse nimetus ja lõpetamise aeg"></textarea>
-							<input type="text" name="degree" placeholder="Teaduskraad" />
-							<input type="text" name="workp" placeholder="Töökoht" />
-							<input type="text" name="job" placeholder="Amet" />
+							<ul>
+								<li><input type="text" data-validate="validate(required, name, minlength(3))" name="fname" title="Eesnimi" placeholder="Eesnimi *" /></li>
+								<li><input type="text" data-validate="validate(required, name, minlength(3))" name="lname" placeholder="Perekonnanimi *" /></li>
+								<li><input type="text" data-validate="validate(required, digits, minlength(11))" name="socnumber" placeholder="Isikukood *" /></li>
+								<li><input type="text" data-validate="validate(required)" name="party" placeholder="Erakondlik kuuluvus *" /></li>
+								<li><input type="text" data-validate="validate(required)" name="address" placeholder="Elukoha aadress *" /></li>
+								<li><input type="text" data-validate="validate(digits, minlength(5))" name="phone" placeholder="Mobiil" /></li>
+								<li><input type="text" name="pob" placeholder="Sünnikoht" /></li>
+								<li><textarea name="education" placeholder="Haridus ja eriala ning õppeasutuse nimetus ja lõpetamise aeg"></textarea></li>
+								<li><input type="text" name="degree" placeholder="Teaduskraad" /></li>
+								<li><input type="text" name="workp" placeholder="Töökoht" /></li>
+								<li><input type="text" name="job" placeholder="Amet" /></li>
+							</ul>
 							<a href="javascript:void(0);" onclick="$(this).closest('form').submit();" class="button" id="marginFixer">Laadi alla PDF</a>
 							<a href="javascript:void(0);" class="close button">Katkesta</a>
 						</form>

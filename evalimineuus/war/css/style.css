@@ -729,7 +729,7 @@ body#profilepage a#profilenav {
   height: 30px;
   border: 1px solid #ccc;
   font-size: 12px;
-  margin-bottom: 5px;
+  margin-top: 5px;
   padding: 2px 5px;
   outline: none;
 }
@@ -803,11 +803,6 @@ body#profilepage a#profilenav {
   margin-left: 20px;
   font-size: 12px;
   color: #404040;
-}
-
-.errorField{
-  background-color: #ff9999;
-  border: 1px solid #ff1a1a;
 }
 
 .errorField::-webkit-input-placeholder{ /* WebKit browsers */
@@ -908,4 +903,20 @@ a#googlelogin:active{
 	float: right;
 	color: #404040;
 	cursor: pointer;
+}
+
+.ketchup-custom {
+  line-height: 1em;
+  display: none;
+}
+
+.ketchup-custom li {
+  font-size: 10px;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 0 #9F4631;
+  border: 0;
+  color: white;
+  background: #F46644;
+  padding: 1px 10px;
+  margin: 1px 0;
 }

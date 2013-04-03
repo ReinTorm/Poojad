@@ -2,102 +2,6 @@ $(document).ready(function() {
 
 	$('.popbox').popbox();
 
-	$('#subForm').submit(function() {
-		var ok = true;
-		var formDate = $(this).find("input[name='date']");
-		var formNumber = $(this).find("input[name='number']");
-		var formParty = $(this).find("input[name='partyName']");
-
-		function testStringError(inputField) {
-			if ((/\d/g).test(inputField.val()) || inputField.val().length < 3) {
-				inputField.addClass("errorField");
-				if (inputField.val().length < 1) {
-					inputField.before(errorMandatory);
-				} else if ((/\d/g).test(inputField.val())) {
-					inputField.before(errorNumbers);
-				} else if (inputField.val().length < 3) {
-					inputField.before(errorShort);
-				}
-				ok = false;
-			}
-		}
-
-		function testShortIntegerError(inputField) {
-			if ((/\D/g).test(inputField.val())) {
-				inputField.addClass("errorField");
-				if ((/\D/g).test(inputField.val())) {
-					inputField.before(errorLetters);
-				}
-				ok = false;
-			}
-		}
-
-		$('#subForm>*').removeClass("errorField");
-		$('#subForm p.error').hide();
-
-		if (!(formDate.val()).match(/^([1][12]|[0]?[1-9])[\.-]([3][01]|[12]\d|[0]?[1-9])[\.-](\d{4}|\d{2})$/)) {
-			formDate.addClass("errorField");
-			ok = false
-		}
-		testStringError(formParty);
-		testShortIntegerError(formNumber);
-
-		return ok
-	});
-
-	$('#candidateForm').submit(function() {
-		var ok = true;
-		var candidateParty = $(this).find("input[name='party']");
-
-		var errorMandatory = '<p class="error">Kohustuslik!</p>';
-		var errorNumbers = '<p class="error">Ei tohi sisaldada numbreid!</p>';
-		var errorLetters = '<p class="error">Peab koosnema ainult numbritest!</p>';
-		var errorShort = '<p class="error">Liiga l�hike!</p>'
-
-		$('#candidateForm>*').removeClass("errorField");
-		$('#candidateForm p.error').hide();
-
-		function testStringError(inputField) {
-			if ((/\d/g).test(inputField.val()) || inputField.val().length < 3) {
-				inputField.addClass("errorField");
-				if (inputField.val().length < 1) {
-					inputField.before(errorMandatory);
-				} else if ((/\d/g).test(inputField.val())) {
-					inputField.before(errorNumbers);
-				} else if (inputField.val().length < 3) {
-					inputField.before(errorShort);
-				}
-				ok = false;
-			}
-		}
-
-		function testIntegerError(inputField) {
-			if ((/\D/g).test(inputField.val()) || inputField.val().length < 10) {
-				inputField.addClass("errorField");
-				if (inputField.val().length < 1) {
-					inputField.before(errorMandatory);
-				} else if ((/\D/g).test(inputField.val())) {
-					inputField.before(errorLetters);
-				} else if (inputField.val().length < 10) {
-					inputField.before(errorShort);
-				}
-				ok = false;
-			}
-		}
-
-		testStringError($(this).find("input[name='fname']"));
-		testStringError($(this).find("input[name='lname']"));
-		testIntegerError($(this).find("input[name='socnumber']"));
-		testStringError($(this).find("input[name='party']"));
-		testStringError($(this).find("input[name='address']"));
-
-		return ok;
-	});
-
-	$('form input').keydown(function(event) {
-		$(this).removeClass('errorField');
-	});
-
 	$('table.sortable').each(function() {
 		var $table = $(this);
 		$('th', $table).each(function(column) {
@@ -244,9 +148,40 @@ function vote(candidateId){
 	    }
 	});
 	
-}
 
-var rows = document.getElementById('results').getElementsByTagName("li");
+	
+}
+$.ketchup
+
+.createErrorContainer(function(form, el) {
+  return $('<ul/>', {
+           'class': 'ketchup-custom'
+         }).insertAfter(el);
+})
+
+.addErrorMessages(function(form, el, container, messages) {
+  container.html('');
+
+  for(i = 0; i < messages.length; i++) {
+    $('<li/>', {
+      text: messages[i]
+    }).appendTo(container);
+  }
+})
+
+.showErrorContainer(function(form, el, container) {
+  container.slideDown('fast');
+})
+
+.hideErrorContainer(function(form, el, container) {
+  container.slideUp('fast');
+});
+
+$('#candidateForm').ketchup({
+  validateEvents: 'blur',
+});
+
+//var rows = document.getElementById('results').getElementsByTagName("li");
 $('#resultSearch').keyup(function() {
 	
 	var input = document.getElementById('resultSearch').value;
