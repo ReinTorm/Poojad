@@ -906,17 +906,19 @@ a#googlelogin:active{
 }
 
 .ketchup-custom {
-  line-height: 1em;
-  display: none;
+  	line-height: 1em;
+  	display: none;
 }
-
+#candidateForm ul {
+	list-style: none;
+}
 .ketchup-custom li {
-  font-size: 10px;
-  text-transform: uppercase;
-  text-shadow: 1px 1px 0 #9F4631;
-  border: 0;
-  color: white;
-  background: #F46644;
-  padding: 1px 10px;
-  margin: 1px 0;
+	font-size: 10px;
+	text-transform: uppercase;
+	text-shadow: 1px 1px 0 #9F4631;
+	border: 0;
+	color: white;
+	background: #F46644;
+	padding: 1px 10px;
+	margin: 1px 0;
 }

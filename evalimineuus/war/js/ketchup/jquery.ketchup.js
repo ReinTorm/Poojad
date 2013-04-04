@@ -147,7 +147,6 @@
         
         el.data(dataNames.validations, vals);
       });
-      
       return valEls;
     },
     
@@ -209,7 +208,6 @@
         
         valEls.data(dataNames.validationString, opt.validateIndicator + '(' + valString + ')')
               .data(dataNames.events, events);
-
         retArr.push(valEls.get());
       }
       
@@ -301,7 +299,6 @@
       });
 
       form.trigger('formIs' + (tasty ? 'Valid' : 'Invalid'), [form]);
-
       return tasty;
     },
     
@@ -359,8 +356,6 @@
         }
       }
       
-      form.trigger('fieldIs' + (tasty.length ? 'Invalid' : 'Valid'), [form, el]);
-      
       var isRequired = false;
       for(i = 0; i < vals.length; i++) {
     	  if(vals[i].name=="required"){
@@ -368,9 +363,10 @@
     	  }
       }
       if(!isRequired && el.context.value.length == 0){
-    	  return [];
+    	  tasty = [];
       }
       
+      form.trigger('fieldIs' + (tasty.length ? 'Invalid' : 'Valid'), [form, el]);
       
       return tasty.length ? tasty : true;
     },

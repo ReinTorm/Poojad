@@ -91,6 +91,9 @@
 
 		<jsp:include page="/footer.jsp" />
 	</div><!-- wrapper -->
-	<jsp:include page="/scripts.jsp" />
+<script type="text/javascript" src="/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src='/js/json2.js'></script>
+<script type="text/javascript" src="/js/easy.notification.js"></script>
+<script type="text/javascript" src='/js/index.js'></script>
 </body>
 </html>

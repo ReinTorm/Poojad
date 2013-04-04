@@ -1,4 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"%><!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=utf-8"%>
+<%@page import="com.evalimine.uus.server.UserUtilities"%>
+<% if (!UserUtilities.loggedIn(request)) response.sendRedirect("/login"); %>
+<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
@@ -98,6 +101,11 @@
 
 		<jsp:include page="/footer.jsp" />
 	</div><!-- wrapper -->
-	<jsp:include page="/scripts.jsp" />
+<script type="text/javascript" src="/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src='/js/popbox.js'></script>
+<script type="text/javascript" src="/js/ketchup/jquery.ketchup.js"></script>
+<script type="text/javascript" src="/js/ketchup/jquery.ketchup.helpers.js"></script>
+<script type="text/javascript" src="/js/ketchup/jquery.ketchup.validations.js"></script>
+<script type="text/javascript" src='/js/apply.js'></script>
 </body>
 </html>

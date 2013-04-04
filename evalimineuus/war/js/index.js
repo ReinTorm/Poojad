@@ -1,53 +1,4 @@
 $(document).ready(function() {
-
-	$('.popbox').popbox();
-
-	$('table.sortable').each(function() {
-		var $table = $(this);
-		$('th', $table).each(function(column) {
-			if ($(this).is('.alphabetic')) {
-				$(this).hover(function() {
-					$(this).addClass('hover');
-				}, function() {
-					$(this).removeClass('hover');
-				}).click(function() {
-					var sortOrder = $('table.sortable').data('order');
-					var rows = $table.find('tbody > tr').get();
-
-					if (sortOrder == 'd' || sortOrder == '') {
-						$('table.sortable').data('order', 'a');
-						rows.sort(function(a, b) {
-							var keyA = $(a).children('td').eq(column).text().toUpperCase();
-							var keyB = $(b).children('td').eq(column).text().toUpperCase();
-
-							if (keyA < keyB) {
-								return 1;
-							}
-							if (keyA > keyB) {
-								return -1;
-							}
-							return 0;
-						});
-					} else {
-						$('table.sortable').data('order', 'd');
-						rows.sort(function(a, b) {
-							var keyA = $(a).children('td').eq(column).text().toUpperCase();
-							var keyB = $(b).children('td').eq(column).text().toUpperCase();
-
-							if (keyA < keyB) {
-								return -1;
-							}
-							if (keyA > keyB) {
-								return 1;
-							}
-							return 0;
-						});
-					}
-				});
-			}
-		});
-	});
-
 	function updateResults() {
 		results = document.getElementById("results");
 		var current_radiobox = $('#radioboxes.custom-radiobox input[type=radio]:checked').val();
@@ -84,7 +35,6 @@ $(document).ready(function() {
 			results.innerHTML = "";
 		}
 	}
-
 	$('#radioboxes, #checkboxes').on('change', updateResults);
 });
 
@@ -112,8 +62,7 @@ function previewCandidate(candidateId) {
 			 $('#profile span#longText').html(c.LongInfo); 
 			 document.getElementById( "votebutton" ).setAttribute( "onClick", "javascript:vote("+c.PID+");");
 			 $('#profile').show();
-			 $('#votebutton').show();
-			 
+			 $('#votebutton').show(); 
 		},
 		error: function(xhr, ajaxOptions, thrownError) {
 			$.easyNotification(xhr.status + " : " + thrownError);
@@ -121,6 +70,7 @@ function previewCandidate(candidateId) {
 	    }
 	});
 }
+
 
 function vote(candidateId){
 	var jsonObj = [];
@@ -147,43 +97,11 @@ function vote(candidateId){
 	        $("html, body").animate({ scrollTop: 0 }, "slow");
 	    }
 	});
-	
-
-	
 }
-$.ketchup
 
-.createErrorContainer(function(form, el) {
-  return $('<ul/>', {
-           'class': 'ketchup-custom'
-         }).insertAfter(el);
-})
 
-.addErrorMessages(function(form, el, container, messages) {
-  container.html('');
-
-  for(i = 0; i < messages.length; i++) {
-    $('<li/>', {
-      text: messages[i]
-    }).appendTo(container);
-  }
-})
-
-.showErrorContainer(function(form, el, container) {
-  container.slideDown('fast');
-})
-
-.hideErrorContainer(function(form, el, container) {
-  container.slideUp('fast');
-});
-
-$('#candidateForm').ketchup({
-  validateEvents: 'blur',
-});
-
-//var rows = document.getElementById('results').getElementsByTagName("li");
+var rows = document.getElementById('results').getElementsByTagName("li");
 $('#resultSearch').keyup(function() {
-	
 	var input = document.getElementById('resultSearch').value;
     var val = input.trim($(input).val()).replace(/ +/g, ' ').toLowerCase();
     for(var i=0; i<rows.length;i++){

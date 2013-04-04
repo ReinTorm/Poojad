@@ -1,4 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"%><!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=utf-8"%>
+<%@page import="com.evalimine.uus.server.UserUtilities"%>
+<% if (!UserUtilities.loggedIn(request)) response.sendRedirect("/login"); %>
+<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">

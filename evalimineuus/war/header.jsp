@@ -1,4 +1,4 @@
-<%@page import="com.evalimine.uus.server.GoogleAuthHelper"%>
+<%@page import="com.evalimine.uus.server.GoogleAuthHelper, com.evalimine.uus.server.UserUtilities"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
 <header>
 	<p id="notice">Antud rakendus ei ole mõeldud kasutamiseks reaalsetel valimistel!</p>
@@ -15,7 +15,7 @@
 		<ul>
 			<li><a href="/" id="votenav">Hääleta</a></li>
 			<li><a href="/statistics" id="statnav">Statistika</a></li>
-			<%if (firstName!=null && lastName!=null){ %>
+			<%if (UserUtilities.loggedIn(request)){ %>
 				<li><a href="/apply" id="applynav">Kandideeri</a></li>
 				<li><a href="/profile" id="profilenav">Profiil</a></li>
 				<li><a href="/logout">Logi välja</a></li>
