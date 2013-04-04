@@ -35,7 +35,7 @@ public class Voting extends HttpServlet{
 		java.sql.Connection c = null;
 		try {
 			java.sql.DriverManager.registerDriver(new com.google.appengine.api.rdbms.AppEngineDriver());
-			c = java.sql.DriverManager.getConnection("jdbc:google:rdbms:valiminee:evalimine2");
+			c = java.sql.DriverManager.getConnection("jdbc:google:rdbms://valiminee:evalimine2/db");
 			java.sql.ResultSet check = c.createStatement().executeQuery(queryCheck);
 			if(check.next()){
 				if(candidateId!=check.getLong("PID")){

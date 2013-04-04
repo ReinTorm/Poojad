@@ -31,7 +31,7 @@ public class TableCreator {
 		
 		try {
 			java.sql.DriverManager.registerDriver(new com.google.appengine.api.rdbms.AppEngineDriver());
-			c = java.sql.DriverManager.getConnection("jdbc:google:rdbms:valiminee:evalimine2");
+			c = java.sql.DriverManager.getConnection("jdbc:google:rdbms://valiminee:evalimine2/db");
 			java.sql.ResultSet rs = c.createStatement().executeQuery(query);
 			int count = 1;
 			while(rs.next()){
