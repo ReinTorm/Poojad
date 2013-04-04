@@ -922,3 +922,9 @@ a#googlelogin:active{
 	padding: 1px 10px;
 	margin: 1px 0;
 }
+
+#noResultsFound {
+	display:none;
+	text-align: center;
+	margin-top: 40%;
+}

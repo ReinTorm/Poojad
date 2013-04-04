@@ -41,7 +41,7 @@ public class CandidatesFinder extends HttpServlet {
 		if(query!=null){
 			try {
 				java.sql.DriverManager.registerDriver(new com.google.appengine.api.rdbms.AppEngineDriver());
-				c = java.sql.DriverManager.getConnection("jdbc:google:rdbms:valiminee:evalimine2");
+				c = java.sql.DriverManager.getConnection("jdbc:google:rdbms://valiminee:evalimine2/db");
 				if(c!=null){
 					java.sql.ResultSet rs = c.createStatement().executeQuery(query);
 					endJson = ResultSetConverter.convert(rs).toString();

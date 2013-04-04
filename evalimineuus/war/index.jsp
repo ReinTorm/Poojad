@@ -28,7 +28,7 @@
 						<% java.sql.Connection c = null;
 							try {
 								java.sql.DriverManager.registerDriver(new com.google.appengine.api.rdbms.AppEngineDriver());
-								c = java.sql.DriverManager.getConnection("jdbc:google:rdbms:valiminee:evalimine2");
+								c = java.sql.DriverManager.getConnection("jdbc:google:rdbms://valiminee:evalimine2/db");
 								java.sql.ResultSet rs = c.createStatement().executeQuery("SELECT * FROM db.constituency");
 								while (rs.next()){
 									String CID = rs.getString("CID");
@@ -50,7 +50,7 @@
 								while (rs.next()){
 									int partyID = rs.getInt("PartyID");
 							        String pname = rs.getString("PartyName");
-									out.println("<li><label><input type='checkbox' value='"+partyID+"' /><span>"+pname+"</span></label></li>");
+									out.println("<li><label><input type='checkbox' value='"+partyID+"' checked='checked'/><span>"+pname+"</span></label></li>");
 							    }
 							} catch (java.sql.SQLException e) {
 								e.printStackTrace();
@@ -62,6 +62,13 @@
 						<h5>Kandidaadid:</h5>
 						<div id="results_wrapper">
 						<input type="text" id="resultSearch"></input>
+							<div id="noResultsFound">
+								<p>
+									Ei leidnud midagi!<br/>
+									Muuda otsingu kriteeriume!<br/><br/> 
+									<a href="javascript:void(0);" onClick="javascript:clearAllFilters();"><u>Otsi kõikide kandidaatide hulgast</u></a>
+								</p>
+							</div>
 							<ul id="results">
 							</ul>
 						</div>
@@ -74,7 +81,7 @@
 							<p><b>Sünniaeg: </b><span id="birthdate"></span></p>
 							<p><b>Partei: </b><span id="party"></span></p>
 							<p><b>Valimisringkond: </b><span id="constituency"></span></p>
-							<p><b>Facebook: </b><span id="facebook"></span></a></p>
+							<p><b>Facebook: </b><span id="facebook"></span></p>
 							<p><b>Skype: </b> <span id="skype"></span></p>
 							<p><b>Muu: </b> <span id="other"></span></p>
 							<h4>Kokkuvõte</h4>
