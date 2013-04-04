@@ -366,7 +366,7 @@ body#profilepage a#profilenav {
   margin: 10px 0;
 }
 
-#stattable {
+.stattable {
 	border: 1px solid #DFDFDF;
 	background-color: #F9F9F9;
 	width: 100%;
@@ -377,12 +377,12 @@ body#profilepage a#profilenav {
 	color: #333;
 	border-collapse: collapse;
 }
-#stattable td, th  {
+.stattable td, th  {
 	border-top-color: white;
 	border-bottom: 1px solid #DFDFDF;
 	color: #555;
 }
-#stattable th {
+.stattable th {
 	text-shadow: rgba(255, 255, 255, 0.796875) 0px 1px 0px;
 	font-family: Georgia,"Times New Roman","Bitstream Charter",Times,serif;
 	font-weight: normal;
@@ -391,7 +391,7 @@ body#profilepage a#profilenav {
 	line-height: 1.3em;
 	font-size: 14px;
 }
-#stattable td {
+.stattable td {
 	font-size: 12px;
 	padding: 4px 7px 2px;
 	vertical-align: top;

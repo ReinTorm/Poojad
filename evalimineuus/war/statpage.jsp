@@ -18,7 +18,8 @@
 				<a href="/statistics/riik" class="statbutton">Riigi lõikes</a>
 			</aside>
 			<div id="content">
-				<% if(getServletConfig().getInitParameter("subpage")!=null) {
+				<% 
+				if(getServletConfig().getInitParameter("subpage")!=null) {
  					String subpage="/" + getServletConfig().getInitParameter("subpage") + ".jsp"; %>
 					<jsp:include page="<%=subpage%>"/><%
 				} %> 

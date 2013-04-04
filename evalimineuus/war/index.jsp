@@ -37,7 +37,6 @@
 							    }
 							} catch (java.sql.SQLException e) {
 								e.printStackTrace();
-								out.println(e.toString());
 							} %>
 						</ul>
 					</li>
