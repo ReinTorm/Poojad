@@ -70,7 +70,7 @@ function stat_candidate(page, curr) {
 					td.appendChild(document.createTextNode(c[orderedJson[j]]));
 					trNode.appendChild(td);
 				}
-				document.getElementById('tabletest').appendChild(trNode);
+				table.appendChild(trNode);
 			} 
 		},
 		error: function (xhr, ajaxOptions, thrownError) {
