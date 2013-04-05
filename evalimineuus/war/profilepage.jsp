@@ -73,6 +73,5 @@
 		
 		<jsp:include page="/footer.jsp" />
 	</div><!-- wrapper -->
-	<jsp:include page="/scripts.jsp" />
 </body>
 </html>

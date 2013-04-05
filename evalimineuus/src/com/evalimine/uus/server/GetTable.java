@@ -27,10 +27,11 @@ public class GetTable extends HttpServlet {
 		  
 		JSONObject requestParams = (JSONObject) array.get(0);
 		String pageID = requestParams.get("pageID")==null ? "" : (String) requestParams.get("pageID");
-		int  currentSelect = requestParams.get("current")==null ? 0 : (int) requestParams.get("current");
+		long currentSelect = requestParams.get("current")==null ? 0L : (long) requestParams.get("current");
 		String query = queryBuilder(pageID, currentSelect);	
 		
 		PrintWriter out = res.getWriter();
+        res.setContentType("text/html; charset=UTF-8");
 		String endJson = "";
 		try {
 			java.sql.DriverManager.registerDriver(new com.google.appengine.api.rdbms.AppEngineDriver());
@@ -45,9 +46,9 @@ public class GetTable extends HttpServlet {
 		out.print(endJson);
 	}
 
-	private String queryBuilder(String pageID, int currentSelect) {
+	private String queryBuilder(String pageID, long currentSelect) {
 		String query = "";
-		query = "SELECT @i := @i + 1 AS '#', x.PID, x.Nimi, x.PartyName, x.ConstituencyName, x.Hääli " 
+		query = "SELECT @i := @i + 1 AS 'Nr', x.PID, x.Nimi, x.PartyName, x.ConstituencyName, x.Hääli " 
 				+ " FROM ( "
 				+ "SELECT t1.PID, CONCAT(t1.Firstname, ' ', t1.Lastname) AS Nimi, t1.PartyName, t1.ConstituencyName, COALESCE(t2.Count, 0) AS Hääli "
 				+ " FROM ( "

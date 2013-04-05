@@ -1,5 +1,6 @@
 $(document).ready(function() {
 	$(stat_candidate);
+	
 	$('table.sortable').each(function() {
 		var $table = $(this);
 		$('th', $table).each(function(column) {
@@ -59,27 +60,27 @@ function stat_candidate() {
 		beforeSend: function() {$('#candidate-content').addClass("loading"); },
 		complete: function() {$('#candidate-content').removeClass("loading"); },
 		success: function(jsonData){
-			results = "<table class='stattable sortable'>\n"
+			var table = "<table class='stattable sortable'>\n"
 				+ "<thead>\n"
 				+ "<tr><th class='alphabetic'>#</th><th class='alphabetic'>Number</th><th class='alphabetic'>Nimi</th><th class='alphabetic'>Partei</th><th class='alphabetic'>Piirkond</th><th class='alphabetic'>Hääli</th></tr>\n"
 				+ "</thead>\n"
 				+ "<tbody>\n"
 			for (i = 0; i < jsonData.length; i++) {
 				var c = jsonData[i];
-				result+= "<tr>" +
-							"<td>" + c.# + "</td>" +
+				table+= "<tr>" +
+							"<td>" + c.Nr + "</td>" +
 							"<td>" + c.PID + "</td>" +
 							"<td>" + c.Nimi + "</td>" +
 							"<td>" + c.PartyName + "</td>" +
-							"<td>" + c.ConsituencyName + "</td>" +
+							"<td>" + c.ConstituencyName + "</td>" +
 							"<td>" + c.Hääli + "</td>" +
 						"</tr>\n";
 			}
-			out.println(results);
+			$("#content").html(table);
 		},
 		error: function (xhr, ajaxOptions, thrownError) {
-			results.innerHTML = xhr.status;
-			results.innerHTML = thrownError;
+			$("#content").html(xhr.status);
+			$("#content").html(thrownError);
 	    }
 	});
 	
