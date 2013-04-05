@@ -86,6 +86,8 @@ public class CandidatesFinder extends HttpServlet {
 			}
 			query+="db.user.PID="+userID;
 		}
+		query+=" ORDER BY db.user.Firstname ";
+
 //		System.out.println(query);
 		return query;
 	}

@@ -48,9 +48,9 @@ $(document).ready(function() {
 	});
 });
 
-function stat_candidate() {
+function stat_candidate(page, curr) {
 	var jsonObj = [];
-	jsonObj.push({pageID: "candidate", current: 0});	
+	jsonObj.push({pageID: page, current: curr});	
 	curSearch = $.ajax({ 
 		url: "/getTable",
 		type: "post",
@@ -60,23 +60,17 @@ function stat_candidate() {
 		beforeSend: function() {$('#candidate-content').addClass("loading"); },
 		complete: function() {$('#candidate-content').removeClass("loading"); },
 		success: function(jsonData){
-			var table = "<table class='stattable sortable'>\n"
-				+ "<thead>\n"
-				+ "<tr><th class='alphabetic'>#</th><th class='alphabetic'>Number</th><th class='alphabetic'>Nimi</th><th class='alphabetic'>Partei</th><th class='alphabetic'>Piirkond</th><th class='alphabetic'>Hääli</th></tr>\n"
-				+ "</thead>\n"
-				+ "<tbody>\n"
 			for (i = 0; i < jsonData.length; i++) {
 				var c = jsonData[i];
-				table+= "<tr>" +
-							"<td>" + c.Nr + "</td>" +
-							"<td>" + c.PID + "</td>" +
-							"<td>" + c.Nimi + "</td>" +
-							"<td>" + c.PartyName + "</td>" +
-							"<td>" + c.ConstituencyName + "</td>" +
-							"<td>" + c.Hääli + "</td>" +
-						"</tr>\n";
+				var trNode = document.createElement('tr');
+				var orderedJson = ["Nr", "PID", "Nimi", "PartyName", "ConstituencyName", "Hääli"]
+				for(j=0;j<6;j++){
+					var td = document.createElement('td');
+					td.appendChild(document.createTextNode(c[orderedJson[j]]));
+					trNode.appendChild(td);
+				}
+				document.getElementById('tabletest').appendChild(trNode);
 			}
-			$("#content").html(table);
 		},
 		error: function (xhr, ajaxOptions, thrownError) {
 			$("#content").html(xhr.status);
