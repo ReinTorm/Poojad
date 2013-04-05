@@ -118,6 +118,15 @@
 	    <servlet-name>riikstat</servlet-name>
 	    <url-pattern>/statistics/riik/*</url-pattern>
 	</servlet-mapping>	
+	
+	 <servlet>
+     	<servlet-name>tablegetter</servlet-name>
+  		<servlet-class>com.evalimine.uus.server.GetTable</servlet-class>
+ 	</servlet>
+ 	<servlet-mapping>
+    	<servlet-name>tablegetter</servlet-name>
+     	<url-pattern>/getTable</url-pattern>
+ 	</servlet-mapping>
 
 	<servlet>
 	    <servlet-name>profilePage</servlet-name>
