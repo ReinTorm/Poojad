@@ -810,6 +810,9 @@ body#profilepage a#profilenav {
 
 .hover{text-decoration:underline;}
 .alphabetic{cursor:pointer;}
+.sorttable_numeric:hover{
+	cursor:pointer;
+	text-decoration: underline;}
 
 
 .loading {

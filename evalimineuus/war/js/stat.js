@@ -60,17 +60,18 @@ function stat_candidate(page, curr) {
 		beforeSend: function() {$('#candidate-content').addClass("loading"); },
 		complete: function() {$('#candidate-content').removeClass("loading"); },
 		success: function(jsonData){
+			var table = document.getElementById('tabletest');
+			var orderedJson = ["Nr", "PID", "Nimi", "PartyName", "ConstituencyName", "Hääli"]
 			for (i = 0; i < jsonData.length; i++) {
 				var c = jsonData[i];
 				var trNode = document.createElement('tr');
-				var orderedJson = ["Nr", "PID", "Nimi", "PartyName", "ConstituencyName", "Hääli"]
 				for(j=0;j<6;j++){
 					var td = document.createElement('td');
 					td.appendChild(document.createTextNode(c[orderedJson[j]]));
 					trNode.appendChild(td);
 				}
 				document.getElementById('tabletest').appendChild(trNode);
-			}
+			} 
 		},
 		error: function (xhr, ajaxOptions, thrownError) {
 			$("#content").html(xhr.status);
