@@ -1,5 +1,6 @@
 $(document).ready(function() {
-	$(stat_candidate);
+	loadTableData();
+	$('#partyTableOption, #areaTableOption').on('change', loadTableData);
 	
 	$('table.sortable').each(function() {
 		var $table = $(this);
@@ -9,68 +10,58 @@ $(document).ready(function() {
 					$(this).addClass('hover');
 				}, function() {
 					$(this).removeClass('hover');
-				}).click(function() {
-					var sortOrder = $('table.sortable').data('order');
-					var rows = $table.find('tbody > tr').get();
-
-					if (sortOrder == 'd' || sortOrder == '') {
-						$('table.sortable').data('order', 'a');
-						rows.sort(function(a, b) {
-							var keyA = $(a).children('td').eq(column).text().toUpperCase();
-							var keyB = $(b).children('td').eq(column).text().toUpperCase();
-
-							if (keyA < keyB) {
-								return 1;
-							}
-							if (keyA > keyB) {
-								return -1;
-							}
-							return 0;
-						});
-					} else {
-						$('table.sortable').data('order', 'd');
-						rows.sort(function(a, b) {
-							var keyA = $(a).children('td').eq(column).text().toUpperCase();
-							var keyB = $(b).children('td').eq(column).text().toUpperCase();
-
-							if (keyA < keyB) {
-								return -1;
-							}
-							if (keyA > keyB) {
-								return 1;
-							}
-							return 0;
-						});
-					}
-				});
+				})
 			}
 		});
 	});
 });
-
-function stat_candidate(page, curr) {
+var curSearch;
+function loadTableData() {
+	var tbodyID = $('table.stattable > tbody').attr('id')
+	var orderedJson;
 	var jsonObj = [];
-	jsonObj.push({pageID: page, current: curr});	
+	switch(tbodyID){
+		case("candidateTable"): 
+			orderedJson = ["Nr", "PID", "Nimi", "PartyName", "ConstituencyName", "Hääli"]; 
+			jsonObj.push({pageID: 'candidate'});	
+			break;
+		case("riikTable"): 
+			orderedJson = ["Nr", "PartyName", "Hääli"]; 
+			jsonObj.push({pageID: 'riik'});	
+			break;	
+		case("partyTable"): 
+			var curr = parseInt($('#partyTableOption option:selected').attr('id'));
+			orderedJson = ["Nr", "PID", "Nimi", "PartyName", "ConstituencyName", "Hääli"]; 
+			jsonObj.push({pageID: 'partei', current: curr});	
+			break;
+		case("areaTable"): 
+			var curr = parseInt($('#areaTableOption option:selected').attr('id'));
+			orderedJson = ["Nr", "PID", "Nimi", "PartyName", "ConstituencyName", "Hääli"]; 
+			jsonObj.push({pageID: 'area', current: curr});	
+			break;
+		default:
+			return;
+	}		
+	if(curSearch) curSearch.abort();
 	curSearch = $.ajax({ 
 		url: "/getTable",
 		type: "post",
 		data: JSON.stringify(jsonObj),
 		contentType: 'application/json; charset=utf-8',
 		dataType: 'json',
-		beforeSend: function() {$('#candidate-content').addClass("loading"); },
-		complete: function() {$('#candidate-content').removeClass("loading"); },
+		beforeSend: function() {$('#'+tbodyID).empty(); $('#content > *').hide(); $('#content').addClass('loading'); },
+		complete: function() {$('#content > *').show(); $('#content').removeClass('loading'); },
 		success: function(jsonData){
-			var table = document.getElementById('tabletest');
-			var orderedJson = ["Nr", "PID", "Nimi", "PartyName", "ConstituencyName", "Hääli"]
+			var tBody = document.getElementById(tbodyID);
 			for (i = 0; i < jsonData.length; i++) {
 				var c = jsonData[i];
 				var trNode = document.createElement('tr');
-				for(j=0;j<6;j++){
+				for(j=0;j<orderedJson.length;j++){
 					var td = document.createElement('td');
 					td.appendChild(document.createTextNode(c[orderedJson[j]]));
 					trNode.appendChild(td);
 				}
-				table.appendChild(trNode);
+				tBody.appendChild(trNode);
 			} 
 		},
 		error: function (xhr, ajaxOptions, thrownError) {
@@ -78,5 +69,4 @@ function stat_candidate(page, curr) {
 			$("#content").html(thrownError);
 	    }
 	});
-	
 }

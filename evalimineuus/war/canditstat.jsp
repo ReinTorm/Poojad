@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
-<div id="candidate-content" class="stat-content">
+<div class="stat-content">
 	<h4 class="content_heading">Kandidaatide lõikes</h4>
 	<table class='stattable sortable'>
 		<thead>
@@ -12,7 +12,8 @@
 				<th class='sorttable_numeric'>Hääli</th>
 			</tr>
 		</thead>
-		<tbody id="tabletest">
+		<tbody id="candidateTable">
 		</tbody>
 	</table>
+	<a onClick="window.print()" id="printbutton" class="button">Prindi statistika</a>
 </div><!-- candidate-content -->

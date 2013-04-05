@@ -22,12 +22,13 @@ public class GetTable extends HttpServlet {
 	
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
 		Object obj=JSONValue.parse(req.getReader());
-	    
+
 		JSONArray array=(JSONArray) obj;
-		  
+		
 		JSONObject requestParams = (JSONObject) array.get(0);
 		String pageID = requestParams.get("pageID")==null ? "" : (String) requestParams.get("pageID");
 		long currentSelect = requestParams.get("current")==null ? 0L : (long) requestParams.get("current");
+		
 		String query = queryBuilder(pageID, currentSelect);	
 		
 		PrintWriter out = res.getWriter();
@@ -43,12 +44,35 @@ public class GetTable extends HttpServlet {
 		} catch (java.sql.SQLException | JSONException e) {
 			e.printStackTrace();
 		}
+		System.out.println(endJson);
 		out.print(endJson);
 	}
 
 	private String queryBuilder(String pageID, long currentSelect) {
 		String query = "";
-		query = "SELECT @i := @i + 1 AS 'Nr', x.PID, x.Nimi, x.PartyName, x.ConstituencyName, x.Hääli " 
+		if (pageID.equalsIgnoreCase("riik")) {
+			query = "SELECT @i := @i + 1 AS 'Nr', x.PartyName, x.Hääli " 
+				+	" FROM ( "
+				+	" SELECT t1.PartyName, SUM(COALESCE(t2.Count,0)) AS Hääli "
+				+	" FROM "
+				+	" (SELECT db.party.PartyName "
+				+	" FROM db.party "
+				+	" ) t1 "
+				+	" LEFT JOIN "
+				+	" (SELECT db.party.PartyName, COUNT(*) AS 'Count' " 
+				+	" FROM db.user "
+				+	" LEFT JOIN db.party ON db.user.PartyId = db.party.PartyID " 
+				+	" GROUP BY db.user.Vote "
+				+	" ) t2 "
+				+	" ON "
+				+	" t1.PartyName = t2.PartyName "
+				+	" GROUP BY t1.PartyName "
+				+	" ORDER BY t2.Count DESC) x "
+				+	" JOIN "
+				+	" (SELECT @i:=0) init";
+		}
+		else {
+			query = "SELECT @i := @i + 1 AS 'Nr', x.PID, x.Nimi, x.PartyName, x.ConstituencyName, x.Hääli " 
 				+ " FROM ( "
 				+ "SELECT t1.PID, CONCAT(t1.Firstname, ' ', t1.Lastname) AS Nimi, t1.PartyName, t1.ConstituencyName, COALESCE(t2.Count, 0) AS Hääli "
 				+ " FROM ( "
@@ -58,11 +82,11 @@ public class GetTable extends HttpServlet {
 				+ " LEFT JOIN db.constituency ON db.user.CID = db.constituency.CID "
 				+ " WHERE db.user.PartyId IS NOT NULL "
 				+ " AND db.user.CID IS NOT NULL ";
-				if (pageID == "candidate") {}
-				if (pageID == "partei") {
+				if (pageID.equalsIgnoreCase("candidate")) {
+					//nothing to add
+				} else if (pageID.equalsIgnoreCase("partei")) {
 					query+= " AND db.user.PartyId = " + currentSelect;
-				}
-				if (pageID == "piirkond") {
+				} else if (pageID.equalsIgnoreCase("area")) {
 					query+= " AND db.user.CID = " + currentSelect;
 				}
 				query+=	" ) t1 "
@@ -77,6 +101,7 @@ public class GetTable extends HttpServlet {
 				+ " ) x "
 				+ " JOIN"
 				+ " (SELECT @i:=0) init";
+		}
 		return query;
 	}
 }

@@ -1,6 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
-<div id="riikstat-content" class="stat-content">
+<div class="stat-content">
 	<h4 class="content_heading">Riigi lõikes</h4>
-	<img src="/img/Eesti_maakonnad.png" alt="Eesti maakonnad" id="statimg" width="600" width="500"> 
+	
+	<table class="stattable sortable">
+		<thead>
+			<tr>
+				<th class="sorttable_numeric">#</th>
+				<th class="alphabetic">Erakond</th>
+				<th class="sorttable_numeric">Hääli</th>
+			</tr>
+		</thead>
+		<tbody id="riikTable">
+		</tbody>	
+	</table>
 	<a onClick="window.print()" id="printbutton" class="button">Prindi statistika</a>
 </div><!-- riikstat-content -->

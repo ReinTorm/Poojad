@@ -105,7 +105,7 @@ body#profilepage a#profilenav {
 #highlight {
   width: 100%;
   height: 10px;
-  margin-bottom: -10px;
+  margin-bottom: -4px;
   background-color: #008bcf;
   -moz-border-top-left-radius: 6px;
   -webkit-border-top-left-radius: 6px;
@@ -116,6 +116,7 @@ body#profilepage a#profilenav {
   -khtml-border-top-right-radius: 6px;
   border-top-right-radius: 6px;
   /*  behavior: url(../border-radius.htc);*/  
+  z-index: 1001 !important;
 }
 
 .tab {
@@ -123,10 +124,14 @@ body#profilepage a#profilenav {
   min-height:360px;
   float: left;
   background-color: #fff;
-  -moz-border-radius: 6px;
-  -webkit-border-radius: 6px;
-  -khtml-border-radius: 6px;
-  border-radius: 6px;
+  -moz-border-bottom-left-radius: 6px;
+  -webkit-border-bottom-left-radius: 6px;
+  -khtml-border-bottom-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  -moz-border-bottom-right-radius: 6px;
+  -webkit-border-bottom-right-radius: 6px;
+  -khtml-border-bottom-right-radius: 6px;
+  border-bottom-right-radius: 6px;
   /*  behavior: url(../border-radius.htc);*/  
   -moz-box-shadow: 0 2px 5px #ccc;
   -webkit-box-shadow: 0 2px 5px #ccc;
@@ -823,7 +828,7 @@ body#profilepage a#profilenav {
   height: 100%;
   position: relative;
   background: rgba(255,255,255,0.8) url("../img/ajax-loader.gif") no-repeat center center !important;
-  z-index: 1001;
+  z-index: 100;
 }
 
 #footer {

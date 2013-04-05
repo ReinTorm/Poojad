@@ -22,9 +22,7 @@
 				if(getServletConfig().getInitParameter("subpage")!=null) {
 					String subpage="/" + getServletConfig().getInitParameter("subpage") + ".jsp"; %>
 					<jsp:include page="<%=subpage%>"/><%
-				} 
-				
-				
+ 				} 
 				%> 
 			</div><!-- content -->
 		</div><!-- statpage -->

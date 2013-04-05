@@ -12,4 +12,5 @@ public class UserUtilities extends HttpServlet {
 	public static boolean loggedIn(HttpServletRequest req){
 		return req.getSession(true).getAttribute("google_id") != null;
 	}
+
 }
