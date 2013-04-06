@@ -55,23 +55,12 @@ public class GetTable extends HttpServlet {
 	private String queryBuilder(String pageID, long currentSelect, long startIndex, long endIndex) {
 		String query = "";
 		if (pageID.equalsIgnoreCase("riik")) {
-			query = "SELECT x.PartyName, x.Hääli " 
-				+	" FROM ( "
-				+	" SELECT t1.PartyName, SUM(COALESCE(t2.Count,0)) AS Hääli "
-				+	" FROM "
-				+	" (SELECT db.party.PartyName "
-				+	" FROM db.party "
-				+	" ) t1 "
-				+	" LEFT JOIN "
-				+	" (SELECT db.party.PartyName, COUNT(*) AS 'Count' " 
-				+	" FROM db.user "
-				+	" LEFT JOIN db.party ON db.user.PartyId = db.party.PartyID " 
-				+	" GROUP BY db.user.Vote "
-				+	" ) t2 "
-				+	" ON "
-				+	" t1.PartyName = t2.PartyName "
-				+	" GROUP BY t1.PartyName "
-				+	" ORDER BY t2.Count DESC) x ";
+			query = " SELECT db.party.*, t1.Hääli FROM db.party, " +
+					" (SELECT p.PartyId, COUNT( p.Vote ) as Hääli " +
+					" FROM db.user p " +
+					" JOIN db.user v ON p.PID = v.Vote " +
+					" Group by p.PartyId) t1 " +
+					" WHERE db.party.PartyId = t1.PartyID ";
 		}
 		else {
 			query = "SELECT x.PID, x.Nimi, x.PartyName, x.ConstituencyName, x.Hääli " 
