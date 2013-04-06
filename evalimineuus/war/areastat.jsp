@@ -16,12 +16,6 @@
 
 	<table class="stattable sortable">
 		<thead>
-<!-- 			<tr> -->
-<!-- 				<th class="sorttable_numeric">#</th> -->
-<!-- 				<th class="alphabetic">Partei</th> -->
-<!-- 				<th class="alphabetic">Populaarseim kandidaat</th> -->
-<!-- 				<th class="sorttable_numeric">Hääli</th> -->
-<!-- 			</tr> -->
 			<tr>
 				<th class='sorttable_numeric'>#</th>
 				<th class='sorttable_numeric'>Number</th>

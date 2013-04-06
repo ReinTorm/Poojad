@@ -29,7 +29,11 @@ public class GetTable extends HttpServlet {
 		String pageID = requestParams.get("pageID")==null ? "" : (String) requestParams.get("pageID");
 		long currentSelect = requestParams.get("current")==null ? 0L : (long) requestParams.get("current");
 		
-		String query = queryBuilder(pageID, currentSelect);	
+		long startIndex = requestParams.get("start")==null ? 0L : (long) requestParams.get("start");
+		long endIndex = requestParams.get("end")==null ? 10L : (long) requestParams.get("end");
+
+		
+		String query = queryBuilder(pageID, currentSelect, startIndex, endIndex);	
 		
 		PrintWriter out = res.getWriter();
         res.setContentType("text/html; charset=UTF-8");
@@ -48,10 +52,10 @@ public class GetTable extends HttpServlet {
 		out.print(endJson);
 	}
 
-	private String queryBuilder(String pageID, long currentSelect) {
+	private String queryBuilder(String pageID, long currentSelect, long startIndex, long endIndex) {
 		String query = "";
 		if (pageID.equalsIgnoreCase("riik")) {
-			query = "SELECT @i := @i + 1 AS 'Nr', x.PartyName, x.Hääli " 
+			query = "SELECT x.PartyName, x.Hääli " 
 				+	" FROM ( "
 				+	" SELECT t1.PartyName, SUM(COALESCE(t2.Count,0)) AS Hääli "
 				+	" FROM "
@@ -67,12 +71,10 @@ public class GetTable extends HttpServlet {
 				+	" ON "
 				+	" t1.PartyName = t2.PartyName "
 				+	" GROUP BY t1.PartyName "
-				+	" ORDER BY t2.Count DESC) x "
-				+	" JOIN "
-				+	" (SELECT @i:=0) init";
+				+	" ORDER BY t2.Count DESC) x ";
 		}
 		else {
-			query = "SELECT @i := @i + 1 AS 'Nr', x.PID, x.Nimi, x.PartyName, x.ConstituencyName, x.Hääli " 
+			query = "SELECT x.PID, x.Nimi, x.PartyName, x.ConstituencyName, x.Hääli " 
 				+ " FROM ( "
 				+ "SELECT t1.PID, CONCAT(t1.Firstname, ' ', t1.Lastname) AS Nimi, t1.PartyName, t1.ConstituencyName, COALESCE(t2.Count, 0) AS Hääli "
 				+ " FROM ( "
@@ -98,10 +100,9 @@ public class GetTable extends HttpServlet {
 				+ " ON "
 				+ " t1.PID = t2.Vote "
 				+ " ORDER BY t2.Count DESC) "
-				+ " ) x "
-				+ " JOIN"
-				+ " (SELECT @i:=0) init";
+				+ " ) x ";
 		}
+		query+= " LIMIT " + startIndex +", "+ endIndex;
 		return query;
 	}
 }
