@@ -26,7 +26,7 @@
 
 						<p><img id="avatar" src="./img/avatar.jpg"></p>
 						<p class="error">Pilt on kandideerimiseks vajalik!</p>
-						<p><a href="javascript:void(0);">Muuda pilti!</a></p>
+						<p><a href="https://plus.google.com/" target="_blank">Muuda pilti!</a></p>
 
 					</div><!-- avatar_block -->
 					<div id="my_data_block">
