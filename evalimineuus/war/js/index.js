@@ -5,6 +5,7 @@ $(document).ready(function() {
 });
 var curSearch;
 function updateResults() {
+	$('#resultSearch').val("");
 	results = document.getElementById("results");
 	var current_radiobox = $('#radioboxes.custom-radiobox input[type=radio]:checked').val();
 	var current_checked = $("#checkboxes.custom-checkbox input[type=checkbox]:checked").map(function () {return this.value;}).get();
