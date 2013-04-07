@@ -136,6 +136,15 @@
 	    <servlet-name>profilePage</servlet-name>
 	    <url-pattern>/profile/*</url-pattern>
 	</servlet-mapping>
+
+ 	<servlet>
+     	<servlet-name>profileData</servlet-name>
+  		<servlet-class>com.evalimine.uus.server.ProfileData</servlet-class>
+ 	</servlet>
+ 	<servlet-mapping>
+    	<servlet-name>profileData</servlet-name>
+     	<url-pattern>/profileData</url-pattern>
+ 	</servlet-mapping>
 	
 	<servlet>
 	    <servlet-name>loginPage</servlet-name>

@@ -24,48 +24,38 @@
 				<div id="my_data">
 					<div id="avatar_block">
 
-						<p><img src="./img/avatar.jpg"></p>
+						<p><img id="avatar" src="./img/avatar.jpg"></p>
 						<p class="error">Pilt on kandideerimiseks vajalik!</p>
-						<p><a href="javascript:void(0);">Muuda pilti!</a></p>
+						<p><a href="https://plus.google.com/" target="_blank">Muuda pilti!</a></p>
 
 					</div><!-- avatar_block -->
 					<div id="my_data_block">
-						<label>Eesnimi:</label><input type="text" name="fname"><br /> 
-						<label>Perenimi:</label><input type="text" name="lname"><br /> 
-						<label>Vanus:</label><input type="text" name="age"><br /> 
-						<label>Valimispiirkond:</label>
-						<select>
+						<label>Piirkond:</label>
+						<select id="constituency">
 							<option value="" disabled="disabled" selected="selected">Vali valimisringkond</option>
-							<option value="1">1 – Tallinna Haabersti, Põhja-Tallinna ja Kristiine linnaosa</option>
-							<option value="2">2 – Tallinna Kesklinna, Lasnamäe ja Pirita linnaosa</option>
-							<option value="3">3 – Tallinna Mustamäe ja Nõmme linnaosa</option>
-							<option value="4">4 – Harju- (v.a Tallinn) ja Raplamaa</option>
-							<option value="5">5 – Hiiu-, Lääne- ja Saaremaa</option>
-							<option value="6">6 – Lääne-Virumaa</option>
-							<option value="7">7 – Ida-Virumaa</option>
-							<option value="8">8 – Järva- ja Viljandimaa</option>
-							<option value="9">9 – Jõgeva- ja Tartumaa (v.a Tartu linn)</option>
-							<option value="10">10 – Tartu linn</option>
-							<option value="11">11 – Võru-, Valga- ja Põlvamaa</option>
-							<option value="12">12 – Pärnumaa</option>
-						</select><br> 
-						<label>E-mail:</label><input type="text" name="email"><br>
-						<label>Isikukood:</label><input type="text" name="secnr"><br>
+							<% java.sql.Connection c = null;
+							try {
+								java.sql.DriverManager.registerDriver(new com.google.appengine.api.rdbms.AppEngineDriver());
+								c = java.sql.DriverManager.getConnection("jdbc:google:rdbms://valiminee:evalimine2/db");
+								java.sql.ResultSet rs = c.createStatement().executeQuery("SELECT * FROM db.constituency");								
+								while (rs.next()){
+									String CID = rs.getString("CID");
+							        String cName = rs.getString("ConstituencyName");
+									out.println("<option value='" + CID + "'>" + CID + " - " + cName + "</option>");								
+							    }
+							} catch (java.sql.SQLException e) {
+								e.printStackTrace();
+							} %>
+						</select><br>
 					</div><!-- my_data_block -->
 				</div><!-- my_data -->
 				<div id="votedfor">
 					<h4>Sinu hääl</h4>
-					<p><b>Kandidaat:</b> <a href="javascript:void(0);">Artur Käpp</a><a href="javascript:void(0);"><img src="./img/cross_remove.png"></a>
+					<p><b>Kandidaat:</b> <a href="javascript:void(0);" id="voted_for_name">-</a><a href="javascript:void(0);"><img src="./img/cross_remove.png"></a>
 					</p>
 				</div>
 				<div id="mystatus">
-					<h4>Kandidatuur</h4>
-					<table>
-						<tr><td width="100"><b>Staatus</b></td><td width="150">Kandideerinud</td></tr>
-						<tr><td><b>Erakond</b></td><td>Üksikkandidaat</td></tr>
-						<tr><td><b>Valimispiirkond</b></td><td>1. Tallinna Haabersti, Põhja-Tallinna ja Kristiine linnaosa</td></tr>
-						<tr><td><b>Häälte arv</b></td><td>2324</td></tr>
-					</table>
+					<h4>Kandidatuur</h4>					
 				</div>
 				<a href="javascript:void(0);" id="savebutton" class="button">Salvesta!</a>
 			</div><!-- content -->
@@ -73,5 +63,8 @@
 		
 		<jsp:include page="/footer.jsp" />
 	</div><!-- wrapper -->
+<script type="text/javascript" src="/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src='/js/json2.js'></script>
+<script type="text/javascript" src='/js/profile.js'></script>
 </body>
 </html>
