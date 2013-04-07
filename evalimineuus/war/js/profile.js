@@ -27,17 +27,17 @@ function profile_data() {
 			kandidaat.innerHTML = c.VName;			
 			if (c.PartyId != "0"){
 				var mystatus_data =
-				"<label><b>Staatus:</b></label> Kandideerib <br>"
+				"<p><label><b>Staatus:</b></label> Kandideerib <br>"
 				+	"<label><b>Erakond:</b></label> " + c.PartyName + "<br>"
 				+	"<label><b>Valimispiirkond:</b></label> " + c.ConstituencyName + "<br>"
-				+	"<label><b>Häälte arv:</b></label> " + c.VCount + "<br>";
+				+	"<label><b>Häälte arv:</b></label> " + c.VCount + "<br></p>";
 			}
 			else { 
 				var mystatus_data =
-				"<label><b>Staatus:</b></label> Ei kandideeri <br>"
+				"<p><label><b>Staatus:</b></label> Ei kandideeri <br>"
 				+	"<label><b>Erakond:</b></label> - <br>"
 				+	"<label><b>Valimispiirkond:</b></label> " + c.ConstituencyName + "<br>"
-				+	"<label><b>Häälte arv:</b></label> - <br>";
+				+	"<label><b>Häälte arv:</b></label> - <br></p>";
 			}				
 			
 			$("#mystatus").append(mystatus_data);

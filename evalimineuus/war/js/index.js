@@ -90,8 +90,8 @@ function vote(candidateId){
 		data: JSON.stringify(jsonObj),
 		contentType: 'application/json; charset=utf-8',
 		dataType: 'json',
-		beforeSend: function() { $('#votebutton').removeClass("button").addClass("loading"); },
-		complete: function() {  $('#votebutton').addClass("button").removeClass("loading"); },
+		beforeSend: function() {$('#votebutton').hide(); $('#buttonLoader').addClass("loading"); },
+		complete: function() {  $('#votebutton').show(); $('#buttonLoader').removeClass("loading"); },
 		success: function(jsonData){
 			$.easyNotification(jsonData.message); 
 			$("html, body").animate({ scrollTop: 0 }, "slow");

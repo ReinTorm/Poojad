@@ -91,7 +91,9 @@
 						</div> 
 					</li>
 				</ul>
-				<a href="javascript:void(0);" onClick="javascript:void(0);" id="votebutton" class="button">Hääleta!</a>
+				<div id="buttonLoader">
+					<a href="javascript:void(0);" onClick="javascript:void(0);" id="votebutton" class="button">Hääleta!</a>
+				</div>
 			</div><!-- content -->
 		</div><!-- votepage -->
 

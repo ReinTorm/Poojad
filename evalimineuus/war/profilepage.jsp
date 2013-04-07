@@ -21,14 +21,15 @@
 			</aside>
 			<div id="content">
 				<h4 class="content_heading">Minu Andmed</h4>
-				<div id="my_data">
-					<div id="avatar_block">
-
-						<p><img id="avatar" src="./img/avatar.jpg"></p>
-						<p class="error">Pilt on kandideerimiseks vajalik!</p>
-						<p><a href="https://plus.google.com/" target="_blank">Muuda pilti!</a></p>
-
+				<div id="avatar_block">
+					<ul>
+						<li><p><img id="avatar" src="./img/avatar.jpg"></p></li>
+						<li><p class="error">Pilt on kandideerimiseks vajalik!</p></li>
+						<li><p><a href="https://plus.google.com/" target="_blank">Muuda pilti!</a></p></li>
+					</ul>
 					</div><!-- avatar_block -->
+				<div id="my_data">
+					
 					<div id="my_data_block">
 						<label>Piirkond:</label>
 						<select id="constituency">

@@ -1,56 +1,13 @@
-* {
-  margin: 0;
-  padding: 0;
-  -moz-box-sizing: border-box; 
-  -webkit-box-sizing: border-box; 
-  box-sizing: border-box;
-}
-
-html {
-  overflow: -moz-scrollbars-vertical; 
-  overflow-y: scroll;
-}
-
-body {
-  background-color: #ebebeb;
-  font-family: Arial, Verdana, Tahoma, sans-serif;
-}
-
-a {
-  text-decoration: none;
-  color: #000;
-  font-size: 12px;
-}
-
-a:hover {
-  text-decoration: underline;
-  color: #008bcf;
-}
-
-h2 {
-  padding-bottom: 20px;
-}
-
-h4 {
-  padding-bottom: 10px;
-  padding-top: 20px;
-  color: #404040;
-  font-size: 16px;
-}
-
-p {
-  font-size: 12px;
-  color: #404040;
-  padding-bottom: 10px;
-}
-
-p.error {
-  color: #FF3B3B !important;
-}
-
-.content_heading{
-  text-align: center;
-}
+* { margin: 0; padding: 0; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;}
+html { overflow: -moz-scrollbars-vertical; overflow-y: scroll;}
+body { background-color: #ebebeb; font-family: Arial, Verdana, Tahoma, sans-serif;}
+a {text-decoration: none; color: #000; font-size: 12px;}
+a:hover {text-decoration: underline; color: #008bcf;}
+h2 {padding-bottom: 20px;}
+h4 {padding-bottom: 10px; color: #404040; font-size: 16px;}
+p {font-size: 12px; color: #404040; margin-bottom: 10px;}
+p.error {  color: #FF3B3B !important; }
+.content_heading{ text-align: center; margin-bottom: 20px;}
 
 
 /*wrapper start*/
@@ -60,6 +17,11 @@ p.error {
   margin: 10px auto;
 }
 
+header {
+  padding-right: 10px;
+  font-size: 12px;
+  color: #404040;
+}
 header #logo {
   position: absolute;
   background-image: url(../img/logo.png);
@@ -68,32 +30,21 @@ header #logo {
   float: left;
   margin-left: 10px;
 }
-
 header #username {
-  margin-right: 10px;
-  padding-top: 10px;
+  margin-top: 10px;
   text-align: right;
   font-weight: bold;
-  font-size: 12px;
   color: #404040;
 }
-
-header nav {
-  margin-right: 10px;
-  font-size: 12px;
-  color: #404040;
-}
-
 header nav ul {
   float: right;
 }
-
 header nav ul li {
   display: inline;
   list-style-type: none;
-  padding-left: 20px;
-  outline: none;
+  margin-left: 20px;
 }
+
 body#votepage a#votenav,
 body#applypage a#applynav,
 body#statpage a#statnav,
@@ -115,7 +66,6 @@ body#profilepage a#profilenav {
   -webkit-border-top-right-radius: 6px;
   -khtml-border-top-right-radius: 6px;
   border-top-right-radius: 6px;
-  /*  behavior: url(../border-radius.htc);*/  
   z-index: 1001 !important;
 }
 
@@ -132,7 +82,6 @@ body#profilepage a#profilenav {
   -webkit-border-bottom-right-radius: 6px;
   -khtml-border-bottom-right-radius: 6px;
   border-bottom-right-radius: 6px;
-  /*  behavior: url(../border-radius.htc);*/  
   -moz-box-shadow: 0 2px 5px #ccc;
   -webkit-box-shadow: 0 2px 5px #ccc;
   box-shadow: 0 2px 5px #ccc;
@@ -143,10 +92,9 @@ body#profilepage a#profilenav {
 .tab aside {
   float: left;
   width: 23%;
-  padding: 0 20px 10px 20px;
+  padding: 15px 20px;
   font-size: 12px;
 }
-
 .tab aside p {
   color: #808080;
 }
@@ -158,31 +106,60 @@ body#profilepage a#profilenav {
   float: left;
   width: 77%;
   min-height: 500px;
-  padding: 0 20px 15px 20px;
+  padding: 15px 20px;
   box-shadow: -7px 4px 10px -6px #ddd; 
 }
 /*wrapper end*/
+
+
 
 /*Custom buttons*/
 /*--------------------------------------------------------*/
 .statbutton,
 .button {
+  float: left;
   background-color: #eee;
   border: 1px solid #ccc;
   color: #404040;
   text-align:center;
   font-weight:bold;
-  font-size: 13px;
-  padding: 12px 20px;  /*Parem kasutada line-height*/
-  margin-top: 10px;
+  font-size: 18px;
   cursor: pointer;
+  line-height: 50px;
+  text-decoration: none !important;
+  padding: 0 20px;
 }
+
 .statbutton:hover,
 .button:hover {
   background-color: #008bcf;
   color: #fff;
   border: 1px solid #007CCF;
-  text-decoration: none;
+}
+
+#savebutton,
+#candidatebutton,
+#votebutton {
+  width: 30%;
+  margin: 15px 35%;
+}
+
+.statbutton {
+  line-height: 25px;
+  min-width: 115px;
+  width: 100%;
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+#votebutton {
+  display:none;
+}
+
+#printbutton {
+  float: right;
+  margin-top: 20px;
+  margin-right: 10px;
 }
 /*Buttons end*/
 
@@ -266,23 +243,10 @@ body#profilepage a#profilenav {
   list-style-type: none;
   margin-right: 1%;
 }
-#advanced_search>li:nth-child(1){
-  width: 19%;
-}
-
-#advanced_search>li:nth-child(2){
-  width: 44%;
-}
-
-#advanced_search>li:nth-child(3) {
-  width: 35%;
-  margin-right: 0;
-  padding-right: 0;
-}
-
-#radioboxes,
-#checkboxes,
-#results_wrapper {
+#advanced_search>li:nth-child(1){ width: 30%; }
+#advanced_search>li:nth-child(2){ width: 38%; }
+#advanced_search>li:nth-child(3) { width: 30%; margin-right: 0;}
+#radioboxes, #checkboxes, #results_wrapper {
   background: #eee;
   border: 1px solid #ccc;
   font-size: 12px;
@@ -290,47 +254,42 @@ body#profilepage a#profilenav {
   height: 320px;
   overflow: auto;
 }
-
+#radioboxes, #checkboxes{
+    padding-top: 5px;
+}
 #results {
   padding: 5px 10px;
-  font-size: 12px;
   color: #000;
   overflow: hidden;
 }
-
-#radioboxes li,
-#checkboxes li,
-#results li {
+#radioboxes li, #checkboxes li, #results li {
   clear: left;
   display: block;
   margin-bottom: 5px;
   white-space: nowrap;
 }
-
 #resultSearch{
 	float: left;
 	width: 98%;
-	margin: 1% 1% 2% 1%;
+	margin: 1%;
 	padding-left: 5px;
-	line-height: 22px;
-  	height: 30px;
-  	background-color: #f4f4f4;
+	line-height: 18px;
+	height: 25px;
+	background-color: #f4f4f4;
  	border: 1px solid #ccc;
-  	font-size: 12px;
-  	outline: none;
+	outline: none;
 	background-image:url('/img/icon-small-search.png');
 	-webkit-background-size: 20px auto;
-  	-moz-background-size: 20px auto;
+  -moz-background-size: 20px auto;
  	-o-background-size: 20px auto;
  	background-size: 20px auto;
 	background-position: right;
-    background-repeat: no-repeat;
+  background-repeat: no-repeat;
 }
-
 #profile{
   padding-top: 30px;
+  display: none;
 }
-
 #avatar {
   float: left;
   padding-right: 10px;
@@ -338,16 +297,14 @@ body#profilepage a#profilenav {
   height: 170px;
   background-size: cover;
 }
-
-#votebutton {
-  float: left;
-  font-size: 20px;
-  width: 30%;
-  margin: 0 35%;
-  margin-top: 30px;
-  padding: 0px;
-  line-height: 50px;
+#noResultsFound {
   display:none;
+  text-align: center;
+  margin-top: 40%;
+}
+#buttonLoader{
+  width:100%;
+  height: 82px;
 }
 /*Index file end*/
 
@@ -355,22 +312,6 @@ body#profilepage a#profilenav {
 
 /*Statistics pages*/
 /*--------------------------------------------------------*/
-
-.statbutton {
-  min-width: 115px;
-  width: 100%;
-  float: left;
-  font-size: 13px;
-  padding: 3px 10px;
-  cursor: pointer;
-}
-
-#printbutton {
-  float: right;
-  font-size: 20px;
-  margin: 10px 0;
-}
-
 .stattable {
 	border: 1px solid #DFDFDF;
 	background-color: #F9F9F9;
@@ -401,13 +342,6 @@ body#profilepage a#profilenav {
 	padding: 4px 7px 2px;
 	vertical-align: top;
 }
-
-#statimg {
-  display: block;
-  margin: 20px auto;
-  max-width: 100%;
-}
-
 .stat-content select{
   min-width: 150px;
   max-width: 100%;
@@ -416,67 +350,86 @@ body#profilepage a#profilenav {
   outline: none;
   margin-bottom: 10px;
 }
+.hover{ text-decoration:underline; }
+.alphabetic{ cursor:pointer; }
+.sorttable_numeric:hover{
+  cursor:pointer;
+  text-decoration: underline;
+}
+#tableLoadMore:hover{
+  background: #f7f7f7;
+}
+
+#noMoreResults,#tableLoadMore{
+  font-size: 12px ;
+  color: #404040;
+  width: 100%;
+  margin: 2px 0;
+  padding: 2px 0;
+  text-align: center;
+  text-decoration:none; 
+  border: 1px #e0e0e0 solid;
+}
+
+#noMoreResults{
+  display:none;
+  background: #F9F9F9;
+}
+#tableLoadMore{
+  background: #eee;
+  cursor:pointer;
+}
 /*Statistics pages end*/
 
 
 
 /*User page*/
 /*------------------------------------------------------------------*/
-#my_data{
-  display: block;
-}
 #avatar_block {
-  display: inline-block;
+  float: right;
+  margin-right: 10px;
 }
-#avatar_block p {
+#avatar_block ul{
+  list-style-type: none;
+}
+#avatar_block ul li{
   clear: left;
   float: left;
-  font-size: 10px;
-  margin-right: 20px;
 }
 #avatar_block img { 
-  width: 110px; height: 110px; 
+  width: 180px; height: 180px; 
   background-size: cover;
+  margin-bottom: 10px;
 }
 
 #my_data_block{
-  width: 320px;
+  width: 300px;
   font-size: 12px;
-  display: inline-block;
-  vertical-align: top;
 }
 
 #my_data_block label {
-  line-height: 20px;
-  display: block;
-  vertical-align: middle;
+  line-height: 25px;
   float: left;
-  width: 80px;
-}
-
-#profile {
-	display: none;
+  width: 70px;
 }
 
 #profilepage #content input[type="text"],
 #profilepage #content select {
   line-height: 20px;
-  height: 20px;
-  width: 190px;
+  height: 25px;
+  width: 230px;
   max-width: 220px;
   background-color: #eee;
   border: 1px solid #ccc;
-  font-size: 12px;
-  margin: 2px 10px;
   outline: none;
+  margin: 0 0 10px 0;
+  padding: 0 2px;
 }
 
 #mystatus,
 #votedfor {
-  font-size: 12px;
-  float: left;
-  clear: left;
-  display: inline-block;
+  line-height:20px;
+  margin: 20px 0;
 }
 
 #votedfor a {
@@ -485,15 +438,9 @@ body#profilepage a#profilenav {
 #votedfor a img {
   width: 20px;
   height: 20px;
-  margin-left: -10px;
+  margin-left: -15px;
   background-size: cover;
   vertical-align: middle;
-}
-
-#savebutton {
-  float: right;
-  font-size: 20px;
-  margin: 10px 10px;
 }
 /*User page end*/
 
@@ -501,22 +448,145 @@ body#profilepage a#profilenav {
 
 /*Candidate page*/
 /*------------------------------------------------------------------------------*/
-#content input[type="file"] {
-  max-width: 100%;
-  margin: 10px 0;
+.box {
+  width: 300px;
+  display:none;
+  background:#FFF;
+  border:solid 1px #BBBBBB;
+  border-radius:5px;
+  box-shadow:0px 0px 15px #404040;
+  position:absolute;
+  padding: 20px;
+  text-align: center;
+  left:0;
+  right:0;
+  top: 50px;
+  margin: 0 auto;
+  z-index: 1001;
+}
+.box select,
+.box textarea,
+.box input,
+#kandideerimisavaldus select,
+#kandideerimisavaldus textarea,
+#kandideerimisavaldus input {
+  display: block;
+  line-height: 20px;
+  width: 100%;
+  height: 30px;
   border: 1px solid #ccc;
+  font-size: 12px;
+  margin-top: 5px;
+  padding: 2px 5px;
+  outline: none;
 }
 
-#candidatebutton{
-  float: right;
-  font-size: 20px;
-  margin: 10px 10px;
+#kandideerimisavaldus select {
+  width: 320px;
+}
+
+.box textarea {
+  height: 50px;
+  resize:vertical;
+  font-family: Arial, Verdana, Tahoma, sans-serif;
+}
+
+.box a.button {
+  margin-top: 10px;
+  line-height: 40px;
+  padding: 4px 5px;
+  font-size: 13px;
+  width: 48%;
+  background-color: #fff;
+  vertical-align: middle;
+}
+.box a#marginFixer {
+  margin-right: 4%;
+}
+
+.box a.button:hover {
+  text-decoration: none;
+  color: #008bcf;
+}
+
+#opaque {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    display: none;
+    background-color: black;
+    filter: alpha(opacity=40);
+    opacity: 0.4;
+}
+
+#kandideerimisavaldus input[name="date"] {
+  width: 100px;
+  display: inline-block;
+}
+#kandideerimisavaldus input[name="number"]{
+  width: 35px;
+  display: inline;
+}
+
+#candidateForm ul {
+  list-style: none;
+}
+
+a#candidateFormLink {
+  width: 100%;
+  margin: 20px 0;
+  float:left;
+}
+
+.ketchup-custom {
+  line-height: 1em;
+  display: none;
+}
+.ketchup-custom li {
+  font-size: 10px;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 0 #9F4631;
+  border: 0;
+  color: white;
+  background: #F46644;
+  padding: 1px 10px;
+  margin: 1px 0;
+}
+
+#applypage #content h4 {ntext-align: center;}
+#termsAndConditions {padding: 10px;background: #eee;border: 1px solid #ccc;color: #404040;height: 320px;overflow: auto;}
+#termsAndConditions ul li {margin-left: 20px;font-size: 12px;color: #404040;}
+#termsAndConditions H1,#termsAndConditions H2,#termsAndConditions H3 {text-align: center;font-weight: bold;font-family: Arial, Tahoma, Helvetica, sans-serif;}
+#termsAndConditions H1 {font-size: 20px;text-align: center;margin-bottom: 1em;text-transform: none;}
+#termsAndConditions H1 SUP {font-size: 12px;}
+#termsAndConditions H1 SPAN {font-size: 14px;font-weight: normal;}
+#termsAndConditions H2 {font-size: 18px;text-align: center;}
+#termsAndConditions H2.level2 {font-size: 18px;}
+#termsAndConditions H2.level3 {font-size: 16px;}
+#termsAndConditions H2.level4 {font-size: 16px;font-weight: bold;}
+#termsAndConditions H2.level5 {font-size: 16px;font-weight: bold;}
+#termsAndConditions H3 {font-size: 14px;text-transform: none;font-weight: bold;}
+#termsAndConditions H2 SPAN,#termsAndConditions H2.level2 SPAN,#termsAndConditions H2.level3 SPAN,#termsAndConditions H2.level4 SPAN,#termsAndConditions H2.level5 SPAN {display: block;margin: 1em 0 0 0;font-weight: bold;}
+#termsAndConditions H2 SPAN.mm,#termsAndConditions H2.level2 SPAN.mm,#termsAndConditions H2.level3 SPAN.mm,#termsAndConditions H2.level4 SPAN.mm,#termsAndConditions H2.level5 SPAN.mm {display: block;margin: 0 0 0 0;font-weight: normal;font-size: 14px;}
+#termsAndConditions P.title {margin: 1em 0 -1em;color: #606060;text-align: center;font-weight: bold;}
+#termsAndConditions P.paragraph {margin-top: 1.25em;}
+#termsAndConditions H3 SPAN {font-weight: normal;}
+#termsAndConditions P {margin: 0.5em 0 0 0;}
+
+p#agreeNotice {
+  text-align: center;
+  margin-top: 20px; 
 }
 /*Candidate page end*/
 
+
+
+
 @media print
 {
-
   html, body {
     visibility: hidden;
     height:100%; 
@@ -533,7 +603,6 @@ body#profilepage a#profilenav {
   #printbutton { 
     display: none; 
   }
-
 }
 @media screen and (max-width: 960px) {
   #wrapper {
@@ -562,7 +631,6 @@ body#profilepage a#profilenav {
     margin-top: 4px;
   }
 
-
   aside p {
     margin-top: 20px;
     color: #404040 !important;
@@ -584,16 +652,6 @@ body#profilepage a#profilenav {
   .tab #content h4 {
     padding-top: 0;
   }
-
-
-  #savebutton,
-  #printbutton,
-  #candidatebutton,
-  #votebutton {
-    width: 40%;
-    margin-left: 30%;
-    margin-right: 30%;
-  }
 }
 
 @media screen and (max-width: 630px) {
@@ -606,14 +664,15 @@ body#profilepage a#profilenav {
     margin-left: 20%;
     margin-right: 20%;
   }
-
+  #profilepage #avatar_block{
+    width: 100%;
+    float: left;
+  }
   #radioboxes {
     height: auto;
     width: 100% !important;
   }
-  #advanced_search>li:nth-child(1){
-    width: 100%;
-  }
+  #advanced_search>li:nth-child(1){ width: 100%; }
   #advanced_search>li:nth-child(2){
     padding-top: 10px;
     width: 49%;
@@ -664,9 +723,7 @@ body#profilepage a#profilenav {
   }
   header nav ul li {
     white-space: nowrap;
-    display: inline;
     list-style-type: none;
-    padding-left: 10px;
     outline: none;
   }
   header nav ul li:first-child {
@@ -675,15 +732,8 @@ body#profilepage a#profilenav {
   header nav ul li:last-child{
     padding-right: 2px;
   }
-  #checkboxes{
-    height: 100%;
-  }
-  #advanced_search>li:nth-child(2){
-    width: 100%;
-  }
-  #advanced_search>li:nth-child(3){
-    width: 100%;
-  }
+  #advanced_search>li:nth-child(2){ width: 100%; }
+  #advanced_search>li:nth-child(3){ width: 100%; }
   #savebutton,
   #printbutton,
   #candidatebutton,
@@ -692,136 +742,17 @@ body#profilepage a#profilenav {
     margin-left: 0;
     margin-right: 0;
   }
-  #printbutton{
-    padding: 2px;
-  }
 }
 
 @media screen and (max-width: 320px) {
-  #highlight{
-    width: 320px;
-  }
-  #wrapper{
-    width: 320px;
-  }
-  header #logo {
+  #highlight, #wrapper, header #logo {
     width: 320px;
   }
 }
-
-.box {
-  width: 300px;
-  min-height: 500px;
-  display:none;
-  background:#FFF;
-  border:solid 1px #BBBBBB;
-  border-radius:5px;
-  box-shadow:0px 0px 15px #404040;
-  position:absolute;
-  padding: 20px;
-  text-align: center;
-  left:0;
-  right:0;
-  top: 50px;
-  margin: 0 auto;
-  z-index: 1001;
-}
-.box select, textare, input,
-#kandideerimisavaldus select, textarea, input {
-  display: block;
-  line-height: 20px;
-  width: 100%;
-  height: 30px;
-  border: 1px solid #ccc;
-  font-size: 12px;
-  margin-top: 5px;
-  padding: 2px 5px;
-  outline: none;
-}
-
-#kandideerimisavaldus select {
-	width: 320px;
-}
-
-.box textarea {
-  height: 50px;
-  resize:vertical;
-  font-family: Arial, Verdana, Tahoma, sans-serif;
-}
-.box h4 {
-  padding-top: 0;
-  margin-bottom: 10px;
-}
-.box a.button {
-  width: 48%;
-  float: left;
-  position: relative;
-  padding: 10px;
-  background-color: #fff;
-}
-.box a#marginFixer {
-  margin-right: 4%;
-}
-
-.box a.button:hover {
-  text-decoration: none;
-  color: #008bcf;
-}
-
-#opaque {
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 100%;
-    z-index: 1000;
-    display: none;
-    background-color: black;
-    filter: alpha(opacity=40);
-    opacity: 0.4;
-}
-
-#kandideerimisavaldus input[name="date"] {
-  width: 100px;
-  display: inline-block;
-}
-#kandideerimisavaldus input[name="number"]{
-  width: 35px;
-  display: inline;
-}
-
-#kandideerimisavaldus input[name="partyName"] {
-  width: 59%;
-  display: inline-block;
-}
-
-#kandideerimisavaldus .box select {
-  width: 40%;
-  display: inline-block;
-}
-
-.errorField::-webkit-input-placeholder{ /* WebKit browsers */
-    color:    #404040;
-}
-.errorField:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-    color:    #404040;
-}
-.errorField::-moz-placeholder { /* Mozilla Firefox 19+ */
-    color:    #404040;
-}
-.errorField:-ms-input-placeholder { /* Internet Explorer 10+ */
-    color:    #404040;
-}
-
-.hover{text-decoration:underline;}
-.alphabetic{cursor:pointer;}
-.sorttable_numeric:hover{
-	cursor:pointer;
-	text-decoration: underline;}
-
 
 .loading {
   text-indent: 200%;
+  text-indent: -9999px;
   white-space: nowrap;
   overflow: hidden;
   width: 100%;
@@ -887,214 +818,10 @@ a#googlelogin:active{
 	background-color: #AADBF3;
 	border: 1px solid #3AAEE7;
 }
-#easyNotification.notification{
-	background-color: #FFF400;
-	border: 1px solid #FFCD00;
-}
 
-#easyNotification.err{
-	background-color: #FF0000;
-	border: 1px solid#A60000;
-}
 #easyNotification span.close{
 	font-size: 11px;
 	float: right;
 	color: #404040;
 	cursor: pointer;
-}
-
-.ketchup-custom {
-  	line-height: 1em;
-  	display: none;
-}
-#candidateForm ul {
-	list-style: none;
-}
-.ketchup-custom li {
-	font-size: 10px;
-	text-transform: uppercase;
-	text-shadow: 1px 1px 0 #9F4631;
-	border: 0;
-	color: white;
-	background: #F46644;
-	padding: 1px 10px;
-	margin: 1px 0;
-}
-
-a#candidateFormLink {
-	width: 100%;
-	margin: 20px 0;
-	float:left;
-}
-
-#noResultsFound {
-	display:none;
-	text-align: center;
-	margin-top: 40%;
-}
-
-#applypage #content h4 {
-	text-align: center;
-}
-
-#termsAndConditions {
-	padding: 10px;
-	background: #eee;
-  	border: 1px solid #ccc;
-  	color: #404040;
-  	height: 320px;
-  	overflow: auto;
-}
-
-#termsAndConditions ul li {
-  margin-left: 20px;
-  font-size: 12px;
-  color: #404040;
-}
-
-#termsAndConditions H1,
-#termsAndConditions H2,
-#termsAndConditions H3 {
-	text-align: center;
-	font-weight: bold;
-	font-family: Arial, Tahoma, Helvetica, sans-serif;
-}
-#termsAndConditions H1 {
-	font-size: 20px;
-	text-align: center;
-	margin-bottom: 1em;
-	text-transform: none; /* 08.01.2010 */
-}
-#termsAndConditions H1 SUP {
-	font-size: 12px;
-}
-#termsAndConditions H1 SPAN {
-	font-size: 14px;
-	font-weight: normal;
-}
-#termsAndConditions H2 {
-	font-size: 18px;
-	text-align: center;
-}
-#termsAndConditions H2.level2 {
-	font-size: 18px;
-}
-#termsAndConditions H2.level3 {
-	font-size: 16px;
-}
-#termsAndConditions H2.level4 {
-	font-size: 16px;
-	font-weight: bold; /* 08.01.2010*/
-}
-#termsAndConditions H2.level5 {
-	font-size: 16px;
-	font-weight: bold; /* 08.01.2010*/
-}
-#termsAndConditions H3 {
-	font-size: 14px;
-	text-transform: none;
-	font-weight: bold; /* 08.01.2010*/
-}
-
-
-#termsAndConditions H2 SPAN,
-#termsAndConditions H2.level2 SPAN,
-#termsAndConditions H2.level3 SPAN,
-#termsAndConditions H2.level4 SPAN,
-#termsAndConditions H2.level5 SPAN {
-	display: block;
-	margin: 1em 0 0 0;
-	font-weight: bold;
-}
-
-#termsAndConditions H2 SPAN.mm,
-#termsAndConditions H2.level2 SPAN.mm,
-#termsAndConditions H2.level3 SPAN.mm,
-#termsAndConditions H2.level4 SPAN.mm,
-#termsAndConditions H2.level5 SPAN.mm {
-	display: block;
-	margin: 0 0 0 0;
-	font-weight: normal;
-	font-size: 14px;
-}
-/* end 08.01.2010*/
-
-#termsAndConditions P.title {
-	margin: 1em 0 -1em;
-	color: #606060;
-	text-align: center;
-	font-weight: bold; /* 08.01.2010*/
-}
-
-/* 21.10.2010*/
-#termsAndConditions P.paragraph {
-	margin-top: 1.25em;
-}
-#termsAndConditions H3 SPAN {
-	font-weight: normal;
-}
-
-#termsAndConditions P {
-	margin: 0.5em 0 0 0;
-}
-
-#candidatebutton {
-  float: left;
-  font-size: 20px;
-  width: 30%;
-  margin: 0 35%;
-  padding: 0px;
-  line-height: 50px;
-}
-
-p#agreeNotice {
-	text-align: center;
-	margin-top: 20px;	
-}
-
-#tableLoadMore{
-	font-size: 12px ;
-	color: #404040;
-	width: 100%;
-	margin: 2px 0;
-	background: #eee;
-	padding: 2px 0;
-	text-align: center;
-	text-decoration:none; 
-	border: 1px #e0e0e0 solid;
-	cursor:pointer;
-}
-
-#tableLoadMore:hover{
-	background: #f7f7f7;
-}
-
-#noMoreResults{
-	display:none;
-	font-size: 12px ;
-	color: #404040;
-	width: 100%;
-	margin: 2px 0;
-	background: #F9F9F9;
-	padding: 2px 0;
-	text-align: center;
-	text-decoration:none; 
-	border: 1px #e0e0e0 solid;
-}
-
-span#tablePrevious{
-	float:left;
-}
-span#tableNext{
-	float:right;
-}
-
-#tableNavigation{
-	font-size: 11px ;
-	color: #404040 ;
-	width: 100%;
-	margin: 5px 0;
-	padding: 0 10px;
-	text-align: center;
-	text-decoration:none; 
 }
