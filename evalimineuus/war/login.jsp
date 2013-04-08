@@ -12,7 +12,8 @@
 		<canvas id="highlight"></canvas>
 
 		<div class="tab">
-		<h4 align="center">Sisse logimine</h4>
+		<br/>
+		<h4 class="content_heading">Sisse logimine</h4>
 		
 		<%
 			final GoogleAuthHelper helper = new GoogleAuthHelper();
@@ -24,7 +25,6 @@
 				HttpSession sess = request.getSession(true);
 				String json = helper.getUserInfoJson(request.getParameter("code"));
 				org.json.JSONObject googleJson = new org.json.JSONObject(json); 
-				out.println("<pre>"+json+"</pre>");
 				
 				String gId, gEmail, gFname, gLname, gPic = null;
 				gId = googleJson.get("id").toString();
@@ -42,19 +42,14 @@
 				sess.setAttribute("google_lastname", gLname);
 				
 				String queryCheck = ("SELECT * FROM db.user WHERE Google_Id=" + gId);
-				System.out.println("gPic " + gPic);
-				System.out.println("NULL ? " + (gPic==null));
-				System.out.println("'null' ? " + (gPic=="null"));
-
 				String queryAdd = String.format("INSERT INTO db.user (Firstname, Lastname, Email, Google_Id, ImgUrl) VALUES"
 						+ "('%s', '%s',  '%s', '%s', %s)", gFname, gLname, gEmail, gId, gPic==null? null : '"' + gPic + '"');
 				
 				java.sql.Connection c = null;
 				try {
 					java.sql.DriverManager.registerDriver(new com.google.appengine.api.rdbms.AppEngineDriver());
-					c = java.sql.DriverManager.getConnection("jdbc:google:rdbms:valiminee:evalimine2");
+					c = java.sql.DriverManager.getConnection("jdbc:google:rdbms://valiminee:evalimine2/db");
 					java.sql.ResultSet check = c.createStatement().executeQuery(queryCheck);
-					System.out.println(gPic);
 					if(check.next()){
 						if((check.getString("ImgUrl")!=gPic) && gPic!=null){
 							c.createStatement().executeUpdate("UPDATE db.user SET db.user.ImgUrl='"+gPic+"' WHERE db.user.Google_Id='"+gId+"'");

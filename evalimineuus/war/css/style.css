@@ -29,6 +29,7 @@ header #logo {
   height: 46px;
   float: left;
   margin-left: 10px;
+  margin-top: -5px;
 }
 header #username {
   margin-top: 10px;
@@ -49,7 +50,8 @@ body#votepage a#votenav,
 body#applypage a#applynav,
 body#statpage a#statnav,
 body#loginpage a#loginnav,
-body#profilepage a#profilenav {
+body#profilepage a#profilenav,
+body#adminpage a#adminnav {
   text-decoration: underline;
 }
 
@@ -448,6 +450,10 @@ body#profilepage a#profilenav {
 
 /*Candidate page*/
 /*------------------------------------------------------------------------------*/
+.popbox{
+  margin-top: 0px;
+}
+
 .box {
   width: 300px;
   display:none;
@@ -491,7 +497,7 @@ body#profilepage a#profilenav {
   font-family: Arial, Verdana, Tahoma, sans-serif;
 }
 
-.box a.button {
+.box .button {
   margin-top: 10px;
   line-height: 40px;
   padding: 4px 5px;
@@ -504,7 +510,7 @@ body#profilepage a#profilenav {
   margin-right: 4%;
 }
 
-.box a.button:hover {
+.box .button:hover {
   text-decoration: none;
   color: #008bcf;
 }
@@ -531,13 +537,17 @@ body#profilepage a#profilenav {
   display: inline;
 }
 
+#candidateForm select[disabled] {
+  color: #000;
+}
+
 #candidateForm ul {
   list-style: none;
 }
 
 a#candidateFormLink {
   width: 100%;
-  margin: 20px 0;
+  margin-bottom: 20px;
   float:left;
 }
 
@@ -824,4 +834,18 @@ a#googlelogin:active{
 	float: right;
 	color: #404040;
 	cursor: pointer;
+}
+
+.adminpage{
+  width: 1200px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+#wrapper.wideradminpage {
+  width: 1200px;
+  max-width: 100%;
+  margin: 10px auto;
+}
+#wrapper.wideradminpage .tab{
+    padding: 20px;
 }

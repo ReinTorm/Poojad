@@ -10,11 +10,11 @@ jQuery.ketchup
   }
 })
 
-.validation('minlength', 'Peab olema vähemalt {arg1} tähemärki.', function(form, el, value, min) {
+.validation('minlength', 'Peab olema vähemalt {arg1} märki.', function(form, el, value, min) {
   return (value.length >= +min);
 })
 
-.validation('maxlength', 'Peab olema lühem kui {arg1} tähemärki.', function(form, el, value, max) {
+.validation('maxlength', 'Peab olema lühem kui {arg1} märki.', function(form, el, value, max) {
   return (value.length <= +max);
 })
 
@@ -34,7 +34,7 @@ jQuery.ketchup
   return (this.isNumber(value) && +value >= +min && +value <= +max);
 })
 
-.validation('number', 'Peab olema number.', function(form, el, value) {
+.validation('number', 'Peab olema arv.', function(form, el, value) {
   return this.isNumber(value);
 })
 

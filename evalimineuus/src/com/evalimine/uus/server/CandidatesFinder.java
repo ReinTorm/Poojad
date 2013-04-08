@@ -31,6 +31,7 @@ public class CandidatesFinder extends HttpServlet {
 		JSONObject requestParams = (JSONObject) array.get(0);
 		int radioID = requestParams.get("radio")==null ? 0 : Integer.parseInt((String) requestParams.get("radio"));
 		long userID = requestParams.get("userId")==null ? 0 : (long) requestParams.get("userId");
+		@SuppressWarnings("unchecked")
 		ArrayList<String> checkboxList =  (ArrayList<String>) requestParams.get("checkboxes");
 		
 		String query = queryBuilder(radioID, userID, checkboxList);

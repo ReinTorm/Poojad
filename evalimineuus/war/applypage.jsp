@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
-<%@page import="com.evalimine.uus.server.UserUtilities"%>
+<%@ page import="com.evalimine.uus.server.UserUtilities"%>
 <%
 	if (!UserUtilities.loggedIn(request))
 		response.sendRedirect("/login");
-%>
+%> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,51 +26,36 @@
 			</aside>
 			<div id="content">
 				<h4 class="content_heading">Kandideerimine</h4>
-
-				<div id="kandideerimisavaldus">
-					<form action="/submittedData" method="post" id="subForm">
-						<p>
-							Mina, <b>Kalle Blomkvist</b>,
-						</p>
-						<p>
-							soovin kandideerida <input type="text" name="date" placeholder="Kuupäev" /> toimuvatel Riigikogu valimistel valimisringkonnas nr: <input type="text" name="number" />
-						</p>
-						<p>
-							<select>
-								<%
-									java.sql.Connection c = null;
-									try {
-										java.sql.DriverManager.registerDriver(new com.google.appengine.api.rdbms.AppEngineDriver());
-										c = java.sql.DriverManager.getConnection("jdbc:google:rdbms://valiminee:evalimine2/db");
-										java.sql.ResultSet rs = c.createStatement().executeQuery("SELECT * FROM db.party");
-										while (rs.next()) {
-											int partyID = rs.getInt("PartyID");
-											String pname = rs.getString("PartyName");
-											out.println("<option id=" + partyID + ">" + pname + "</option>");
-										}
-									} catch (java.sql.SQLException e) {
-										e.printStackTrace();
-										out.println(e.toString());
-									}
-								%>
-
-							</select>
-						</p>
-
-					</form>
-				</div>
-
+				<p>Kandideerimiseks peate täitma järgmise avalduse ning ootama kuni teie avaldus üle vaadatakse. Juhul kui avaldus on korras, siis lisatakse teid koheselt valimisnimerkirja ning oletegi kandidaat. Vastasel juhul leiate oma profiili alt teate, et teie avaldus lükati tagasi. Sellisel juhul võite uuesti kandideerida.</p>
 				<div class='popbox'>
 					<a class='open' href='javascript:void(0);' id="candidateFormLink"><b>Kandidaadi ankeet täida ära siin!</b></a>
 					<div class='box'>
-						<form action="/submittedData" method="POST" id="candidateForm">
+						<form id="candidateForm">
 							<h4>Kandidaadi ankeet</h4>
 							<p>* märgistatud väljad on kohustuslikud</p>
 							<ul>
 								<li><input type="text" data-validate="validate(required, name, minlength(3))" name="fname" title="Eesnimi" placeholder="Eesnimi *" /></li>
 								<li><input type="text" data-validate="validate(required, name, minlength(3))" name="lname" placeholder="Perekonnanimi *" /></li>
 								<li><input type="text" data-validate="validate(required, digits, minlength(11))" name="socnumber" placeholder="Isikukood *" /></li>
-								<li><input type="text" data-validate="validate(required)" name="party" placeholder="Erakondlik kuuluvus *" /></li>
+								<li><select name="party">
+									<option id="0" disabled="disabled" selected="selected">Erakondlik kuuluvus *</option>
+									<% 	java.sql.ResultSet rs;
+										rs = com.evalimine.uus.server.GeneralHelpers.getPartyOptions();
+										while (rs.next()) {
+											int partyID = rs.getInt("PartyID");
+											String pname = rs.getString("PartyName");
+											out.println("<option id=" + partyID + ">" + pname + "</option>");
+										} %>
+								</select></li>
+								<li><select name="constituency">
+									<option id="0" disabled="disabled" selected="selected">Vali valimisringkond *</option>
+									<% 	rs = com.evalimine.uus.server.GeneralHelpers.getConstituencyOptions();
+										while (rs.next()) {
+											int cID = rs.getInt("CID");
+											String cname = rs.getString("ConstituencyName");
+											out.println("<option id=" + cID + ">" +cID + " - " + cname + "</option>");
+										} %>
+								</select></li>
 								<li><input type="text" data-validate="validate(required)" name="address" placeholder="Elukoha aadress *" /></li>
 								<li><input type="text" data-validate="validate(digits, minlength(5))" name="phone" placeholder="Mobiil" /></li>
 								<li><input type="text" name="pob" placeholder="Sünnikoht" /></li>
@@ -79,11 +64,12 @@
 								<li><input type="text" name="workp" placeholder="Töökoht" /></li>
 								<li><input type="text" name="job" placeholder="Amet" /></li>
 							</ul>
-							<a href="javascript:void(0);" onclick="$(this).closest('form').submit();" class="button" id="marginFixer">Laadi alla PDF</a> <a href="javascript:void(0);" class="close button">Katkesta</a>
+							<a href="javascript:void(0);"  class="button" id="marginFixer">Valmis</a> <a href="javascript:void(0);" id="formClean" class="close button">Tühista</a>
 						</form>
 					</div>
 				</div>
-				<h4>Tingimused</h4>
+
+				<h4 class="content_heading">Tingimused</h4>
 				<div id="termsAndConditions">
 					<p>
 						<strong>Kinnita, et vastan järgmistele Riigikogu valimise seaduses Riigikogu liikme kandidaadile esitatud nõuetele:</strong>
@@ -2049,14 +2035,14 @@
 					<p>
 						<a name="lg377"> </a> Käesolev seadus jõustub kümnendal päeval pärast Riigi Teatajas avaldamist, välja arvatud §-d 75 ja 79, mis jõustuvad 2003. aasta 2. märtsil.
 					</p>
-
 				</div>
+
 				<p id="agreeNotice">Vajutades kandideerimise nuppu kinnitate, et olete tutvunud ning nõustute kandideerimise tingimustega</p>
-				<a href="javascript:void(0);" id="candidatebutton" class="button">Kandideeri!</a>
-			</div>
-			<!--content-->
-		</div>
-		<!--applypage-->
+				<div id="buttonLoader">
+					<a href="javascript:void(0);" id="candidatebutton" class="button">Kandideeri!</a>
+				</div>
+			</div> <!--content-->
+		</div> <!--applypage-->
 
 		<jsp:include page="/footer.jsp" />
 	</div>
@@ -2066,6 +2052,7 @@
 	<script type="text/javascript" src="/js/ketchup/jquery.ketchup.js"></script>
 	<script type="text/javascript" src="/js/ketchup/jquery.ketchup.helpers.js"></script>
 	<script type="text/javascript" src="/js/ketchup/jquery.ketchup.validations.js"></script>
+	<script type="text/javascript" src="/js/easy.notification.js"></script>
 	<script type="text/javascript" src='/js/apply.js'></script>
 </body>
 </html>

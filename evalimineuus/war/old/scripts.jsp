@@ -1,9 +1,0 @@
-<script type="text/javascript" src="/js/jquery-1.9.1.min.js"></script>
-<script type="text/javascript" src="/js/sorttable.js"></script>
-<script type="text/javascript" src='/js/popbox.js'></script>
-<script type="text/javascript" src='/js/json2.js'></script>
-<script type="text/javascript" src="/js/easy.notification.js"></script>
-<script type="text/javascript" src="/js/ketchup/jquery.ketchup.js"></script>
-<script type="text/javascript" src="/js/ketchup/jquery.ketchup.helpers.js"></script>
-<script type="text/javascript" src="/js/ketchup/jquery.ketchup.validations.js"></script>
-<script type="text/javascript" src='/js/document.js'></script>

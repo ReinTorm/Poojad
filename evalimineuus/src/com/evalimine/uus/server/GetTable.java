@@ -48,7 +48,6 @@ public class GetTable extends HttpServlet {
 		} catch (java.sql.SQLException | JSONException e) {
 			e.printStackTrace();
 		}
-		System.out.println(endJson);
 		out.print(endJson);
 	}
 

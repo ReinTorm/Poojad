@@ -34,7 +34,7 @@ public class DatabaseTest extends HttpServlet {
 		Connection c = null;
 	    try {
 			DriverManager.registerDriver(new AppEngineDriver());
-		    c = DriverManager.getConnection("jdbc:google:rdbms:valiminee:evalimine2");
+		    c = DriverManager.getConnection("jdbc:google:rdbms://valiminee:evalimine2/db");
 		    ResultSet rs = c.createStatement().executeQuery("SELECT * FROM db.test");
 		    while (rs.next()){
 		        String FirstName = rs.getString("FirstName");

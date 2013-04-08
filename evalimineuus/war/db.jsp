@@ -10,7 +10,7 @@
 	<% java.sql.Connection c = null;
 	try {
 		java.sql.DriverManager.registerDriver(new com.google.appengine.api.rdbms.AppEngineDriver());
-		c = java.sql.DriverManager.getConnection("jdbc:google:rdbms:valiminee:evalimine2");
+		c = java.sql.DriverManager.getConnection("jdbc:google:rdbms://valiminee:evalimine2/db");
 		java.sql.ResultSet rs = c.createStatement().executeQuery("SELECT * FROM db.test");
 		while (rs.next()){
 			String FirstName = rs.getString("FirstName");

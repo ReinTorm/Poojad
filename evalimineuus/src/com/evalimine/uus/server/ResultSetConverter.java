@@ -23,7 +23,7 @@ public class ResultSetConverter {
 				if (rsmd.getColumnType(i) == java.sql.Types.ARRAY) {
 					obj.put(column_name, rs.getArray(column_name));
 				} else if (rsmd.getColumnType(i) == java.sql.Types.BIGINT) {
-					obj.put(column_name, rs.getInt(column_name));
+					obj.put(column_name, rs.getLong(column_name));
 				} else if (rsmd.getColumnType(i) == java.sql.Types.BOOLEAN) {
 					obj.put(column_name, rs.getBoolean(column_name));
 				} else if (rsmd.getColumnType(i) == java.sql.Types.BLOB) {

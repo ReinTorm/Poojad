@@ -18,6 +18,9 @@
 			<%if (UserUtilities.loggedIn(request)){ %>
 				<li><a href="/apply" id="applynav">Kandideeri</a></li>
 				<li><a href="/profile" id="profilenav">Profiil</a></li>
+				<% if(UserUtilities.isAdmin(request)){ %>
+					<li><a href="/admin" id="adminnav">Admin</a></li>
+				<% } %>
 				<li><a href="/logout">Logi välja</a></li>
 			<%}else{ %>
 				<li><a href="/login" id="loginnav">Logi sisse</a></li>
