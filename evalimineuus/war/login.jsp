@@ -1,6 +1,6 @@
 <%@page import="com.evalimine.uus.server.GoogleAuthHelper"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"%><!DOCTYPE html>
-<html>
+<html manifest="cache.manifest">
 <head>
 	<meta charset="utf-8">
 	<title>eValimine</title>

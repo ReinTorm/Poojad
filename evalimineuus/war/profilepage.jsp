@@ -2,7 +2,7 @@
 <%@page import="com.evalimine.uus.server.UserUtilities"%>
 <% if (!UserUtilities.loggedIn(request)) response.sendRedirect("/login"); %>
 <!DOCTYPE html>
-<html>
+<html manifest="cache.manifest">
 <head>
 	<meta charset="utf-8">
 	<title>eValimine - Profiil</title>

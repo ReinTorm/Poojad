@@ -1,5 +1,5 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
-<HTML>
+<HTML manifest="cache.manifest">
 <HEAD>
 	<TITLE>Database Test</TITLE>
 	<link rel='stylesheet' href='/css/style.css'></HEAD>
