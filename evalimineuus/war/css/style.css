@@ -397,13 +397,13 @@ body#adminpage a#adminnav {
 .legend li { float: bottom; margin-right: 10px; }
 .legend span { border: 1px solid #ccc; float: left; width: 12px; height: 12px; margin: 2px; }
 
-.legend .üksikkandidaat { background-color: #297ACC; opacity: 0.3;}
+.legend .yksikkandidaat { background-color: #297ACC; opacity: 0.3;}
 .legend .iseseis { background-color: #000072; opacity: 0.3;}
 .legend .kesk { background-color: #1F7A1F; opacity: 0.3;}
 .legend .konserv { background-color: #FF8DC6; opacity: 0.3;}
 .legend .reform { background-color: #FFFF00; opacity: 0.3;}
-.legend .vabapõll { background-color: #663300; opacity: 0.3;}
-.legend .ühvasak { background-color: #800000; opacity: 0.3;}
+.legend .vabap6ll { background-color: #663300; opacity: 0.3;}
+.legend .yhvasak { background-color: #800000; opacity: 0.3;}
 .legend .krisdem { background-color: #BA5919; opacity: 0.3;}
 .legend .rohe { background-color: #2E8B2E; opacity: 0.3;}
 .legend .irl { background-color: #5CD6FF; opacity: 0.3;}

@@ -3,13 +3,13 @@
 	<h4 class="content_heading">Kaart</h4>
 	<div id="googleMap"></div>	
 		<ul id="legendMap" class="legend">
-		    <li><span class="üksikkandidaat"></span>Üksi</li>
+		    <li><span class="yksikkandidaat"></span>Üksi</li>
 		    <li><span class="iseseis"></span>Iseseis</li>
 		    <li><span class="kesk"></span>Kesk</li>
 		    <li><span class="konserv"></span>Konserv</li>
 		    <li><span class="reform"></span>Reform</li>
-		    <li><span class="vabapõll"></span>VabaPõll</li>
-		    <li><span class="ühvasak"></span>ÜhVasak</li>
+		    <li><span class="vabap6ll"></span>VabaPõll</li>
+		    <li><span class="yhvasak"></span>ÜhVasak</li>
 		    <li><span class="krisdem"></span>KrisDem</li>
 		    <li><span class="rohe"></span>Rohe</li>
 		    <li><span class="irl"></span>IRL</li>
