@@ -53,44 +53,70 @@ public class GetTable extends HttpServlet {
 
 	private String queryBuilder(String pageID, long currentSelect, long startIndex, long endIndex) {
 		String query = "";
-		if (pageID.equalsIgnoreCase("riik")) {
-			query = " SELECT db.party.*, t1.Hääli FROM db.party, " +
-					" (SELECT p.PartyId, COUNT( p.Vote ) as Hääli " +
-					" FROM db.user p " +
-					" JOIN db.user v ON p.PID = v.Vote " +
-					" Group by p.PartyId) t1 " +
-					" WHERE db.party.PartyId = t1.PartyID ";
+		if (pageID.equalsIgnoreCase("kaart")) {
+			query = "SELECT x.PID, x.PartyName, x.ConstituencyName, SUM(x.Hääli) as VoteSum "
+					+ " FROM( "
+					+ " SELECT t1.PID, t1.PartyName, t1.ConstituencyName, COALESCE(t2.Count, 0) AS Hääli "
+					+ " FROM ( "
+					+ " (SELECT db.user.PID, db.user.Firstname, db.user.Lastname, db.party.PartyName, db.constituency.ConstituencyName "
+					+ " FROM db.user "
+					+ " LEFT JOIN db.party ON db.user.PartyId = db.party.PartyID "
+					+ " LEFT JOIN db.constituency ON db.user.CID = db.constituency.CID "
+					+ " WHERE db.user.PartyId IS NOT NULL "
+					+ " AND db.user.CID IS NOT NULL "
+					+ " AND db.user.CID = " + currentSelect 
+					+ " ) t1 "
+					+ " LEFT JOIN "
+					+ " (SELECT db.user.Vote, COUNT(*) AS 'Count' "
+					+ " FROM db.user "
+					+ " GROUP BY db.user.Vote "
+					+ " ) t2 "
+					+ " ON "
+					+ " t1.PID = t2.Vote "
+					+ " ORDER BY t2.Count DESC)) x "
+					+ " GROUP BY PartyName "
+					+ " ORDER BY VoteSum DESC";
 		}
 		else {
-			query = "SELECT x.PID, x.Nimi, x.PartyName, x.ConstituencyName, x.Hääli " 
-				+ " FROM ( "
-				+ "SELECT t1.PID, CONCAT(t1.Firstname, ' ', t1.Lastname) AS Nimi, t1.PartyName, t1.ConstituencyName, COALESCE(t2.Count, 0) AS Hääli "
-				+ " FROM ( "
-				+ " (SELECT db.user.PID, db.user.Firstname, db.user.Lastname, db.party.PartyName, db.constituency.ConstituencyName " 
-				+ " FROM db.user "
-				+ " LEFT JOIN db.party ON db.user.PartyId = db.party.PartyID "
-				+ " LEFT JOIN db.constituency ON db.user.CID = db.constituency.CID "
-				+ " WHERE db.user.PartyId IS NOT NULL "
-				+ " AND db.user.CID IS NOT NULL ";
-				if (pageID.equalsIgnoreCase("candidate")) {
-					//nothing to add
-				} else if (pageID.equalsIgnoreCase("partei")) {
-					query+= " AND db.user.PartyId = " + currentSelect;
-				} else if (pageID.equalsIgnoreCase("area")) {
-					query+= " AND db.user.CID = " + currentSelect;
-				}
-				query+=	" ) t1 "
-				+ " LEFT JOIN "
-				+ " (SELECT db.user.Vote, COUNT(*) AS 'Count' " 
-				+ " FROM db.user " 
-				+ " GROUP BY db.user.Vote "
-				+ " ) t2 "
-				+ " ON "
-				+ " t1.PID = t2.Vote "
-				+ " ORDER BY t2.Count DESC) "
-				+ " ) x ";
+			if (pageID.equalsIgnoreCase("riik")) {
+				query = " SELECT db.party.*, t1.Hääli FROM db.party, " +
+						" (SELECT p.PartyId, COUNT( p.Vote ) as Hääli " +
+						" FROM db.user p " +
+						" JOIN db.user v ON p.PID = v.Vote " +
+						" Group by p.PartyId) t1 " +
+						" WHERE db.party.PartyId = t1.PartyID ";
+			}
+			else {
+				query = "SELECT x.PID, x.Nimi, x.PartyName, x.ConstituencyName, x.Hääli " 
+					+ " FROM ( "
+					+ "SELECT t1.PID, CONCAT(t1.Firstname, ' ', t1.Lastname) AS Nimi, t1.PartyName, t1.ConstituencyName, COALESCE(t2.Count, 0) AS Hääli "
+					+ " FROM ( "
+					+ " (SELECT db.user.PID, db.user.Firstname, db.user.Lastname, db.party.PartyName, db.constituency.ConstituencyName " 
+					+ " FROM db.user "
+					+ " LEFT JOIN db.party ON db.user.PartyId = db.party.PartyID "
+					+ " LEFT JOIN db.constituency ON db.user.CID = db.constituency.CID "
+					+ " WHERE db.user.PartyId IS NOT NULL "
+					+ " AND db.user.CID IS NOT NULL ";
+					if (pageID.equalsIgnoreCase("candidate")) {
+						//nothing to add
+					} else if (pageID.equalsIgnoreCase("partei")) {
+						query+= " AND db.user.PartyId = " + currentSelect;
+					} else if (pageID.equalsIgnoreCase("area")) {
+						query+= " AND db.user.CID = " + currentSelect;
+					}
+					query+=	" ) t1 "
+					+ " LEFT JOIN "
+					+ " (SELECT db.user.Vote, COUNT(*) AS 'Count' " 
+					+ " FROM db.user " 
+					+ " GROUP BY db.user.Vote "
+					+ " ) t2 "
+					+ " ON "
+					+ " t1.PID = t2.Vote "
+					+ " ORDER BY t2.Count DESC) "
+					+ " ) x ";
+			}
+			query+= " LIMIT " + startIndex +", "+ endIndex;
 		}
-		query+= " LIMIT " + startIndex +", "+ endIndex;
 		return query;
 	}
 }
