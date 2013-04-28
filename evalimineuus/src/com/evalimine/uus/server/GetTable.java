@@ -54,17 +54,18 @@ public class GetTable extends HttpServlet {
 	private String queryBuilder(String pageID, long currentSelect, long startIndex, long endIndex) {
 		String query = "";
 		if (pageID.equalsIgnoreCase("kaart")) {
-			query = "SELECT x.PID, x.PartyName, x.ConstituencyName, SUM(x.Hääli) as VoteSum "
+			query = "SELECT y.CID, y.PartyId, y.PartyName, y.ConstituencyName, y.VoteSum "
+					+ " FROM "
+					+ " (SELECT x.CID, x.PartyId, x.PartyName, x.ConstituencyName, SUM(x.Hääli) AS VoteSum "
 					+ " FROM( "
-					+ " SELECT t1.PID, t1.PartyName, t1.ConstituencyName, COALESCE(t2.Count, 0) AS Hääli "
+					+ " SELECT t1.CID, t1.PartyId, t1.PID, t1.PartyName, t1.ConstituencyName, COALESCE(t2.Count, 0) AS Hääli "
 					+ " FROM ( "
-					+ " (SELECT db.user.PID, db.user.Firstname, db.user.Lastname, db.party.PartyName, db.constituency.ConstituencyName "
-					+ " FROM db.user "
+					+ " (SELECT db.user.CID, db.user.PartyId, db.user.PID, db.user.Firstname, db.user.Lastname, db.party.PartyName, db.constituency.ConstituencyName "
+					+ " FROM db.user"
 					+ " LEFT JOIN db.party ON db.user.PartyId = db.party.PartyID "
 					+ " LEFT JOIN db.constituency ON db.user.CID = db.constituency.CID "
 					+ " WHERE db.user.PartyId IS NOT NULL "
 					+ " AND db.user.CID IS NOT NULL "
-					+ " AND db.user.CID = " + currentSelect 
 					+ " ) t1 "
 					+ " LEFT JOIN "
 					+ " (SELECT db.user.Vote, COUNT(*) AS 'Count' "
@@ -74,8 +75,9 @@ public class GetTable extends HttpServlet {
 					+ " ON "
 					+ " t1.PID = t2.Vote "
 					+ " ORDER BY t2.Count DESC)) x "
-					+ " GROUP BY PartyName "
-					+ " ORDER BY VoteSum DESC";
+					+ " GROUP BY PartyName, CID "
+					+ " ORDER BY CID, VoteSum DESC) y "
+					+ " WHERE VoteSum != 0 ";
 		}
 		else {
 			if (pageID.equalsIgnoreCase("riik")) {
