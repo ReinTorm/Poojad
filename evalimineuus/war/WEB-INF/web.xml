@@ -135,6 +135,19 @@
 	    <url-pattern>/statistics/riik/*</url-pattern>
 	</servlet-mapping>	
 	
+	<servlet>
+	    <servlet-name>mapstat</servlet-name>
+	    <jsp-file>/statpage.jsp</jsp-file>
+	    <init-param>
+        	<param-name>subpage</param-name>
+        	<param-value>mapstat</param-value>
+   		</init-param>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>mapstat</servlet-name>
+	    <url-pattern>/statistics/kaart/*</url-pattern>
+	</servlet-mapping>
+	
 	 <servlet>
      	<servlet-name>tablegetter</servlet-name>
   		<servlet-class>com.evalimine.uus.server.GetTable</servlet-class>

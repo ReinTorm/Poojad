@@ -31,6 +31,16 @@ $(document).ready(function() {
 			}
 		});
 	});
+	
+	
+	var $gMap = $("#googleMap");
+	if ($gMap.length){
+		var map;
+		
+		
+		initialize();
+		google.maps.event.addDomListener(window, 'load', initialize);
+	}
 });
 var step = 10;
 var curSearch;
@@ -103,4 +113,48 @@ function loadTableData(startIndex, append) {
 			$("#content").html(thrownError);
 	    }
 	});
+}
+function initialize(){
+	geocoder = new google.maps.Geocoder();
+	var mapProp = {
+	  center:new google.maps.LatLng(58.631217,25.092773),
+	  zoom:7,
+	  mapTypeId:google.maps.MapTypeId.ROADMAP,
+	  //disableDefaultUI:true,  //eemaldab google nupud sealt
+	  mapTypeControl:false,
+	  streetViewControl:false
+	  };
+	map=new google.maps.Map(document.getElementById("googleMap"), mapProp);
+	addMarker();
+}
+function addMarker() {
+	var infowindow = new google.maps.InfoWindow({});
+	var global_markers = [];
+	var markers = [[58.915992, 24.708252, 'trialhead0'], [58.410345, 26.856079, 'trialhead1'], [58.553927,24.515991, 'trialhead2']];
+    for (var i = 0; i < markers.length; i++) {
+        // obtain the attribues of each marker
+        var lat = parseFloat(markers[i][0]);
+        var lng = parseFloat(markers[i][1]);
+        var trailhead_name = markers[i][2];
+        
+
+        var myLatlng = new google.maps.LatLng(lat, lng);
+
+        var contentString = "<p>" + trailhead_name + "</p>";
+
+        var marker = new google.maps.Marker({
+            position: myLatlng,
+            map: map,
+            title: "Coordinates: " + lat + " , " + lng + " | Trailhead name: " + trailhead_name
+        });
+
+        marker['infowindow'] = contentString;
+
+        global_markers[i] = marker;
+
+        google.maps.event.addListener(global_markers[i], 'click', function() {
+            infowindow.setContent(this['infowindow']);
+            infowindow.open(map, this);
+        });
+    }
 }

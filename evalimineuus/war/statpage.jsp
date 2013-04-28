@@ -16,6 +16,7 @@
 				<a href="/statistics/piirkond" class="statbutton">Piirkondade lõikes</a> 
 				<a href="/statistics/partei" class="statbutton">Parteide lõikes</a> 
 				<a href="/statistics/riik" class="statbutton">Riigi lõikes</a>
+				<a href="/statistics/kaart" class="statbutton">Kaart</a>
 			</aside>
 			<div id="content">
 				<% 
@@ -31,5 +32,6 @@
 <script type="text/javascript" src="/js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="/js/sorttable.js"></script>
 <script type="text/javascript" src='/js/stat.js'></script>
+<script type="text/javascript" src='https://maps.googleapis.com/maps/api/js?key=AIzaSyClsAlvu7wHd1ZqkewFh_77oGBASvPxmKU&sensor=false'></script>
 </body>
 </html>
