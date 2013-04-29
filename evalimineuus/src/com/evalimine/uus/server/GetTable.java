@@ -81,12 +81,13 @@ public class GetTable extends HttpServlet {
 		}
 		else {
 			if (pageID.equalsIgnoreCase("riik")) {
-				query = " SELECT db.party.*, t1.Hääli FROM db.party, " +
+				query = " SELECT db.party.PartyName, t1.Hääli FROM db.party, " +
 						" (SELECT p.PartyId, COUNT( p.Vote ) as Hääli " +
 						" FROM db.user p " +
 						" JOIN db.user v ON p.PID = v.Vote " +
 						" Group by p.PartyId) t1 " +
-						" WHERE db.party.PartyId = t1.PartyID ";
+						" WHERE db.party.PartyId = t1.PartyID" +
+						" ORDER BY t1.Hääli DESC";
 			}
 			else {
 				query = "SELECT x.PID, x.Nimi, x.PartyName, x.ConstituencyName, x.Hääli " 
