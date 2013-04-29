@@ -393,7 +393,7 @@ body#adminpage a#adminnav {
   font-family: Arial, Verdana, Tahoma, sans-serif;
 }
 
-.legend { list-style: none; }
+.legend { list-style: none; display: none; }
 .legend li { float: bottom; margin-right: 10px; }
 .legend span { border: 1px solid #ccc; float: left; width: 12px; height: 12px; margin: 2px; }
 

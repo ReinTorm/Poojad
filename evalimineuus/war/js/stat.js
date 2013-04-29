@@ -149,8 +149,8 @@ function addCircles(i) {
 		data: JSON.stringify(jsonObj),
 		contentType: 'application/json; charset=utf-8',
 		dataType: 'json',
-		beforeSend: function() {$('#googleMap').addClass("loading"); },
-		complete: function() {$('#googleMap').removeClass("loading"); },
+		beforeSend: function() {$('legend').hide(); $('#googleMap').addClass("loading"); },
+		complete: function() {$('.legend').show(); $('#googleMap').removeClass("loading"); },
 		success: function(jsonData){
 			for (var i = 0; i < circles.length; i++){
 				var infowindow = new google.maps.InfoWindow({});
