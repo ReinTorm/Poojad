@@ -5,10 +5,10 @@ import org.junit.Test;
 import org.openqa.selenium.server.SeleniumServer;
 import org.testng.annotations.AfterTest;
 
-import com.thoughtworks.selenium.*; 
+import com.thoughtworks.selenium.DefaultSelenium;
+import com.thoughtworks.selenium.SeleneseTestCase;
 
-
-public class SeleniumTest extends SeleneseTestCase {
+public class SeleniumTest2 extends SeleneseTestCase {
 	private static SeleniumServer seleniumServer;
 	@Before
 	public void setUp() throws Exception {
@@ -19,7 +19,7 @@ public class SeleniumTest extends SeleneseTestCase {
 	}
 	
 	@Test
-	public void testVoteForArtur() throws Exception {
+	public void testSearchForArtur() throws Exception {
 		selenium.open("http://3valimine.appspot.com");
 		selenium.waitForPageToLoad("30000"); 
 		selenium.click("loginnav");
@@ -30,25 +30,11 @@ public class SeleniumTest extends SeleneseTestCase {
 		selenium.type("Passwd", "SISESTA PAROOL");
 		selenium.click("signIn");
 		selenium.waitForPageToLoad("30000");
-		selenium.click("statnav");
-		Thread.sleep(500); 
-		selenium.click("//div[@id='statpage' and @class='tab']/aside/a[1][@class='statbutton']");
-		Thread.sleep(1000); 
-		String vote1  = selenium.getText("//tbody[@id='candidateTable']/tr[4]/td[6]"); 	
-        selenium.click("votenav"); 
-        Thread.sleep(1000); 
-		selenium.click("//ul[@id='results']/li[1]/a");   
-		Thread.sleep(1000); 
-		selenium.click("votebutton"); 
-		selenium.click("statnav");
-		selenium.waitForPageToLoad("30000"); 
-		selenium.click("//div[@id='statpage' and @class='tab']/aside/a[1][@class='statbutton']");
-		Thread.sleep(1500);
-		String vote2  = selenium.getText("//tbody[@id='candidateTable']/tr[1]/td[6]"); 
-		assertEquals(vote2, "2"); 
-		//selenium.click("//input[@value='Advanced Search']");
-		//selenium.waitForPageToLoad("30000");
+		selenium.type("resultSearch", "Artur Käpp"); 
+		String name = selenium.getText("//ul[@id='results']/li[1]/a"); 
+		assertEquals(name, "Artur Käpp");  
 	}
+	
 	@AfterTest
 	public void tearDown() throws InterruptedException{
 	selenium.stop(); 
@@ -56,12 +42,4 @@ public class SeleniumTest extends SeleneseTestCase {
 
 	}
 	
-
-
-	
-
-
-
-
-
 }
