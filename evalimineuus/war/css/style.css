@@ -46,11 +46,11 @@ header nav ul li {
   margin-left: 20px;
 }
 
-body#votepage a#votenav,
+body#votepagebody a#votenav,
 body#applypage a#applynav,
-body#statpage a#statnav,
+body#statpagebody a#statnav,
 body#loginpage a#loginnav,
-body#profilepage a#profilenav,
+body#profilepagebody a#profilenav,
 body#adminpage a#adminnav {
   text-decoration: underline;
 }
@@ -86,9 +86,7 @@ body#adminpage a#adminnav {
   border-bottom-right-radius: 6px;
   -moz-box-shadow: 0 2px 5px #ccc;
   -webkit-box-shadow: 0 2px 5px #ccc;
-  box-shadow: 0 2px 5px #ccc;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=5, Direction=90, Color='#ccc')";
-  filter: progid:DXImageTransform.Microsoft.Shadow(Strength=5, Direction=90, Color='#ccc');
+  box-shadow: 0 2px 5px #ccc;  
 }
 
 .tab aside {
@@ -394,12 +392,12 @@ body#adminpage a#adminnav {
 }
 
 .legend { list-style: none; display: none; }
-.legend li { float: bottom; margin-right: 10px; }
+.legend li { margin-right: 10px; }
 .legend span { border: 1px solid #ccc; float: left; width: 12px; height: 12px; margin: 2px; }
 
 .legend .yksikkandidaat { background-color: #297ACC; opacity: 0.3;}
 .legend .iseseis { background-color: #000072; opacity: 0.3;}
-.legend .kesk { background-color: #1F7A1F; opacity: 0.3;}
+.legend .kesk { background-color: #263F26; opacity: 0.3;}
 .legend .konserv { background-color: #FF8DC6; opacity: 0.3;}
 .legend .reform { background-color: #FFFF00; opacity: 0.3;}
 .legend .vabap6ll { background-color: #663300; opacity: 0.3;}
@@ -552,8 +550,7 @@ body#adminpage a#adminnav {
     height: 100%;
     z-index: 1000;
     display: none;
-    background-color: black;
-    filter: alpha(opacity=40);
+    background-color: black;    
     opacity: 0.4;
 }
 
@@ -595,7 +592,7 @@ a#candidateFormLink {
   margin: 1px 0;
 }
 
-#applypage #content h4 {ntext-align: center;}
+#applypage #content h4 {text-align: center;}
 #termsAndConditions {padding: 10px;background: #eee;border: 1px solid #ccc;color: #404040;height: 320px;overflow: auto;}
 #termsAndConditions ul li {margin-left: 20px;font-size: 12px;color: #404040;}
 #termsAndConditions H1,#termsAndConditions H2,#termsAndConditions H3 {text-align: center;font-weight: bold;font-family: Arial, Tahoma, Helvetica, sans-serif;}
@@ -813,7 +810,7 @@ p#agreeNotice {
   text-align: center;
 }
 
-p#notice {
+.notice {
   text-align: center;
   min-width: 320px;
   max-width: 460px;
@@ -839,7 +836,7 @@ a#googlelogin:hover{
 	width:200px;
 	height:35px;
 	}
-	
+
 a#googlelogin:active{
 	background:transparent url("../img/White-signin_Long_press_32dp.png") center top no-repeat;
 	background-size: contain;

@@ -32,6 +32,6 @@
 <script>window.jQuery || document.write('<script src="js/jquery-1.9.1.min.js"><\/script>')</script>
 <script type="text/javascript" src="/js/sorttable-min.js"></script>
 <script type="text/javascript" src='/js/stat.js'></script>
-<script type="text/javascript" src='https://maps.googleapis.com/maps/api/js?key=AIzaSyClsAlvu7wHd1ZqkewFh_77oGBASvPxmKU&sensor=false'></script>
+<script type="text/javascript" src='https://maps.googleapis.com/maps/api/js?key=AIzaSyClsAlvu7wHd1ZqkewFh_77oGBASvPxmKU&amp;sensor=false'></script>
 </body>
 </html>
