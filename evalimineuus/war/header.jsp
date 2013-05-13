@@ -1,7 +1,7 @@
 <%@page import="com.evalimine.uus.server.GoogleAuthHelper, com.evalimine.uus.server.UserUtilities"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
 <header>
-	<p id="notice">Antud rakendus ei ole mõeldud kasutamiseks reaalsetel valimistel!</p>
+	<p class="notice">Antud rakendus ei ole mõeldud kasutamiseks reaalsetel valimistel!</p>
 	<a href="/" id="logo"></a>
 	  	<% 
 		Object firstName = request.getSession(true).getAttribute("google_firstname");

@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"%><!DOCTYPE html>
-<html manifest="cache.manifest">
 <head>
 	<meta charset="utf-8">
 	<title>eValimine</title>
 	<link rel="stylesheet" href="css/style.css">
 </head>
-<body id="votepage">
+<body id="votepagebody">
 	<div id="wrapper">
 		<jsp:include page="/header.jsp" />
 		<canvas id="highlight"></canvas>
@@ -61,7 +60,7 @@
 					<li>
 						<h5>Kandidaadid:</h5>
 						<div id="results_wrapper">
-						<input type="text" id="resultSearch"></input>
+						<input type="text" id="resultSearch">
 							<div id="noResultsFound">
 								<p>
 									Ei leidnud midagi!<br/>
@@ -75,8 +74,8 @@
 					</li>
 					<li>
 						<div id="profile">
-							<img src="img/avatar.jpg" id="avatar">
-							
+							<img src="img/avatar.jpg" id="avatar" alt="avatar">
+
 							<h1><span id="name"></span></h1>
 							<p><b>Sünniaeg: </b><span id="birthdate"></span></p>
 							<p><b>Partei: </b><span id="party"></span></p>
@@ -99,9 +98,9 @@
 
 		<jsp:include page="/footer.jsp" />
 	</div><!-- wrapper -->
-<script type="text/javascript" src="/js/jquery-1.9.1.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/jquery-1.9.1.min.js"><\/script>')</script>
 <script type="text/javascript" src='/js/json2.js'></script>
-<script type="text/javascript" src="/js/easy.notification.js"></script>
 <script type="text/javascript" src='/js/index.js'></script>
 </body>
 </html>

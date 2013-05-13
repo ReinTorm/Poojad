@@ -1,15 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"%><!DOCTYPE html>
-<html manifest="cache.manifest">
 <head>
 	<meta charset="utf-8">
 	<title>eValimine - Statistika</title>
 	<link rel="stylesheet" href="/css/style.css">
 </head>
-<body id="statpage">
+<body id="statpagebody">
 	<div id="wrapper">
 		<jsp:include page="/header.jsp" />
 		<canvas id="highlight"></canvas>
-		<div id="statpage"class="tab">
+		<div id="statpage" class="tab">
 			<aside>
 				<h4>Vaata statistikat</h4>
 				<a href="/statistics/kandidaat" class="statbutton">Kandidaatide lõikes</a> 
@@ -29,8 +28,9 @@
 		</div><!-- statpage -->
 	<jsp:include page="/footer.jsp" />
 	</div><!-- wrapper -->
-<script type="text/javascript" src="/js/jquery-1.9.1.min.js"></script>
-<script type="text/javascript" src="/js/sorttable.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/js/sorttable-min.js"></script>
 <script type="text/javascript" src='/js/stat.js'></script>
 <script type="text/javascript" src='https://maps.googleapis.com/maps/api/js?key=AIzaSyClsAlvu7wHd1ZqkewFh_77oGBASvPxmKU&sensor=false'></script>
 </body>

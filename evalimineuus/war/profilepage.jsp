@@ -8,7 +8,7 @@
 	<title>eValimine - Profiil</title>
 	<link rel="stylesheet" href="/css/style.css">
 </head>
-<body id="profilepage">
+<body id="profilepagebody">
 	<div id="wrapper">
 		<jsp:include page="/header.jsp" />
 		<canvas id="highlight"></canvas>
@@ -23,7 +23,7 @@
 				<h4 class="content_heading">Minu Andmed</h4>
 				<div id="avatar_block">
 					<ul>
-						<li><p><img id="avatar" src="./img/avatar.jpg"></p></li>
+						<li><p><img id="avatar" src="./img/avatar.jpg" alt="avatar"></p></li>
 						<li><p class="error">Pilt on kandideerimiseks vajalik!</p></li>
 						<li><p><a href="https://plus.google.com/" target="_blank">Muuda pilti!</a></p></li>
 					</ul>
@@ -52,7 +52,7 @@
 				</div><!-- my_data -->
 				<div id="votedfor">
 					<h4>Sinu hääl</h4>
-					<p><b>Kandidaat:</b> <a href="javascript:void(0);" id="voted_for_name">-</a><a href="javascript:void(0);"><img src="./img/cross_remove.png"></a>
+					<p><b>Kandidaat:</b> <a href="javascript:void(0);" id="voted_for_name">-</a><a href="javascript:void(0);"><img src="./img/cross_remove.png" alt="cross"></a>
 					</p>
 				</div>
 				<div id="mystatus">
@@ -64,7 +64,8 @@
 		
 		<jsp:include page="/footer.jsp" />
 	</div><!-- wrapper -->
-<script type="text/javascript" src="/js/jquery-1.9.1.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/jquery-1.9.1.min.js"><\/script>')</script>
 <script type="text/javascript" src='/js/json2.js'></script>
 <script type="text/javascript" src='/js/profile.js'></script>
 </body>

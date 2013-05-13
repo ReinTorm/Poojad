@@ -12,6 +12,6 @@
 	<classpathentry kind="lib" path="war/WEB-INF/lib/ezmorph-1.0.6.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/json-lib-2.4-jdk15.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/json-simple-1.1.1.jar"/>
-	<classpathentry kind="con" path="com.google.gdt.eclipse.managedapis.MANAGED_API_CONTAINER/plus-v1r65lv1.13.2-beta"/>
+	<classpathentry kind="con" path="com.google.gdt.eclipse.managedapis.MANAGED_API_CONTAINER/plus-v1r66lv1.13.2-beta"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>

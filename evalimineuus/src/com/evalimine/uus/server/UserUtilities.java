@@ -3,6 +3,8 @@ package com.evalimine.uus.server;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 
+import com.google.appengine.api.rdbms.AppEngineDriver;
+
 public class UserUtilities extends HttpServlet {
 	/**
 	 * 
@@ -18,7 +20,7 @@ public class UserUtilities extends HttpServlet {
 		if(gId != null){
 			java.sql.Connection c = null;
 			try {
-				java.sql.DriverManager.registerDriver(new com.google.appengine.api.rdbms.AppEngineDriver());
+				java.sql.DriverManager.registerDriver(new AppEngineDriver());
 				c = java.sql.DriverManager.getConnection("jdbc:google:rdbms://valiminee:evalimine2/db");
 				java.sql.PreparedStatement stmt = c.prepareStatement("SELECT State FROM db.user WHERE Google_Id=?");
 				stmt.setString(1, gId);

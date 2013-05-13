@@ -5,7 +5,6 @@
 		response.sendRedirect("/login");
 %> 
 <!DOCTYPE html>
-<html manifest="cache.manifest">
 <head>
 <meta charset="utf-8">
 <title>eValimine - Kandideeri</title>
