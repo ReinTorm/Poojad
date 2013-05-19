@@ -176,6 +176,15 @@
  	</servlet-mapping>
 	
 	<servlet>
+     	<servlet-name>profileRemVote</servlet-name>
+  		<servlet-class>com.evalimine.uus.server.ProfileRemVote</servlet-class>
+ 	</servlet>
+ 	<servlet-mapping>
+    	<servlet-name>profileRemVote</servlet-name>
+     	<url-pattern>/profileRemVote</url-pattern>
+ 	</servlet-mapping>	
+	
+	<servlet>
 	    <servlet-name>loginPage</servlet-name>
 	    <jsp-file>/login.jsp</jsp-file>
 	</servlet>

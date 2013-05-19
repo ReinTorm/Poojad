@@ -141,7 +141,7 @@ function addCircles(i) {
 	               [58.372918, 24.455566, 'Pärnumaa', 27500]];
 	var jsonObj = [];
 	var global_circles = [];
-	var colors = ["#297ACC", "#000072", "#1F7A1F", "#FF8DC6", "#FFFF00", "#663300", "#800000", "#BA5919", "#2E8B2E", "#5CD6FF", "#CC0000", "#FFFFFF"];
+	var colors = ["#297ACC", "#000072", "#00CC00", "#FF8DC6", "#FFFF00", "#663300", "#800000", "#BA5919", "#ABD1AB", "#5CD6FF", "#CC0000", "#FFFFFF"];
 	jsonObj.push({pageID: 'kaart'});
 	curSearch = $.ajax({
 		url: "/getTable",

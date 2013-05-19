@@ -2,6 +2,30 @@ $(document).ready(function() {
 	$(profile_data);	
 });
 
+$('#remove_vote').click(function(){
+	var jsonObj = [];	
+	$.ajax({
+		url: "/profileRemVote",
+		type: "post",
+		data: JSON.stringify(jsonObj),
+		contentType: 'application/json; charset=utf-8',
+		dataType: 'json',
+		beforeSend: function() {},
+		complete: function() {},
+		success: function(jsonData){
+			$.easyNotification(jsonData.message);
+			$("html, body").animate({ scrollTop: 0 }, "slow");
+			var kandidaat = document.getElementById('voted_for_name');
+			kandidaat.innerHTML = '-';
+			$('#remove_vote').hide();			
+		},
+		error: function(xhr, ajaxOptions, thrownError) {
+			$.easyNotification(xhr.status + " : " + thrownError);
+			$("html, body").animate({ scrollTop: 0 }, "slow");
+		}
+    });
+})
+
 function profile_data() {
 	var jsonObj = [];	
 	curSearch = $.ajax({
@@ -24,7 +48,14 @@ function profile_data() {
 			
 			document.getElementById('avatar').setAttribute('src', c.ImgUrl);			
 			var kandidaat = document.getElementById('voted_for_name');
-			kandidaat.innerHTML = c.VName;			
+			if (c.VName != undefined){
+				kandidaat.innerHTML = c.VName;
+				$('#remove_vote').show();
+			}
+			else {
+				kandidaat.innerHTML = '-';
+				$('#remove_vote').hide();
+			}			
 			if (c.PartyId != "0"){
 				var mystatus_data =
 				"<p><label><b>Staatus:</b></label> Kandideerib <br>"

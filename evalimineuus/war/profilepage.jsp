@@ -52,7 +52,7 @@
 				</div><!-- my_data -->
 				<div id="votedfor">
 					<h4>Sinu hääl</h4>
-					<p><b>Kandidaat:</b> <a href="javascript:void(0);" id="voted_for_name">-</a><a href="javascript:void(0);"><img src="./img/cross_remove.png" alt="cross"></a>
+					<p><b>Kandidaat:</b> <a href="javascript:void(0);" id="voted_for_name">-</a><a href="javascript:void(0);"><img id="remove_vote" src="./img/cross_remove.png" alt="cross"></a>
 					</p>
 				</div>
 				<div id="mystatus">
@@ -68,5 +68,6 @@
 <script>window.jQuery || document.write('<script src="js/jquery-1.9.1.min.js"><\/script>')</script>
 <script type="text/javascript" src='/js/json2.js'></script>
 <script type="text/javascript" src='/js/profile.js'></script>
+<script type="text/javascript" src="/js/easy.notification.js"></script>
 </body>
 </html>
