@@ -183,6 +183,24 @@
     	<servlet-name>profileRemVote</servlet-name>
      	<url-pattern>/profileRemVote</url-pattern>
  	</servlet-mapping>	
+
+ 	<servlet>
+     	<servlet-name>profileRemCand</servlet-name>
+  		<servlet-class>com.evalimine.uus.server.ProfileRemCand</servlet-class>
+ 	</servlet>
+ 	<servlet-mapping>
+    	<servlet-name>profileRemCand</servlet-name>
+     	<url-pattern>/profileRemCand</url-pattern>
+ 	</servlet-mapping>
+ 	
+ 	<servlet>
+     	<servlet-name>profileUpdateInfo</servlet-name>
+  		<servlet-class>com.evalimine.uus.server.ProfileUpdateInfo</servlet-class>
+ 	</servlet>
+ 	<servlet-mapping>
+    	<servlet-name>profileUpdateInfo</servlet-name>
+     	<url-pattern>/profileUpdateInfo</url-pattern>
+ 	</servlet-mapping>
 	
 	<servlet>
 	    <servlet-name>loginPage</servlet-name>

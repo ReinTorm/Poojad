@@ -19,9 +19,9 @@ public class ProfileData extends HttpServlet {
 	
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
 		Object gId = req.getSession(false).getAttribute("google_id");
-		String query = "SELECT t1.Firstname, t1.Lastname, t1.Isikukood, t1.Aadress, t1.Mobiil, t1.CID, t1.ConstituencyName, t1.PartyName, t1.Email, t2.VName, t1.ImgUrl, t1.Shortinfo, t1.Longinfo, COALESCE(t3.Count, 0) AS VCount, COALESCE(t1.PartyId, 0) AS PartyId " 
+		String query = "SELECT t1.Firstname, t1.Lastname, t1.Isikukood, t1.Skype, t1.Facebook_Id, t1.ApplyState, t1.Aadress, t1.Mobiil, t1.CID, t1.ConstituencyName, t1.PartyName, t1.Email, t2.VName, t1.ImgUrl, t1.Shortinfo, t1.Longinfo, COALESCE(t3.Count, 0) AS VCount, COALESCE(t1.PartyId, 0) AS PartyId " 
 				+ " FROM (( "
-				+ " (SELECT db.user.PID, db.user.Firstname, db.user.Lastname, db.user.Isikukood, db.user.Aadress, db.user.Mobiil, db.user.Shortinfo, db.user.Longinfo, db.user.CID, db.constituency.ConstituencyName, db.party.PartyName, db.user.Email, db.user.Vote, db.user.Google_Id, db.user.ImgUrl, db.user.PartyId "
+				+ " (SELECT db.user.PID, db.user.Firstname, db.user.Lastname, db.user.Isikukood, db.user.Skype, db.user.Facebook_Id, db.user.ApplyState, db.user.Aadress, db.user.Mobiil, db.user.Shortinfo, db.user.Longinfo, db.user.CID, db.constituency.ConstituencyName, db.party.PartyName, db.user.Email, db.user.Vote, db.user.Google_Id, db.user.ImgUrl, db.user.PartyId "
 				+ " FROM db.user "
 				+ " LEFT JOIN db.party ON db.user.PartyId = db.party.PartyID "
 				+ " LEFT JOIN db.constituency ON db.user.CID = db.constituency.CID) t1 "
