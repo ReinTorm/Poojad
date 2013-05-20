@@ -66,6 +66,7 @@ public class GetTable extends HttpServlet {
 					+ " LEFT JOIN db.constituency ON db.user.CID = db.constituency.CID "
 					+ " WHERE db.user.PartyId IS NOT NULL "
 					+ " AND db.user.CID IS NOT NULL "
+					+ " AND db.user.ApplyState='ACTIVE' "
 					+ " ) t1 "
 					+ " LEFT JOIN "
 					+ " (SELECT db.user.Vote, COUNT(*) AS 'Count' "
@@ -84,9 +85,9 @@ public class GetTable extends HttpServlet {
 				query = " SELECT db.party.PartyName, t1.Hääli FROM db.party, " +
 						" (SELECT p.PartyId, COUNT( p.Vote ) as Hääli " +
 						" FROM db.user p " +
-						" JOIN db.user v ON p.PID = v.Vote " +
+						" JOIN db.user v ON p.PID = v.Vote AND p.ApplyState='ACTIVE' " +
 						" Group by p.PartyId) t1 " +
-						" WHERE db.party.PartyId = t1.PartyID" +
+						" WHERE db.party.PartyId = t1.PartyID " +
 						" ORDER BY t1.Hääli DESC";
 			}
 			else {
@@ -99,6 +100,7 @@ public class GetTable extends HttpServlet {
 					+ " LEFT JOIN db.party ON db.user.PartyId = db.party.PartyID "
 					+ " LEFT JOIN db.constituency ON db.user.CID = db.constituency.CID "
 					+ " WHERE db.user.PartyId IS NOT NULL "
+					+ " AND db.user.ApplyState='ACTIVE' "
 					+ " AND db.user.CID IS NOT NULL ";
 					if (pageID.equalsIgnoreCase("candidate")) {
 						//nothing to add
@@ -120,6 +122,7 @@ public class GetTable extends HttpServlet {
 			}
 			query+= " LIMIT " + startIndex +", "+ endIndex;
 		}
+		System.out.println(query);
 		return query;
 	}
 }

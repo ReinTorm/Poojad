@@ -31,13 +31,17 @@
 						<th class='alphabetic'>Erakond</th>
 						<th class='alphabetic'>Valimispiirkond</th>
 						<th class='alphabetic'>Aadress</th>
-						<th class='alphabetic'>Mobiil</th>
-						<th class='alphabetic'>Sünnikoht</th>
-						<th class='alphabetic'>Haridus</th>
-						<th class='alphabetic'>Teaduskraad</th>
-						<th class='alphabetic'>Töökoht</th>
-						<th class='alphabetic'>Amet</th>
-						<th class='alphabetic'>Staatus</th>
+						<th class='alphabetic'>Lühike Info</th>
+						<th class='alphabetic'>Pikk Info</th>
+						<th class="sorttable_nosort">Staatus<br />
+						<select id="CandidateStateOption">
+						  <option value="PENDING">Pending</option>
+						  <option value="DECLINED">Declined</option>
+						  <option value="ACTIVE">Active</option>
+						  <option value="NONE">None</option>
+						  <option value="ALL">All</option>
+						</select>
+						</th>
 					</tr>
 				</thead>
 				<tbody id="adminTable">
@@ -48,6 +52,7 @@
 	</div><!-- wrapper -->
 <script type="text/javascript" src="/js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="/js/sorttable.js"></script>
+<script type="text/javascript" src='/js/json2.js'></script>
 <script type="text/javascript" src='/js/adminpage.js'></script>
 </body>
 </html>

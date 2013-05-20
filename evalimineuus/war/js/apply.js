@@ -1,5 +1,25 @@
 $(document).ready(function() {
   $('.popbox').popbox();
+  $.ajax({
+		url: "/profileData",
+		type: "post",
+		contentType: 'application/json; charset=utf-8',
+		dataType: 'json',
+		beforeSend: function() {},
+		complete: function() {},
+		success: function(jsonData){
+			var c = jsonData[0];
+			if(c.Firstname) $('#applyPage-Firstname').val(c.Firstname);
+			if(c.Lastname) $('#applyPage-Lastname').val(c.Lastname);
+			if(c.Isikukood) $('#applyPage-Isikukood').val(c.Isikukood);
+			if(c.CID) $('#applyPage-Constituency #'+c.CID).prop('selected', true);
+			if(c.PartyId) $('#applyPage-Party #'+c.PartyId).prop('selected', true);
+			if(c.Aadress) $('#applyPage-Aadress').val(c.Aadress);
+			if(c.Mobiil) $('#applyPage-Mobiil').val(c.Mobiil);
+			if(c.Shortinfo) $('#applyPage-Shortinfo').val(c.Shortinfo);
+			if(c.Longinfo) $('#applyPage-Longinfo').val(c.Longinfo);
+		}
+	}); 
 });
 
 $.ketchup

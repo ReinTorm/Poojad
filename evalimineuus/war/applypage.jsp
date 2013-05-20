@@ -33,11 +33,11 @@
 							<h4>Kandidaadi ankeet</h4>
 							<p>* märgistatud väljad on kohustuslikud</p>
 							<ul>
-								<li><input type="text" data-validate="validate(required, name, minlength(3))" name="fname" title="Eesnimi" placeholder="Eesnimi *" /></li>
-								<li><input type="text" data-validate="validate(required, name, minlength(3))" name="lname" placeholder="Perekonnanimi *" /></li>
-								<li><input type="text" data-validate="validate(required, digits, minlength(11))" name="socnumber" placeholder="Isikukood *" /></li>
-								<li><select name="party">
-									<option id="0" disabled="disabled" selected="selected">Erakondlik kuuluvus *</option>
+								<li><input type="text" data-validate="validate(required, name, minlength(3))" name="fname" id="applyPage-Firstname" title="Eesnimi" placeholder="Eesnimi *" /></li>
+								<li><input type="text" data-validate="validate(required, name, minlength(3))" name="lname" id="applyPage-Lastname" placeholder="Perekonnanimi *" /></li>
+								<li><input type="text" data-validate="validate(required, digits, minlength(11))" name="socnumber" id="applyPage-Isikukood" placeholder="Isikukood *" /></li>
+								<li><select name="party" id="applyPage-Party">
+									<option id="0" disabled="disabled" selected="selected" >Erakondlik kuuluvus *</option>
 									<% 	java.sql.ResultSet rs;
 										rs = com.evalimine.uus.server.GeneralHelpers.getPartyOptions();
 										while (rs.next()) {
@@ -46,7 +46,7 @@
 											out.println("<option id=" + partyID + ">" + pname + "</option>");
 										} %>
 								</select></li>
-								<li><select name="constituency">
+								<li><select name="constituency" id="applyPage-Constituency">
 									<option id="0" disabled="disabled" selected="selected">Vali valimisringkond *</option>
 									<% 	rs = com.evalimine.uus.server.GeneralHelpers.getConstituencyOptions();
 										while (rs.next()) {
@@ -55,13 +55,11 @@
 											out.println("<option id=" + cID + ">" +cID + " - " + cname + "</option>");
 										} %>
 								</select></li>
-								<li><input type="text" data-validate="validate(required)" name="address" placeholder="Elukoha aadress *" /></li>
-								<li><input type="text" data-validate="validate(digits, minlength(5))" name="phone" placeholder="Mobiil" /></li>
-								<li><input type="text" name="pob" placeholder="Sünnikoht" /></li>
-								<li><textarea name="education" placeholder="Haridus ja eriala ning õppeasutuse nimetus ja lõpetamise aeg"></textarea></li>
-								<li><input type="text" name="degree" placeholder="Teaduskraad" /></li>
-								<li><input type="text" name="workp" placeholder="Töökoht" /></li>
-								<li><input type="text" name="job" placeholder="Amet" /></li>
+								<li><input type="text" data-validate="validate(required)" name="address" id="applyPage-Aadress" placeholder="Elukoha aadress *" /></li>
+								<li><input type="text" data-validate="validate(digits, minlength(5))" name="phone" id="applyPage-Mobiil" placeholder="Mobiil" /></li>
+								<li><textarea name="sinfo" placeholder="Lühike tutvustus - kuni 255 tähemärki *" id="applyPage-Shortinfo"></textarea></li>
+								<li><textarea name="linfo" placeholder="Pikem tutvustus - Välja võiks tuua vähemalt Hariduse ja eriala, teaduskraadi, töökoha ja ameti *" id="applyPage-Longinfo"></textarea></li>
+
 							</ul>
 							<a href="javascript:void(0);"  class="button" id="marginFixer">Valmis</a> <a href="javascript:void(0);" id="formClean" class="close button">Tühista</a>
 						</form>

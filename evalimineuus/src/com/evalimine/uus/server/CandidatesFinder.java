@@ -69,8 +69,9 @@ public class CandidatesFinder extends HttpServlet {
 		String query = "SELECT db.user.*, db.party.PartyName, db.constituency.ConstituencyName FROM db.user";
 		query+=" LEFT JOIN db.party ON db.user.PartyId = db.party.PartyID ";
 		query+=" LEFT JOIN db.constituency ON db.user.CID = db.constituency.CID ";
+		query+=" WHERE db.user.ApplyState='ACTIVE' ";
 		if((radioID!=0) || (userID!=0) || checkID!=null && checkID.length>0){
-			query+=" WHERE ";
+			query+=" AND ";
 		}
 		if (radioID !=0){
 			query+=" db.user.CID = " + radioID;
@@ -89,7 +90,7 @@ public class CandidatesFinder extends HttpServlet {
 		}
 		query+=" ORDER BY db.user.Firstname ";
 
-//		System.out.println(query);
+		System.out.println(query);
 		return query;
 	}
 }

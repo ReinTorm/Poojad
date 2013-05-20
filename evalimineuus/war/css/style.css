@@ -242,6 +242,7 @@ body#adminpage a#adminnav {
   float: left;
   list-style-type: none;
   margin-right: 1%;
+  width: 100%;
 }
 #advanced_search>li:nth-child(1){ width: 30%; }
 #advanced_search>li:nth-child(2){ width: 38%; }
@@ -522,6 +523,10 @@ body#adminpage a#adminnav {
   height: 50px;
   resize:vertical;
   font-family: Arial, Verdana, Tahoma, sans-serif;
+}
+
+.box textarea[name='linfo']{
+	height: 200px;
 }
 
 .box .button {

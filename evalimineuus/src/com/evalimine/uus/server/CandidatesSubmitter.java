@@ -31,12 +31,9 @@ public class CandidatesSubmitter  extends HttpServlet{
 		String constituency = (String) requestParams.get("constituency");
 		String address = requestParams.get("address").equals("") ? null : (String) requestParams.get("address");
 		Long phone = requestParams.get("phone").equals("") ? null :Long.parseLong((String) requestParams.get("phone"));
-		String birthplace = requestParams.get("pob").equals("") ? null : (String)requestParams.get("pob");
-		String education = requestParams.get("education").equals("") ? null : (String) requestParams.get("education");
-		String degree = requestParams.get("degree").equals("") ? null : (String) requestParams.get("degree");
-		String workplace = requestParams.get("workp").equals("") ? null : (String) requestParams.get("workp");
-		String job = requestParams.get("job").equals("") ? null : (String)requestParams.get("job");
-		
+		String sInfo = requestParams.get("sinfo").equals("") ? null : (String) requestParams.get("sinfo");
+		String lInfo = requestParams.get("linfo").equals("") ? null : (String) requestParams.get("linfo");
+
         PrintWriter out = res.getWriter();
         res.setContentType("text/html; charset=UTF-8");
 		Object gId = (req.getSession(false) == null) ? null : req.getSession(false).getAttribute("google_id");
@@ -49,31 +46,57 @@ public class CandidatesSubmitter  extends HttpServlet{
 			try {
 				java.sql.DriverManager.registerDriver(new com.google.appengine.api.rdbms.AppEngineDriver());
 				c = java.sql.DriverManager.getConnection("jdbc:google:rdbms://valiminee:evalimine2/db");
-				
-				java.sql.PreparedStatement stmt = c.prepareStatement("INSERT INTO db.kandidaat (Firstname, Lastname, Isikukood, PartyName, ConstituencyName, Address, Mobilephone, Birthplace, Education, Degree, Work, Job) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
-				stmt.setString(1, fname);
-				stmt.setString(2, lname);
-				stmt.setLong(3, socnumber == null? java.sql.Types.NULL : socnumber);
-				stmt.setString(4, party);
-				stmt.setString(5, constituency);
-				stmt.setString(6, address);
-				stmt.setLong(7, phone == null? java.sql.Types.NULL : phone);
-				stmt.setString(8, birthplace);
-				stmt.setString(9, education);
-				stmt.setString(10, degree);
-				stmt.setString(11, workplace);
-				stmt.setString(12, job);
-				stmt.executeUpdate();
-
-				ResultSet rs = stmt.getGeneratedKeys();
-				if(rs.next() && gId!=null){
-				   int auto_id = rs.getInt(1);
-				   java.sql.PreparedStatement stmt2 = c.prepareStatement("UPDATE db.user SET Avaldus=? WHERE Google_Id=?");
-				   stmt2.setInt(1,auto_id);
-				   stmt2.setString(2, gId.toString());
-				   stmt2.execute();
+					
+				java.sql.PreparedStatement stmt = c.prepareStatement("select PartyId from db.party where PartyName=?");
+				stmt.setString(1, party);
+				int partyInt=-1;
+				int constituencyInt=-1;
+				ResultSet rs = stmt.executeQuery();
+				if(!rs.next()){
+					res.sendError(327, "Midagi läks valesti!");
+					return;
+				}else{
+					partyInt = rs.getInt(1);
 				}
-				out.write("{\"message\" : \"Ankeet edukalt ülevaatusele saadetud!\"}");
+				constituencyInt= Integer.parseInt(constituency.split(" ")[0]);
+				if(partyInt==-1 || constituencyInt==-1){
+					res.sendError(546, "Midagi läks valesti!");
+					return;
+				}
+				if(fname!=null && lname!=null && socnumber!=null && party!=null && constituency!=null && address!=null && sInfo!=null && lInfo!=null) {
+					stmt = c.prepareStatement(
+							" UPDATE db.user " +
+							" SET db.user.Firstname=?, " +
+							" db.user.Lastname=?, " +
+							" db.user.Isikukood=?, " +
+							" db.user.PartyId=?, " +
+							" db.user.CID=?, " +
+							" db.user.Aadress=?, " +
+							" db.user.ShortInfo=?, " +
+							" db.user.LongInfo=?, " +
+							" db.user.ApplyState='PENDING' " +
+							" WHERE db.user.Google_Id=?");
+					stmt.setString(1, fname);
+					stmt.setString(2, lname);
+					stmt.setLong(3, socnumber == null? java.sql.Types.NULL : socnumber);
+					stmt.setInt(4, partyInt);
+					stmt.setInt(5, constituencyInt);
+					stmt.setString(6, address);
+					stmt.setString(7, sInfo);
+					stmt.setString(8, lInfo);
+					stmt.setString(9, gId.toString());
+					stmt.executeUpdate();
+				}else{
+					res.sendError(9999, "Midagi jäi täitmata?");
+					return;
+				}
+				if(phone!=null){
+					stmt = c.prepareStatement("UPDATE db.user SET db.user.Mobiil=? WHERE db.user.Google_Id=?");
+					stmt.setLong(1, phone);
+					stmt.setString(2, gId.toString());
+					stmt.executeUpdate();
+				}
+				out.write("{\"message\" : \"Avaldus edukalt ülevaatusele saadetud!\"}");
 			}catch(SQLException e){
 				e.printStackTrace();
 				res.sendError(999, "Midagi läks valesti!");
