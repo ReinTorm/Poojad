@@ -51,6 +51,7 @@ body#applypage a#applynav,
 body#statpagebody a#statnav,
 body#loginpage a#loginnav,
 body#profilepagebody a#profilenav,
+body#faqpagebody a#faqnav,
 body#adminpage a#adminnav {
   text-decoration: underline;
 }
@@ -879,4 +880,21 @@ a#googlelogin:active{
 }
 #wrapper.wideradminpage .tab{
     padding: 20px;
+}
+
+.FaqListing {
+	margin-left:15px;
+	margin-bottom: 20px;
+	font-size:12px;
+}
+
+#FagEmail {
+	display:block;
+	width:100%;
+	text-align:center;
+	margin:10px auto;
+}
+
+.faq_question_heading:hover {
+	text-decoration: none;
 }

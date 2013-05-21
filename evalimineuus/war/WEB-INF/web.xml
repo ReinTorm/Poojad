@@ -239,6 +239,15 @@
 	</servlet-mapping>
 
 	<servlet>
+	    <servlet-name>faqPage</servlet-name>
+	    <jsp-file>/KKK.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>faqPage</servlet-name>
+	    <url-pattern>/faq/*</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
 	    <servlet-name>adminPage</servlet-name>
 	    <jsp-file>/adminpage.jsp</jsp-file>
 	</servlet>

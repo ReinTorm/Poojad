@@ -21,8 +21,10 @@
 				<% if(UserUtilities.isAdmin(request)){ %>
 					<li><a href="/admin" id="adminnav">Admin</a></li>
 				<% } %>
+				<li><a href="/faq" id="faqnav">KKK</a></li>
 				<li><a href="/logout">Logi välja</a></li>
 			<%}else{ %>
+				<li><a href="/faq" id="faqnav">KKK</a></li>
 				<li><a href="/login" id="loginnav">Logi sisse</a></li>
 			<%} %>
 		</ul>
